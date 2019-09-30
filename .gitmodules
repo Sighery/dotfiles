@@ -1,0 +1,6 @@
+[submodule "dotdrop"]
+	path = dotdrop
+	url = git@github.com:deadc0de6/dotdrop.git
+[submodule "dotfiles/nord-xresources"]
+	path = dotfiles/nord-xresources
+	url = git@github.com:Sighery/nord-xresources.git
