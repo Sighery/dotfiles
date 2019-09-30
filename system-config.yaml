@@ -1,0 +1,25 @@
+config:
+  backup: true
+  create: true
+  dotpath: system
+dotfiles:
+  f_set-monitor-sink:
+    src: set-monitor-sink
+    dst: /usr/bin/set-monitor-sink
+    link: link
+  f_fstab:
+    src: etc/fstab
+    dst: /etc/fstab
+  f_local.conf:
+    src: etc/fonts/local.conf
+    dst: /etc/fonts/local.conf
+  d_tmpfiles.d:
+    src: etc/tmpfiles.d
+    dst: /etc/tmpfiles.d
+profiles:
+  sater-manjaro:
+    dotfiles:
+    - f_set-monitor-sink
+    - f_fstab
+    - f_local.conf
+    - d_tmpfiles.d
