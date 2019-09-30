@@ -1,0 +1,9 @@
+# Personal GitHub account
+Host github.com
+	AddKeysToAgent yes
+	IdentityFile ~/.ssh/id_rsa
+
+# Personal GitLab account
+Host gitlab.com
+	AddKeysToAgent yes
+	IdentityFile ~/.ssh/id_ed25519

@@ -1,0 +1,83 @@
+config:
+  backup: true
+  create: true
+  dotpath: dotfiles
+  link_dotfile_default: link
+dotfiles:
+  d_vim:
+    src: vim
+    dst: ~/.vim
+    link: link_children
+  f_nvidia-settings-rc:
+    src: nvidia-settings-rc
+    dst: ~/.nvidia-settings-rc
+  f_xclients:
+    src: Xclients
+    dst: ~/.Xclients
+  f_bash_logout:
+    src: bash_logout
+    dst: ~/.bash_logout
+  f_bash_profile:
+    src: bash_profile
+    dst: ~/.bash_profile
+  f_bashrc:
+    src: bashrc
+    dst: ~/.bashrc
+  f_dir_colors:
+    src: dir_colors
+    dst: ~/.dir_colors
+  f_dmenurc:
+    src: dmenurc
+    dst: ~/.dmenurc
+  f_dmrc:
+    src: dmrc
+    dst: ~/.dmrc
+  d_i3:
+    src: i3
+    dst: ~/.i3
+    link: link_children
+  f_pam_environment:
+    src: pam_environment
+    dst: ~/.pam_environment
+  f_profile:
+    src: profile
+    dst: ~/.profile
+  f_xinitrc:
+    src: xinitrc
+    dst: ~/.xinitrc
+    link: nolink
+  f_xresources:
+    src: Xresources
+    dst: ~/.Xresources
+    link: nolink
+  f_nord-xresources:
+    src: nord-xresources/src/nord
+    dst: ~/.Xresources.d/nord
+  d_config:
+    src: config
+    dst: ~/.config
+    link: link_children
+  d_ssh:
+    src: ssh
+    dst: ~/.ssh
+    link: link_children
+profiles:
+  sater-manjaro:
+    dotfiles:
+    - d_vim
+    - f_nvidia-settings-rc
+    - f_xclients
+    - f_bash_logout
+    - f_bash_profile
+    - f_bashrc
+    - f_dir_colors
+    - f_dmenurc
+    - f_dmrc
+    - d_i3
+    - f_pam_environment
+    - f_profile
+    - f_xinitrc
+    - f_xresources
+    - f_nord-xresources
+    - d_config
+    - d_ssh
