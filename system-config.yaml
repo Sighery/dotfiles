@@ -16,6 +16,9 @@ dotfiles:
   d_tmpfiles.d:
     src: etc/tmpfiles.d
     dst: /etc/tmpfiles.d
+  f_00-local-userns.conf:
+    src: etc/sysctl.d/00-local-userns.conf
+    dst: /etc/sysctl.d/00-local-userns.conf
 profiles:
   sater-manjaro:
     dotfiles:
@@ -23,3 +26,4 @@ profiles:
     - f_fstab
     - f_local.conf
     - d_tmpfiles.d
+    - f_00-local-userns.conf
