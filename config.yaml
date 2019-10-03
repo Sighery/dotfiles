@@ -1,3 +1,6 @@
+actions:
+  pre:
+    install-atom-packages: "./dotfiles/atom-packages.sh install dotfiles"
 config:
   backup: true
   create: true
@@ -61,6 +64,12 @@ dotfiles:
     src: ssh
     dst: ~/.ssh
     link: link_children
+  d_atom:
+    src: atom
+    dst: ~/.atom
+    link: link_children
+    actions:
+      - install-atom-packages
 profiles:
   sater-manjaro:
     dotfiles:
@@ -81,3 +90,4 @@ profiles:
     - f_nord-xresources
     - d_config
     - d_ssh
+    - d_atom
