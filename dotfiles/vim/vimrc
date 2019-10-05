@@ -3,3 +3,4 @@ set number
 set cc=79
 filetype indent plugin on
 syntax on
+au FileType gitcommit setlocal tw=70
