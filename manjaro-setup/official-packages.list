@@ -16,3 +16,5 @@ bash-completion
 stow
 python-pip
 python2-pip
+docker
+docker-compose
