@@ -41,3 +41,9 @@
     'ctrl-alt-i': 'cursor-history:next'
     'ctrl-alt-o': 'cursor-history:prev'
     'ctrl-\\': 'tree-view:toggle'
+
+'.platform-linux atom-text-editor:not([mini])':
+    'alt-shift-down': 'multi-cursor:move-last-cursor-down'
+    'alt-shift-right': 'multi-cursor:move-last-cursor-right'
+    'alt-shift-left': 'multi-cursor:move-last-cursor-left'
+    'alt-shift-up': 'multi-cursor:move-last-cursor-up'
