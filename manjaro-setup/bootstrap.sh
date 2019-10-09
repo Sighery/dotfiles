@@ -4,6 +4,13 @@ sudo pacman-mirrors --country all --api --protocol https
 sudo pacman -Syyu
 sudo pacman -Scc
 
+# Wireguard needs Linux headers. Figure out the headers dynamically
+HEADERS="linux"
+HEADERS+=`uname -r | cut -d"." -f1`
+HEADERS+=`uname -r | cut -d"." -f2`
+HEADERS+="-headers"
+sudo pacman -S --needed "$HEADERS"
+
 sudo pacman -S --needed - < official-packages.list
 sudo pacman -Scc
 yay -S --needed - < aur-packages.list
