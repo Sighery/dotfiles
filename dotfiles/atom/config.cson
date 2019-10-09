@@ -40,6 +40,7 @@
       "linter"
       "exception-reporting"
       "metrics"
+      "github"
     ]
     packagesWithKeymapsDisabled: [
       "recursive-folding"
