@@ -2,8 +2,12 @@
 # $HOME/Programming/dotfiles/manjaro-setup
 sudo pacman-mirrors --country all --api --protocol https
 sudo pacman -Syyu
+sudo pacman -Scc
+
 sudo pacman -S --needed - < official-packages.list
+sudo pacman -Scc
 yay -S --needed - < aur-packages.list
+yay -Scc
 
 # Install Fantasque Sans Mono Large Line Height No Loop K
 if [ ! -d "$HOME/Programming/fantasque-sans-arch-build" ]; then
