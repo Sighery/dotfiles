@@ -1,6 +1,6 @@
 actions:
   pre:
-    install-atom-packages: ./dotfiles/atom-packages.sh install dotfiles
+    install-atom-packages: "{{@@ _dotdrop_dotpath @@}}/atom-packages.sh install {{@@ _dotdrop_dotpath @@}}"
 config:
   backup: true
   create: true
