@@ -31,3 +31,9 @@ profiles:
     - d_tmpfiles.d
     - f_00-local-userns.conf
     - f_locale.conf
+  basic:
+    dotfiles:
+      - f_local.conf
+      - d_tmpfiles.d
+      - f_00-local-userns.conf
+      - f_locale.conf
