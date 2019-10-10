@@ -100,9 +100,9 @@ profiles:
     - f_xresources
     - f_nord-xresources
     - d_ssh
-    - d_atom
     - f_bash_aliases
     - f_mimeapps.list
     - f_i3-scrot.conf
     - d_i3status
     - d_ranger
+    - d_atom
