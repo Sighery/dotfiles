@@ -48,18 +48,12 @@ dotfiles:
   f_xinitrc:
     src: xinitrc
     dst: ~/.xinitrc
-    link: nolink
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
-    link: nolink
   f_nord-xresources:
     src: nord-xresources/src/nord
     dst: ~/.Xresources.d/nord
-  d_config:
-    src: config
-    dst: ~/.config
-    link: link_children
   d_ssh:
     src: ssh
     dst: ~/.ssh
@@ -73,7 +67,20 @@ dotfiles:
   f_bash_aliases:
     src: bash_aliases
     dst: ~/.bash_aliases
-    link: nolink
+  f_mimeapps.list:
+    src: config/mimeapps.list
+    dst: ~/.config/mimeapps.list
+  f_i3-scrot.conf:
+    src: config/i3-scrot.conf
+    dst: ~/.config/i3-scrot.conf
+  d_i3status:
+    src: config/i3status
+    dst: ~/.config/i3status
+    link: link_children
+  d_ranger:
+    src: config/ranger
+    dst: ~/.config/ranger
+    link: link_children
 profiles:
   sater-manjaro:
     dotfiles:
@@ -92,7 +99,10 @@ profiles:
     - f_xinitrc
     - f_xresources
     - f_nord-xresources
-    - d_config
     - d_ssh
     - d_atom
     - f_bash_aliases
+    - f_mimeapps.list
+    - f_i3-scrot.conf
+    - d_i3status
+    - d_ranger
