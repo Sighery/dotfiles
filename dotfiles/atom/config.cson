@@ -130,3 +130,6 @@
       79
       99
     ]
+".source.yaml":
+  editor:
+    tabLength: 2
