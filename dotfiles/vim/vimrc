@@ -1,6 +1,7 @@
 set tabstop=4
 set number
 set colorcolumn=71,79
+set mouse=a
 filetype indent plugin on
 syntax on
 au FileType gitcommit setlocal tw=70
