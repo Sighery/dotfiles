@@ -1,6 +1,8 @@
 actions:
   pre:
     install-atom-packages: "{{@@ _dotdrop_dotpath @@}}/atom-packages.sh install {{@@ _dotdrop_dotpath @@}}"
+  post:
+    enable-ssh-agent-service: systemctl --user --now enable ssh-agent.service
 config:
   backup: true
   create: true
@@ -77,6 +79,12 @@ dotfiles:
     src: config/i3status
     dst: ~/.config/i3status
     link: link_children
+  f_ssh-agent.service:
+    src: config/systemd/user/ssh-agent.service
+    dst: ~/.config/systemd/user/ssh-agent.service
+    link: nolink
+    actions:
+    - enable-ssh-agent-service
   d_ranger:
     src: config/ranger
     dst: ~/.config/ranger
@@ -105,4 +113,5 @@ profiles:
     - f_i3-scrot.conf
     - d_i3status
     - d_ranger
+    - f_ssh-agent.service
     - d_atom
