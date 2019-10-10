@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 OPERATION=$1
 BASEDIR=$2
 
