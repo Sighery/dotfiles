@@ -33,7 +33,7 @@ pip install -r dotdrop/requirements.txt --user
 sudo pip install -r dotdrop/requirements.txt
 
 # First install dotfiles
-bash dotdrop.sh --cfg=config.yaml install
+bash dotdrop.sh --cfg=config.yaml --profile=sater-manjaro install
 
 # Now install system files
-sudo bash dotdrop.sh --cfg=system-config.yaml install
+sudo bash dotdrop.sh --cfg=system-config.yaml --profile=basic install
