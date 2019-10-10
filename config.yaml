@@ -89,6 +89,9 @@ dotfiles:
     src: config/ranger
     dst: ~/.config/ranger
     link: link_children
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
 profiles:
   sater-manjaro:
     dotfiles:
@@ -114,4 +117,5 @@ profiles:
     - d_i3status
     - d_ranger
     - f_ssh-agent.service
+    - f_gitconfig
     - d_atom
