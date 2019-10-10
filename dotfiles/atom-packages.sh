@@ -23,7 +23,6 @@ if [ "$OPERATION" == "install" ]; then
 			package=`printf "$package" | cut -d"@" -f1`
 
 			if [ ! -d "$HOME/.atom/packages/$package" ]; then
-				printf "Installing package $package...\n"
 				apm install "$package"
 			fi
 		done
