@@ -19,3 +19,4 @@ python2-pip
 docker
 docker-compose
 hunspell-en_GB
+tmux
