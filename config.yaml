@@ -93,6 +93,10 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+  d_khal:
+    src: config/khal
+    dst: ~/.config/khal
+    link: link_children
 profiles:
   sater-manjaro:
     dotfiles:
@@ -119,4 +123,5 @@ profiles:
     - d_ranger
     - f_ssh-agent.service
     - f_gitconfig
+    - d_khal
     - d_atom
