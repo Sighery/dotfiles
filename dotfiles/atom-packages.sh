@@ -34,6 +34,12 @@ time_for_help() {
 
 time_for_help
 
+# Apparently command substitution removes newlines
+PACKAGES=`apm list --installed --packages --bare | xargs -n1 | cut -d"@" -f1`
+printf -v PACKAGES "$PACKAGES\n"
+THEMES=`apm list --installed --themes --bare | xargs -n1 | cut -d"@" -f1`
+printf -v THEMES "$THEMES\n"
+
 if [ -z "$BASEDIR" ]; then
 	BASEDIR="./"
 elif [ "${BASEDIR: -1}" != "/" ]; then
@@ -43,7 +49,7 @@ fi
 PACKAGES_FILE="${BASEDIR}atom-packages.list"
 THEMES_FILE="${BASEDIR}atom-themes.list"
 
-if [ "$OPERATION" == "install" ]; then
+if [ "$OPERATION" = "install" ]; then
 	files=("$PACKAGES_FILE" "$THEMES_FILE")
 	for file in "${files[@]}"; do
 		# Last lines don't necessarily always include a newline
@@ -55,7 +61,7 @@ if [ "$OPERATION" == "install" ]; then
 			fi
 		done
 	done
-else
+elif [ "$OPERATION" = "update" ]; then
 	printf "$PACKAGES" > "$PACKAGES_FILE"
 	printf "$THEMES" > "$THEMES_FILE"
 fi
