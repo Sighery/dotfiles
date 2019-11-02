@@ -1,20 +1,20 @@
 # Dotfiles
 
 On this repository I hold my opinionated dotfiles, system configuration files,
-and bootstrap scripts to quickly set up some systems. I am using, at the moment,
-[dotdrop](https://github.com/deadc0de6/dotdrop) for the dotfiles and system
-files configuration.
+and bootstrap scripts to quickly set up some systems. I am using, at the
+moment, [dotdrop](https://github.com/deadc0de6/dotdrop) for the dotfiles and
+system files configuration.
 
 ---
 
 I decided to go for dotdrop since I was looking for something that would allow
-me to configure both local dotfiles as well as system configuration files that I
-might want to transfer.
+me to configure both local dotfiles as well as system configuration files that
+I might want to transfer.
 
 However, I manage different systems, both at home and at work, so I wanted
 something that would allow me to keep different profiles for each different
-host, or rather, something that would allow me to inherit most of the stuff, and
-just modify, if needed, a few small bits for each different profile.
+host, or rather, something that would allow me to inherit most of the stuff,
+and just modify, if needed, a few small bits for each different profile.
 
 At first I thought of having a common branch, and then a new branch for each
 different system. But that would require quite a lot of management from me,
@@ -51,7 +51,7 @@ features are listed on its main page, but for my usecase, the main ones are:
 These are under `dotfiles`. Dotdrop takes care of managing and deploying them,
 but, as long as you take care of copying them to their original name and
 destination you can manage them manually. This is all configured under
-`config.yaml`, the default cfg used by dotdrop.
+`config.yaml`, the default cfg used by Dotdrop.
 
 The only slightly significant thing in there might be the `nord-xresources`
 submodule. This is the current `Xresources` theme I use. However, I wanted a
@@ -59,7 +59,7 @@ small change from the original theme, so I made my own fork and that's what I
 have I cloned here.
 
 As for how it's used, `Xresources` let's you include variables from another
-file, so I simply use dotdrop to get this file from the submodule, and then set
+file, so I simply use Dotdrop to get this file from the submodule, and then set
 its destination to a symlinked hidden folder on HOME that the original (also
 symlinked) `.Xresources` file will include from.
 
@@ -72,11 +72,11 @@ configuration file being `system-config.yaml`. **Careful with these files.
 Deploy only after checking them, at your own risk.**
 
 You can deploy one single file or directory by specifying it's _dotfile name_:
-`sudo ./dotdrop.sh --cfg=system-config.yaml f_fstab`.
+`sudo ./dotdrop.sh --cfg=system-config.yaml install f_fstab`.
 
 `sudo` must be used, since dotdrop needs those privileges to copy or link to
-root-owned directories. And `cfg` must be specified so that dotdrop knows not to
-use the default `config.yaml` file.
+root-owned directories. And `cfg` must be specified so that dotdrop knows not
+to use the default `config.yaml` file.
 
 ---
 
@@ -85,3 +85,16 @@ use the default `config.yaml` file.
 Some systems might have it's own directories with bootstrap scripts among other
 utils. You might find its own README explaining the utils. Or you might just
 have to check the scripts themselves to see what they'll do.
+
+One example of this are my Atom utils. If you look inside the `dotfiles`
+folder, you might see the following files: `atom-packages.list`,
+`atom-themes.list`, and `atom-packages.sh`.
+
+I keep an up to date list of my currently used Atom packages and themes. These
+files aren't included with my Dotdrop `config.yaml` since they're not dotfiles
+meant to be anywhere. However, on my `d_atom` config, I have a pre-action
+executing the `atom-packages.sh` script that will take care of installing
+any new packages in a system with Atom, reading the packages and themes it
+needs to install from the previous `.list` files. Then, after that pre-action
+is done, Dotdrop will then symlink actual Atom dotfiles and so I'll have my
+Atom quickly set up and configured to my liking.

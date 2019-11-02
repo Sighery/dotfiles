@@ -1,9 +1,38 @@
 #!/usr/bin/env bash
+PROGRAMNAME=$0
 OPERATION=$1
 BASEDIR=$2
 
-PACKAGES=`apm list --installed --packages --bare`
-THEMES=`apm list --installed --themes --bare`
+usage() {
+	printf "usage: $PROGRAMNAME operation [basedir]\n"
+	printf "\n"
+	printf "operation can be either install or update.\n"
+	printf "Install uses existing atom-packages.list and atom-themes.list \n"
+	printf "files to install Atom packages automatically.\n"
+	printf "Update updates those same files with locally installed Atom \n"
+	printf "packages and themes.\n"
+	printf "\n"
+	printf "basedir is optional, defaulting to \"./\". It will be used to \n"
+	printf "know where to fetch to install or update the atom-*.list files \n"
+	printf "from.\n"
+	exit 1
+}
+
+time_for_help() {
+	if [ -z "$OPERATION" ]; then
+		usage
+	elif [ "$OPERATION" = "help" ] || [ "$OPERATION" = "h" ]; then
+		usage
+	elif [ "$OPERATION" = "--help" ] || [ "$OPERATION" = "-h" ]; then
+		usage
+	elif [ "$OPERATION" != "install" ] && [ "$OPERATION" != "update" ]; then
+		usage
+	fi
+
+	return 1
+}
+
+time_for_help
 
 if [ -z "$BASEDIR" ]; then
 	BASEDIR="./"
