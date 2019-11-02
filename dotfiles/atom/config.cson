@@ -96,6 +96,10 @@
       "split-diff": true
       "split-diffDecorationsZIndex": 0
   "multi-wrap-guide":
+    columns: [
+      71
+      79
+    ]
     locked: true
   "prettier-atom":
     formatOnSaveOptions:
