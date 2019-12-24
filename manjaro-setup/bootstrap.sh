@@ -37,3 +37,7 @@ bash dotdrop.sh --cfg=config.yaml --profile=sater-manjaro install
 
 # Now install system files
 sudo bash dotdrop.sh --cfg=system-config.yaml --profile=basic install
+
+# Let Manjaro set our time and date automatically
+# https://wiki.manjaro.org/System_Maintenance#Time_and_Date
+timedatectl set-ntp true
