@@ -105,6 +105,10 @@ dotfiles:
     src: config/powerline/themes/shell
     dst: ~/.config/powerline/themes/shell
     link: link_children
+  d_kitty:
+    src: config/kitty
+    dst: ~/.config/kitty
+    link: link_children
 profiles:
   sater-manjaro:
     dotfiles:
@@ -135,3 +139,4 @@ profiles:
     - d_atom
     - d_powerline-colorschemes
     - d_powerline-themes-shell
+    - d_kitty
