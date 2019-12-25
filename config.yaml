@@ -54,9 +54,6 @@ dotfiles:
   f_xresources:
     src: Xresources
     dst: ~/.Xresources
-  f_nord-xresources:
-    src: nord-xresources/src/nord
-    dst: ~/.Xresources.d/nord
   d_ssh:
     src: ssh
     dst: ~/.ssh
@@ -109,6 +106,10 @@ dotfiles:
     src: config/kitty
     dst: ~/.config/kitty
     link: link_children
+  d_kitty-themes:
+    src: kitty-themes/themes
+    dst: ~/.config/kitty/themes
+    link: link_children
 profiles:
   sater-manjaro:
     dotfiles:
@@ -126,7 +127,6 @@ profiles:
     - f_profile
     - f_xinitrc
     - f_xresources
-    - f_nord-xresources
     - d_ssh
     - f_bash_aliases
     - f_mimeapps.list
@@ -140,3 +140,4 @@ profiles:
     - d_powerline-colorschemes
     - d_powerline-themes-shell
     - d_kitty
+    - d_kitty-themes
