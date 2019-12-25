@@ -23,3 +23,6 @@ tmux
 khal
 foliate
 openssh
+powerline
+powerline-fonts
+powerline-vim

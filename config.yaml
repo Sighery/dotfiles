@@ -97,6 +97,14 @@ dotfiles:
     src: config/khal
     dst: ~/.config/khal
     link: link_children
+  d_powerline-colorschemes:
+    src: config/powerline/colorschemes
+    dst: ~/.config/powerline/colorschemes
+    link: link_children
+  d_powerline-themes-shell:
+    src: config/powerline/themes/shell
+    dst: ~/.config/powerline/themes/shell
+    link: link_children
 profiles:
   sater-manjaro:
     dotfiles:
@@ -125,3 +133,5 @@ profiles:
     - f_gitconfig
     - d_khal
     - d_atom
+    - d_powerline-colorschemes
+    - d_powerline-themes-shell
