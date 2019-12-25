@@ -33,6 +33,9 @@ makepkg --needed --syncdeps --clean
 sudo pacman -U otf*.pkg.tar.xz
 git clean -fdX
 
+# Install Pulse
+install_pulse
+
 cd "$HOME/Programming/dotfiles"
 # Set up both needed user and system dependencies for dotdrop
 pip install -r dotdrop/requirements.txt --user
