@@ -1,0 +1,2 @@
+# Ranger is written in Python and plugins are .py files
+**/ranger/plugins/__pycache__/
