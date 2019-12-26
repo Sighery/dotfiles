@@ -110,6 +110,9 @@ dotfiles:
     src: kitty-themes/themes
     dst: ~/.config/kitty/themes
     link: link_children
+  f_kitten-completion:
+    src: local/share/bash-completion/completions/kitten
+    dst: ~/.local/share/bash-completion/completions/kitten
 profiles:
   sater-manjaro:
     dotfiles:
@@ -141,3 +144,4 @@ profiles:
     - d_powerline-themes-shell
     - d_kitty
     - d_kitty-themes
+    - f_kitten-completion

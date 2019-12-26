@@ -1,0 +1,19 @@
+_kitten_completions() {
+    local src
+    local limit
+	# We need some slight changes so that we can use kitty's native
+	# autocompletion. Kitty won't understand our "kitten" command, but
+	# if we turn "kitten" into "kitty +kitten" it will be able to
+	# autocomplete just fine
+	local unaliased
+	unaliased=("kitty" "+kitten" "${COMP_WORDS[@]:1}")
+    # Send all words up to the word the cursor is currently on
+    let limit=1+$COMP_CWORD+1
+    src=$(printf "%s
+" "${unaliased[@]:0:$limit}" | kitty +complete bash)
+    if [[ $? == 0 ]]; then
+        eval ${src}
+    fi
+}
+
+complete -o nospace -F _kitten_completions kitten
