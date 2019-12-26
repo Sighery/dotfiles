@@ -1,6 +1,6 @@
 [submodule "dotdrop"]
 	path = dotdrop
-	url = ../../deadc0de6/dotdrop.git
+	url = ../dotdrop.git
 [submodule "dotfiles/kitty-themes"]
 	path = dotfiles/kitty-themes
 	url = ../../dexpota/kitty-themes.git
