@@ -53,16 +53,6 @@ but, as long as you take care of copying them to their original name and
 destination you can manage them manually. This is all configured under
 `config.yaml`, the default cfg used by Dotdrop.
 
-The only slightly significant thing in there might be the `nord-xresources`
-submodule. This is the current `Xresources` theme I use. However, I wanted a
-small change from the original theme, so I made my own fork and that's what I
-have I cloned here.
-
-As for how it's used, `Xresources` let's you include variables from another
-file, so I simply use Dotdrop to get this file from the submodule, and then set
-its destination to a symlinked hidden folder on HOME that the original (also
-symlinked) `.Xresources` file will include from.
-
 ---
 
 ### System files
