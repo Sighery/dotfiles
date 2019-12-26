@@ -113,6 +113,10 @@ dotfiles:
   f_kitten-completion:
     src: local/share/bash-completion/completions/kitten
     dst: ~/.local/share/bash-completion/completions/kitten
+  d_kitty-kittens:
+    src: kitty-kittens
+    dst: ~/.config/kitty/kittens
+    link: link_children
 profiles:
   sater-manjaro:
     dotfiles:
@@ -145,3 +149,4 @@ profiles:
     - d_kitty
     - d_kitty-themes
     - f_kitten-completion
+    - d_kitty-kittens

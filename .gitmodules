@@ -4,3 +4,6 @@
 [submodule "dotfiles/kitty-themes"]
 	path = dotfiles/kitty-themes
 	url = ../../dexpota/kitty-themes.git
+[submodule "dotfiles/kitty-kittens/kitty_grab"]
+	path = dotfiles/kitty-kittens/kitty_grab
+	url = ../kitty-grab.git
