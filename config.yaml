@@ -43,10 +43,10 @@ dotfiles:
   f_dmrc:
     src: dmrc
     dst: ~/.dmrc
-  d_i3:
-    src: i3
-    dst: ~/.i3
-    link: link_children
+  f_i3config:
+    src: i3/config
+    dst: ~/.i3/config
+    link: nolink
   f_pam_environment:
     src: pam_environment
     dst: ~/.pam_environment
@@ -145,7 +145,7 @@ profiles:
     - f_dir_colors
     - f_dmenurc
     - f_dmrc
-    - d_i3
+    - f_i3config
     - f_pam_environment
     - f_profile
     - f_xinitrc
