@@ -26,6 +26,9 @@ dotfiles:
   f_lightdm:
     src: etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
     dst: /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
+  f_keyboard:
+    src: etc/default/keyboard
+    dst: /etc/default/keyboard
 profiles:
   basic-manjaro:
     dotfiles:
@@ -34,6 +37,7 @@ profiles:
     - f_00-local-userns.conf
     - f_locale.conf
     - f_lightdm
+    - f_keyboard
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
