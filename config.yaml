@@ -9,6 +9,7 @@ actions:
 config:
   backup: true
   create: true
+  showdiff: true
   dotpath: dotfiles
   link_dotfile_default: link
   import_variables:
