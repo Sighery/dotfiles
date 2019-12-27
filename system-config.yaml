@@ -41,7 +41,7 @@ profiles:
     - f_locale.conf
     - f_lightdm
     - f_keyboard
-    - f_vconsole.conf
+    - f_vconsole
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
