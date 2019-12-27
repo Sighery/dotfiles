@@ -29,6 +29,9 @@ dotfiles:
   f_keyboard:
     src: etc/default/keyboard
     dst: /etc/default/keyboard
+  f_vconsole:
+    src: etc/vconsole.conf
+    dst: /etc/vconsole.conf
 profiles:
   basic-manjaro:
     dotfiles:
@@ -38,6 +41,7 @@ profiles:
     - f_locale.conf
     - f_lightdm
     - f_keyboard
+    - f_vconsole.conf
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
