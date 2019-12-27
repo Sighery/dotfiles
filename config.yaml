@@ -120,10 +120,9 @@ dotfiles:
     dst: ~/.config/kitty/kittens
     link: link_children
 profiles:
-  sater-manjaro:
+  basic-manjaro:
     dotfiles:
     - d_vim
-    - f_nvidia-settings-rc
     - f_xclients
     - f_bash_logout
     - f_bash_profile
@@ -136,7 +135,6 @@ profiles:
     - f_profile
     - f_xinitrc
     - f_xresources
-    - d_ssh
     - f_bash_aliases
     - f_mimeapps.list
     - f_i3-scrot.conf
@@ -152,3 +150,12 @@ profiles:
     - d_kitty-themes
     - f_kitten-completion
     - d_kitty-kittens
+  sater-manjaro:
+    dotfiles:
+    - f_nvidia-settings-rc
+    - d_ssh
+    include:
+    - basic-manjaro
+  zoo-work:
+    include:
+    - basic-manjaro
