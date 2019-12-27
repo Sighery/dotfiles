@@ -93,6 +93,7 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+    link: nolink
   d_khal:
     src: config/khal
     dst: ~/.config/khal

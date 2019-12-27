@@ -1,3 +1,8 @@
 [user]
+{%@@ if profile == "sater-manjaro" @@%}
 	email = Sighery@users.noreply.github.com
 	name = Sighery
+{%@@ elif profile == "zoo-work" @@%}
+	email = {{@@ work_email @@}}
+	name = {{@@ short_full_name @@}}
+{%@@ endif @@%}
