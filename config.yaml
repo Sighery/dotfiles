@@ -121,6 +121,10 @@ dotfiles:
     src: kitty-kittens
     dst: ~/.config/kitty/kittens
     link: link_children
+  d_pip:
+    src: pip
+    dst: ~/.pip
+    link: nolink
 profiles:
   basic-manjaro:
     dotfiles:
@@ -159,5 +163,7 @@ profiles:
     include:
     - basic-manjaro
   zoo-work:
+    dotfiles:
+    - d_pip
     include:
     - basic-manjaro
