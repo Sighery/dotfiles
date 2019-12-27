@@ -4,6 +4,8 @@ actions:
       _dotdrop_dotpath @@}}'
   post:
     enable-ssh-agent-service: systemctl --user --now enable ssh-agent.service
+    enable-system-autorandr-service:
+      sudo systemctl --now enable autorandr.service
 config:
   backup: true
   create: true
@@ -125,6 +127,12 @@ dotfiles:
     src: pip
     dst: ~/.pip
     link: nolink
+  d_autorandr:
+    src: config/autorandr
+    dst: ~/.config/autorandr
+    link: nolink
+    actions:
+    - enable-system-autorandr-service
 profiles:
   basic-manjaro:
     dotfiles:
@@ -165,5 +173,6 @@ profiles:
   zoo-work:
     dotfiles:
     - d_pip
+    - d_autorandr
     include:
     - basic-manjaro
