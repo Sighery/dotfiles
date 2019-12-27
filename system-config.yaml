@@ -26,19 +26,19 @@ dotfiles:
     src: etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
     dst: /etc/lightdm/lightdm.conf.d/50-my-custom-config.conf
 profiles:
-  sater-manjaro:
+  basic-manjaro:
     dotfiles:
-    - f_set-monitor-sink
-    - f_fstab
     - f_local.conf
     - d_tmpfiles.d
     - f_00-local-userns.conf
     - f_locale.conf
     - f_lightdm
-  basic:
+  sater-manjaro:
     dotfiles:
-      - f_local.conf
-      - d_tmpfiles.d
-      - f_00-local-userns.conf
-      - f_locale.conf
-      - f_lightdm
+    - f_set-monitor-sink
+    - f_fstab
+    include:
+    - basic-manjaro
+  zoo-work:
+    include:
+    - basic-manjaro
