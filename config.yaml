@@ -9,6 +9,8 @@ config:
   create: true
   dotpath: dotfiles
   link_dotfile_default: link
+  import_variables:
+  - secrets.yaml
 dotfiles:
   d_vim:
     src: vim
