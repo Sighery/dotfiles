@@ -15,3 +15,7 @@ alias lal="ls -Al"
 alias lla="ls -Al"
 alias l="ls -CF"
 alias kitten="kitty +kitten"
+{#@@ zoo-work specific aliases @@#}
+{%@@ if profile == "zoo-work" @@%}
+{{@@ work_vpn @@}}
+{%@@ endif @@%}

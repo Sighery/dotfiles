@@ -69,6 +69,7 @@ dotfiles:
   f_bash_aliases:
     src: bash_aliases
     dst: ~/.bash_aliases
+    link: nolink
   f_mimeapps.list:
     src: config/mimeapps.list
     dst: ~/.config/mimeapps.list
