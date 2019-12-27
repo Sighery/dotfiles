@@ -18,9 +18,17 @@ general {
 order += "cpu_usage"
 order += "disk /"
 # order += "disk /home"
+{%@@ if profile == "sater-manjaro" @@%}
 # order += "wireless _first_"
+{%@@ elif profile == "zoo-work" @@%}
+order += "wireless _first_"
+{%@@ endif @@%}
 order += "ethernet _first_"
+{%@@ if profile == "sater-manjaro" @@%}
 # order += "battery all"
+{%@@ elif profile == "zoo-work" @@%}
+order += "battery all"
+{%@@ endif @@%}
 # order += "load"
 order += "memory"
 order += "tztime local"

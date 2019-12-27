@@ -79,7 +79,7 @@ dotfiles:
   d_i3status:
     src: config/i3status
     dst: ~/.config/i3status
-    link: link_children
+    link: nolink
   f_ssh-agent.service:
     src: config/systemd/user/ssh-agent.service
     dst: ~/.config/systemd/user/ssh-agent.service
