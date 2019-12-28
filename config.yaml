@@ -7,7 +7,6 @@ actions:
     enable-system-autorandr-service:
       sudo systemctl --now enable autorandr.service
 config:
-  backup: true
   create: true
   showdiff: true
   dotpath: dotfiles

@@ -1,5 +1,4 @@
 config:
-  backup: true
   create: true
   showdiff: true
   dotpath: system
