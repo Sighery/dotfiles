@@ -31,6 +31,9 @@ dotfiles:
   f_vconsole:
     src: etc/vconsole.conf
     dst: /etc/vconsole.conf
+  f_pulse_conf_script:
+    src: etc/pulse/default.pa
+    dst: /etc/pulse/default.pa
 profiles:
   basic-manjaro:
     dotfiles:
@@ -41,6 +44,7 @@ profiles:
     - f_lightdm
     - f_keyboard
     - f_vconsole
+    - f_pulse_conf_script
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
