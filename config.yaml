@@ -12,7 +12,7 @@ config:
   dotpath: dotfiles
   link_dotfile_default: link
   import_variables:
-  - secrets.yaml
+  - secrets.yaml:optional
 dotfiles:
   d_vim:
     src: vim
