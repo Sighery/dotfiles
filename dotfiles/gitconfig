@@ -6,3 +6,5 @@
 	email = {{@@ work_email @@}}
 	name = {{@@ short_full_name @@}}
 {%@@ endif @@%}
+[core]
+	pager = less -x1,5
