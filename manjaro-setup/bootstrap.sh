@@ -1,3 +1,23 @@
+profile="basic-manjaro"
+
+usage() {
+	printf "Usage: bash $0 [-p|--profile dotdrop-profile]\n"
+}
+
+while [ "$1" != "" ]; do
+	case $1 in
+		-p | --profile )	shift
+							profile="$1"
+							;;
+		-h | --help )		usage
+							exit 0
+							;;
+		* )					usage
+							exit 1
+	esac
+	shift
+done
+
 # If I'm executing this script it probably means I'm already on
 # $HOME/Programming/dotfiles/manjaro-setup
 sudo pacman-mirrors --country all --api --protocol https
@@ -42,10 +62,10 @@ pip install -r dotdrop/requirements.txt --user
 sudo pip install -r dotdrop/requirements.txt
 
 # First install dotfiles
-bash dotdrop.sh --cfg=config.yaml --profile=sater-manjaro install
+bash dotdrop.sh --cfg=config.yaml --profile="$profile" install
 
 # Now install system files
-sudo bash dotdrop.sh --cfg=system-config.yaml --profile=basic install
+sudo bash dotdrop.sh --cfg=system-config.yaml --profile="$profile" install
 
 # Let Manjaro set our time and date automatically
 # https://wiki.manjaro.org/System_Maintenance#Time_and_Date
