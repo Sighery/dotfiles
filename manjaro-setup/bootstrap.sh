@@ -50,7 +50,7 @@ fi
 
 cd "$HOME/Programming/fantasque-sans-arch-build"
 makepkg --needed --syncdeps --clean
-sudo pacman -U otf*.pkg.tar.xz
+sudo pacman -U --needed otf*.pkg.tar.xz
 git clean -fdX
 
 # Install Pulse
