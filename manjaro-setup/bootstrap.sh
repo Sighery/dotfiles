@@ -53,6 +53,17 @@ makepkg --needed --syncdeps --clean
 sudo pacman -U --needed otf*.pkg.tar.xz
 git clean -fdX
 
+# Install my fork of i3exit
+if [ ! -d "$HOME/Programming/i3exit" ]; then
+	cd "$HOME/Programming"
+	git clone https://github.com/Sighery/i3exit.git
+fi
+
+cd "$HOME/Programming/i3exit"
+makepkg --needed --syncdeps --clean
+sudo pacman -U --needed *.pkg.tar.xz
+git clean -fdX
+
 # Install Pulse
 install_pulse
 
