@@ -133,6 +133,10 @@ dotfiles:
     link: nolink
     actions:
     - enable-system-autorandr-service
+  f_docker_config:
+    src: docker/config.json
+    dst: ~/.docker/config.json
+    link: nolink
 profiles:
   basic-manjaro:
     dotfiles:
@@ -164,6 +168,7 @@ profiles:
     - d_kitty-themes
     - f_kitten-completion
     - d_kitty-kittens
+    - f_docker_config
   sater-manjaro:
     dotfiles:
     - f_nvidia-settings-rc

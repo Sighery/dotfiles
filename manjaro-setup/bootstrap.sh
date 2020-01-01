@@ -4,6 +4,14 @@ usage() {
 	printf "Usage: bash $0 [-p|--profile dotdrop-profile]\n"
 }
 
+docker_credentials_pass_posthelp() {
+	printf "After installing the docker-credentials-pass you need to:\n"
+	printf "\t1. Create a new gpg2 key:\n"
+	printf "\t\tgpg2 --gen-key\n"
+	printf "\t2. Initialize pass with the newly generated key:\n"
+	printf "\t\tpass init \"Name\"\n"
+}
+
 while [ "$1" != "" ]; do
 	case $1 in
 		-p | --profile )	shift
@@ -41,6 +49,7 @@ sudo pacman -S --needed - < official-packages.list
 sudo pacman -Scc
 yay -S --needed - < aur-packages.list
 yay -Scc
+docker_credentials_pass_posthelp
 
 # Install Fantasque Sans Mono Large Line Height No Loop K
 if [ ! -d "$HOME/Programming/fantasque-sans-arch-build" ]; then

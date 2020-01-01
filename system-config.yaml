@@ -37,6 +37,9 @@ dotfiles:
   f_xsecurelock_environment:
     src: etc/profile.d/xsecurelock.sh
     dst: /etc/profile.d/xsecurelock.sh
+  f_docker_config:
+    src: docker/config.json
+    dst: /root/.docker/config.json
 profiles:
   basic-manjaro:
     dotfiles:
@@ -49,6 +52,7 @@ profiles:
     - f_vconsole
     - f_pulse_conf_script
     - f_xsecurelock_environment
+    - f_docker_config
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink

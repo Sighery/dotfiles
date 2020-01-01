@@ -3,3 +3,4 @@ nordvpn-bin
 xidlehook
 tmux-bash-completion
 python-powerline-gitstatus
+docker-credential-pass
