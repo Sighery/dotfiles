@@ -88,3 +88,18 @@ any new packages in a system with Atom, reading the packages and themes it
 needs to install from the previous `.list` files. Then, after that pre-action
 is done, Dotdrop will then symlink actual Atom dotfiles and so I'll have my
 Atom quickly set up and configured to my liking.
+
+### Manjaro Bootstraping
+
+```bash
+git clone --recurse-submodules -j8 https://github.com/Sighery/dotfiles.git
+cd dotfiles/manjaro-setup
+bash bootstrap.sh [--profile profile]
+```
+
+And then keep an eye on the text, since some commands do require input, and/or
+sudo privileges. Although it will mostly work on its own.
+
+The `bootstrap.sh` takes an optional `-p|--profile` argument. This represents
+the dotfile's profile to use (you can see the available ones at `config.yaml`
+and `system-config.yaml`). If none is given it will use a default, basic one.
