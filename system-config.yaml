@@ -34,6 +34,9 @@ dotfiles:
   f_pulse_conf_script:
     src: etc/pulse/default.pa
     dst: /etc/pulse/default.pa
+  f_xsecurelock_environment:
+    src: etc/profile.d/xsecurelock.sh
+    dst: /etc/profile.d/xsecurelock.sh
 profiles:
   basic-manjaro:
     dotfiles:
@@ -45,6 +48,7 @@ profiles:
     - f_keyboard
     - f_vconsole
     - f_pulse_conf_script
+    - f_xsecurelock_environment
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
