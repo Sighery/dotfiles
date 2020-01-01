@@ -331,7 +331,10 @@ exec --no-startup-id start_conky_maia
 {%@@ endif @@%}
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
-exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer primary 600 blurlock ""
+exec --no-startup-id xidlehook \
+	--not-when-audio --not-when-fullscreen \
+	--timer 600 "i3exit lock" "" \
+	--timer 3600 "systemctl suspend" ""
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
