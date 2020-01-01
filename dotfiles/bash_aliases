@@ -1,4 +1,5 @@
-alias ls="ls --color=auto"
+alias ls="exa -F"
+alias exa="exa -F"
 alias grep="grep --colour=auto"
 alias egrep="egrep --colour=auto"
 alias grep="grep --colour=auto"
@@ -9,11 +10,11 @@ alias df="df -h"            # human-readable sizes
 alias free="free -m"        # show sizes in MB
 alias np="nano -w PKGBUILD"
 alias more="less"
-alias ll="ls -l"
-alias la="ls -A"
-alias lal="ls -Al"
-alias lla="ls -Al"
-alias l="ls -CF"
+alias ll="exa --long --git --header --links --group --classify"
+alias exal="exa --long --git --header --links --group --classify"
+alias la="exa --all --classify"
+alias exaa="exa --all --classify"
+alias exala="exa --all --long --git --header --links --group --classify"
 alias kitten="kitty +kitten"
 alias less="less -x4"
 {#@@ zoo-work specific aliases @@#}
