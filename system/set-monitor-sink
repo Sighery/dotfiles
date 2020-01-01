@@ -1,9 +1,16 @@
 #!/bin/bash
 
+# For card profiles: pacmd list-cards
+# It's then under the profiles keyword. It seems like usually my monitors
+# will be one of the `available: unknown` profiles.
+# For sinks: pacmd list-sinks
+# After changing the profile, the name of the sink seems like it changes. So
+# far it's been `original_name.profile_name`.
+
 if [ $1 == "front" ]; then
 	echo "Front monitor";
-	pacmd set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra2;
-	pacmd set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra2;
+	pacmd set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo-extra1;
+	pacmd set-default-sink alsa_output.pci-0000_01_00.1.hdmi-stereo-extra1;
 elif [ $1 == "left" ]; then
 	echo "Left monitor";
 	pacmd set-card-profile alsa_card.pci-0000_01_00.1 output:hdmi-stereo;
