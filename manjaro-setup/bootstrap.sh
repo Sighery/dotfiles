@@ -51,6 +51,12 @@ yay -S --needed - < aur-packages.list
 yay -Scc
 docker_credentials_pass_posthelp
 
+# One more thing to hopefully set up Kitty as the default terminal
+if [ ! -f "/usr/bin/terminal.original" ]; then
+	sudo mv /usr/bin/terminal /usr/bin/terminal.original || :
+	sudo ln /usr/bin/kitty /usr/bin/terminal
+fi
+
 # Install Fantasque Sans Mono Large Line Height No Loop K
 if [ ! -d "$HOME/Programming/fantasque-sans-arch-build" ]; then
 	cd "$HOME/Programming"
