@@ -137,6 +137,10 @@ dotfiles:
     src: docker/config.json
     dst: ~/.docker/config.json
     link: nolink
+  d_desktop_entries:
+    src: local/share/applications
+    dst: ~/.local/share/applications
+    link: link_children
 profiles:
   basic-manjaro:
     dotfiles:
@@ -169,6 +173,7 @@ profiles:
     - f_kitten-completion
     - d_kitty-kittens
     - f_docker_config
+    - d_desktop_entries
   sater-manjaro:
     dotfiles:
     - f_nvidia-settings-rc

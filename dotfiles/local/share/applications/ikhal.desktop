@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=ikhal
+Comment=Launches interactive Khal
+Icon=utilities-terminal
+Terminal=true
+Exec=ikhal
+Categories=ConsoleOnly;Calendar
