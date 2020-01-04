@@ -137,6 +137,10 @@ dotfiles:
     src: docker/config.json
     dst: ~/.docker/config.json
     link: nolink
+  d_rofi:
+    src: config/rofi
+    dst: ~/.config/rofi
+    link: nolink
   d_desktop_entries:
     src: local/share/applications
     dst: ~/.local/share/applications
@@ -173,6 +177,7 @@ profiles:
     - f_kitten-completion
     - d_kitty-kittens
     - f_docker_config
+    - d_rofi
     - d_desktop_entries
   sater-manjaro:
     dotfiles:
