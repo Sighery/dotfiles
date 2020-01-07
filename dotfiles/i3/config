@@ -289,8 +289,13 @@ mode "$mode_system" {
 }
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
-mode "resize" {
+bindsym $mod+r mode "$mode_resize"
+set $mode_resize \
+(Left) shrink width 1, (Shift+Left) shrink width 5, \
+(Right) grow width 1, (Shift+Right) shrink width 5, \
+(Up) shrink height 1, (Shift+Up) shrink height 5, \
+(Down) grow height 1, (Shift+Down) grow height 5
+mode "$mode_resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
@@ -302,10 +307,15 @@ mode "resize" {
         bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 1 px or 1 ppt
+        bindsym Down resize grow height 1 px or 1 ppt
+        bindsym Up resize shrink height 1 px or 1 ppt
+        bindsym Right resize grow width 1 px or 1 ppt
+
+		bindsym Shift+Left resize shrink width 5 px or 5 ppt
+		bindsym Shift+Down resize grow width 5 px or 5 ppt
+		bindsym Shift+Up resize shrink width 5 px or 5 ppt
+		bindsym Shift+Right resize grow width 5 px or 5 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
