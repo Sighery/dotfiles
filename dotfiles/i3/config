@@ -340,7 +340,7 @@ workspace 9 output eDP1
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-{%@@ if profile == "sater-manjaro" @@%}
+{%@@ if profile in ["basic-manjaro", "sater-manjaro"] @@%}
 exec --no-startup-id nitrogen --restore
 {%@@ elif profile == "zoo-work" @@%}
 # exec --no-startup-id nitrogen --restore
@@ -352,7 +352,7 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-{%@@ if profile == "sater-manjaro" @@%}
+{%@@ if profile in ["basic-manjaro", "sater-manjaro"] @@%}
 exec --no-startup-id start_conky_maia
 {%@@ elif profile == "zoo-work" @@%}
 # exec --no-startup-id start_conky_maia

@@ -1,5 +1,5 @@
 [user]
-{%@@ if profile == "sater-manjaro" @@%}
+{%@@ if profile in ["basic-manjaro", "sater-manjaro"] @@%}
 	email = Sighery@users.noreply.github.com
 	name = Sighery
 {%@@ elif profile == "zoo-work" @@%}
