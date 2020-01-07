@@ -326,6 +326,18 @@ mode "$mode_resize" {
 # Can already be accesed through $mod+0 and then l
 # bindsym $mod+9 exec --no-startup-id blurlock
 
+# Assign some workspaces to the corresponding monitors
+{%@@ if profile == "sater-manjaro" @@%}
+workspace 1 output DP-4
+workspace 2 output DP-0
+workspace 9 output DP-4
+{%@@ elif profile == "zoo-work" @@%}
+workspace 1 output eDP1
+workspace 2 output DP2-2
+workspace 3 output DP2-3
+workspace 9 output eDP1
+{%@@ endif @@%}
+
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 {%@@ if profile == "sater-manjaro" @@%}
