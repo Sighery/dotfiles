@@ -333,8 +333,8 @@ workspace 2 output DP-0
 workspace 9 output DP-4
 {%@@ elif profile == "zoo-work" @@%}
 workspace 1 output eDP1
-workspace 2 output DP2-2
-workspace 3 output DP2-3
+workspace 2 output DP2-3
+workspace 3 output DP2-2
 workspace 9 output eDP1
 {%@@ endif @@%}
 
