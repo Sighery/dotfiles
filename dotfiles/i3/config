@@ -107,21 +107,17 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 focus_follows_mouse yes
 mouse_warping output
 
-# Set a command to have the mouse always follow focus changes
-set $movemouse "sh -c 'eval `xdotool getactivewindow \
-getwindowgeometry --shell`; xdotool mousemove $((X+WIDTH/2)) $((Y+HEIGHT/2))'"
-
 # change focus
-bindsym $mod+j focus left; exec $movemouse
-bindsym $mod+k focus down; exec $movemouse
-bindsym $mod+l focus up; exec $movemouse
-bindsym $mod+semicolon focus right; exec $movemouse
+bindsym $mod+j focus left; exec "~/.i3/focus-mouse.sh"
+bindsym $mod+k focus down; exec "~/.i3/focus-mouse.sh"
+bindsym $mod+l focus up; exec "~/.i3/focus-mouse.sh"
+bindsym $mod+semicolon focus right; exec "~/.i3/focus-mouse.sh"
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left; exec $movemouse
-bindsym $mod+Down focus down; exec $movemouse
-bindsym $mod+Up focus up; exec $movemouse
-bindsym $mod+Right focus right; exec $movemouse
+bindsym $mod+Left focus left; exec "~/.i3/focus-mouse.sh"
+bindsym $mod+Down focus down; exec "~/.i3/focus-mouse.sh"
+bindsym $mod+Up focus up; exec "~/.i3/focus-mouse.sh"
+bindsym $mod+Right focus right; exec "~/.i3/focus-mouse.sh"
 
 # move focused window
 bindsym $mod+Shift+j move left

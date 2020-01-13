@@ -46,6 +46,9 @@ dotfiles:
     src: i3/config
     dst: ~/.i3/config
     link: nolink
+  f_i3_focus_mouse_sh:
+    src: i3/focus-mouse.sh
+    dst: ~/.i3/focus-mouse.sh
   f_pam_environment:
     src: pam_environment
     dst: ~/.pam_environment
@@ -157,6 +160,7 @@ profiles:
     - f_dmenurc
     - f_dmrc
     - f_i3config
+    - f_i3_focus_mouse_sh
     - f_pam_environment
     - f_profile
     - f_xinitrc
