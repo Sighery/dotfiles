@@ -3,11 +3,7 @@
 # Consult the keyboard(5) manual page.
 
 XKBMODEL="pc105"
-{%@@ if profile in ["basic-manjaro", "sater-manjaro"] @@%}
-XKBLAYOUT="es"
-{%@@ elif profile == "zoo-work" @@%}
 XKBLAYOUT="us"
-{%@@ endif @@%}
 XKBVARIANT=""
 XKBOPTIONS=""
 
