@@ -4,7 +4,7 @@
 	branch = master
 [submodule "dotfiles/kitty-themes"]
 	path = dotfiles/kitty-themes
-	url = ../../dexpota/kitty-themes.git
+	url = ../kitty-themes.git
 	branch = master
 [submodule "dotfiles/kitty-kittens/kitty_grab"]
 	path = dotfiles/kitty-kittens/kitty_grab
