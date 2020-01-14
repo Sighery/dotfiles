@@ -1,0 +1,16 @@
+{
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "editor.minimap.enabled": false,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "files.autoSave": "afterDelay",
+    "editor.fontFamily": "'monospace', monospace, 'Droid Sans Mono', 'Droid Sans Fallback'",
+    "editor.insertSpaces": false,
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.visible": false,
+    "workbench.sideBar.location": "right",
+    "editor.renderWhitespace": "boundary",
+    "files.insertFinalNewline": true,
+}

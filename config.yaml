@@ -148,6 +148,10 @@ dotfiles:
     src: local/share/applications
     dst: ~/.local/share/applications
     link: link_children
+  f_vscode_settings:
+    src: config/Code - OSS/User/settings.json
+    dst: ~/.config/Code - OSS/User/settings.json
+    link: nolink
 profiles:
   basic-manjaro:
     dotfiles:
@@ -183,6 +187,7 @@ profiles:
     - f_docker_config
     - d_rofi
     - d_desktop_entries
+    - f_vscode_settings
   sater-manjaro:
     dotfiles:
     - f_nvidia-settings-rc
