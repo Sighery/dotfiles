@@ -1,0 +1,12 @@
+dbaeumer.vscode-eslint
+Equinusocio.vsc-community-material-theme
+Equinusocio.vsc-material-theme
+equinusocio.vsc-material-theme-icons
+ms-azuretools.vscode-docker
+ms-python.python
+ms-vscode.atom-keybindings
+redhat.vscode-yaml
+rust-lang.rust
+{%@@ if profile == "zoo-work" @@%}
+janjoerke.jenkins-pipeline-linter-connector
+{%@@ endif @@%}

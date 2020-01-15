@@ -1,0 +1,11 @@
+// Place your key bindings in this file to override the defaults
+[
+	{
+		"key": "ctrl+shift+l",
+		"command": "workbench.action.editor.changeLanguageMode"
+	},
+	{
+		"key": "ctrl+k m",
+		"command": "-workbench.action.editor.changeLanguageMode"
+	}
+]

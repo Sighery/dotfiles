@@ -1,5 +1,8 @@
 actions:
   post:
+    install-vscode-packages: >-
+      xargs -n1
+      code-oss --force --install-extension < "{{@@ _dotfile_abs_dst @@}}"
     enable-ssh-agent-service: systemctl --user --now enable ssh-agent.service
     enable-system-autorandr-service:
       sudo systemctl --now enable autorandr.service
@@ -143,6 +146,16 @@ dotfiles:
     src: config/Code - OSS/User/settings.json
     dst: ~/.config/Code - OSS/User/settings.json
     link: nolink
+  f_vscode_keybindings:
+    src: config/Code - OSS/User/keybindings.json
+    dst: ~/.config/Code - OSS/User/keybindings.json
+    link: nolink
+  f_vscode_packages:
+    src: config/Code - OSS/User/packages.list
+    dst: ~/.config/Code - OSS/User/.packages.list
+    link: nolink
+    actions:
+    - install-vscode-packages
 profiles:
   basic-manjaro:
     dotfiles:
@@ -178,6 +191,8 @@ profiles:
     - d_rofi
     - d_desktop_entries
     - f_vscode_settings
+    - f_vscode_keybindings
+    - f_vscode_packages
   sater-manjaro:
     dotfiles:
     - f_nvidia-settings-rc
