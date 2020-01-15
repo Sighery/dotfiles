@@ -3,7 +3,7 @@
 	email = Sighery@users.noreply.github.com
 	name = Sighery
 {%@@ elif profile == "zoo-work" @@%}
-	email = {{@@ work_email @@}}
+	email = {{@@ zoo_work_email @@}}
 	name = {{@@ short_full_name @@}}
 {%@@ endif @@%}
 [core]
