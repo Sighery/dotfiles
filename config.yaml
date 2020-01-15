@@ -1,7 +1,4 @@
 actions:
-  pre:
-    install-atom-packages: '{{@@ _dotdrop_dotpath @@}}/atom-packages.sh install {{@@
-      _dotdrop_dotpath @@}}'
   post:
     enable-ssh-agent-service: systemctl --user --now enable ssh-agent.service
     enable-system-autorandr-service:
@@ -65,12 +62,6 @@ dotfiles:
     src: ssh
     dst: ~/.ssh
     link: link_children
-  d_atom:
-    src: atom
-    dst: ~/.atom
-    link: link_children
-    actions:
-    - install-atom-packages
   f_bash_aliases:
     src: bash_aliases
     dst: ~/.bash_aliases
@@ -177,7 +168,6 @@ profiles:
     - f_ssh-agent.service
     - f_gitconfig
     - d_khal
-    - d_atom
     - d_powerline-colorschemes
     - d_powerline-themes-shell
     - d_kitty
