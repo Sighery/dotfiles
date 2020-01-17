@@ -89,7 +89,7 @@ bindsym XF86AudioMute        exec $volumepath -mn -t $statuscmd -u $statussig
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-bindsym $mod+F1 exec atom
+bindsym $mod+F1 exec code-oss
 bindsym $mod+F2 exec brave
 bindsym $mod+F3 exec i3-sensible-terminal ranger
 bindsym $mod+Shift+F3 exec pcmanfm
