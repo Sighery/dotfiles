@@ -1,4 +1,8 @@
 {
+{%@@ if profile == "zoo-work" @@%}
+	"jenkins.pipeline.linter.connector.url": "{{@@ zoo_work_jenkins_domain @@}}/pipeline-model-converter/validate",
+	"jenkins.pipeline.linter.connector.user": "{{@@ zoo_work_username @@}}",
+{%@@ endif @@%}
 	"atomKeymap.promptV3Features": true,
 	"editor.multiCursorModifier": "ctrlCmd",
 	"editor.formatOnPaste": true,
@@ -50,8 +54,4 @@
 	"files.exclude": {
 		"**/.git": false
 	},
-{%@@ if profile == "zoo-work" @@%}
-	"jenkins.pipeline.linter.connector.url": "{{@@ zoo_work_jenkins_domain @@}}/pipeline-model-converter/validate",
-	"jenkins.pipeline.linter.connector.user": "{{@@ zoo_work_username @@}}",
-{%@@ endif @@%}
 }
