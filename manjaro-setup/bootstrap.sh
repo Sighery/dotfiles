@@ -95,8 +95,12 @@ install_github_package \
 # Install my fork of i3exit
 install_github_package "https://github.com/Sighery/i3exit.git"
 
-# Install Pulse
-install_pulse
+# Install Pulse only if not already executed before
+# The script isn't smart enough to notice past installations so query some of
+# the packages it installs. If the pacman query command fails it means at
+# least one of the packages is not installed, so go ahead with the script
+pulse_libraries=(manjaro-pulse pa-applet pavucontrol)
+pacman -Qi "${pulse_libraries[@]}" > /dev/null 2>&1 || install_pulse
 
 cd "$HOME/Programming/dotfiles"
 # Set up both needed user and system dependencies for dotdrop
