@@ -24,34 +24,35 @@
 		"editorRuler.foreground": "#ff4081",
 	},
 	"editor.rulers": [
-		70,
-		78
+		78,
+		70
 	],
 	"[python]": {
 		"editor.formatOnPaste": false,
 		"editor.rulers": [
+			87,
 			71,
-			79,
-			87
+			79
 		],
 	},
 	"python.formatting.provider": "black",
 	"[javascript]": {
 		"editor.rulers": [
+			98,
 			71,
-			79,
-			98
+			79
 		],
 	},
 	"[rust]": {
 		"editor.rulers": [
+			98,
 			79,
-			89,
-			98
+			89
 		],
 	},
 	"editor.formatOnSave": true,
 	"files.exclude": {
 		"**/.git": false
 	},
+	"rewrap.autoWrap.enabled": true,
 }

@@ -7,6 +7,7 @@ ms-python.python
 ms-vscode.atom-keybindings
 redhat.vscode-yaml
 rust-lang.rust
+stkb.rewrap
 {%@@ if profile == "zoo-work" @@%}
 janjoerke.jenkins-pipeline-linter-connector
 {%@@ endif @@%}
