@@ -4,3 +4,4 @@ xidlehook
 tmux-bash-completion
 python-powerline-gitstatus
 docker-credential-pass
+i3-resurrect

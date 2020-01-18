@@ -95,6 +95,9 @@ install_github_package \
 # Install my fork of i3exit
 install_github_package "https://github.com/Sighery/i3exit.git"
 
+# Install i3-resurrect-manager
+install_github_package "https://github.com/Sighery/i3-resurrect-manager.git"
+
 # Install Pulse only if not already executed before
 # The script isn't smart enough to notice past installations so query some of
 # the packages it installs. If the pacman query command fails it means at
