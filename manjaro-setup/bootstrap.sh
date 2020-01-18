@@ -12,6 +12,32 @@ docker_credentials_pass_posthelp() {
 	printf "\t\tpass init \"Name\"\n"
 }
 
+install_github_package() {
+	local github_link="$1"
+	local package_install="$2"
+	local repo_name=$(basename "$github_link" | sed "s/\.git//")
+	local starting_cwd=$(pwd)
+
+	if [ -d "$HOME/Programming/$repo_name" ]; then
+		rm -rf "$HOME/Programming/$repo_name"
+	fi
+
+	cd "$HOME/Programming"
+	git clone --recurse-submodules -j8 "$github_link"
+	cd "$HOME/Programming/$repo_name"
+
+	makepkg --needed --syncdeps --clean
+
+	if [ -n "$package_install" ]; then
+		sudo pacman -U --needed "$package_install"
+	else
+		sudo pacman -U --needed *.pkg.tar.xz
+	fi
+
+	git clean -fdX
+	cd "$starting_cwd"
+}
+
 while [ "$1" != "" ]; do
 	case $1 in
 		-p | --profile )	shift
@@ -57,27 +83,17 @@ if [ ! -f "/usr/bin/terminal.original" ]; then
 	sudo ln /usr/bin/kitty /usr/bin/terminal
 fi
 
-# Install Fantasque Sans Mono Large Line Height No Loop K
-if [ ! -d "$HOME/Programming/fantasque-sans-arch-build" ]; then
-	cd "$HOME/Programming"
-	git clone https://github.com/Sighery/fantasque-sans-arch-build.git
+if [ ! -d "$HOME/Programming" ]; then
+	mkdir "$HOME/Programming"
 fi
 
-cd "$HOME/Programming/fantasque-sans-arch-build"
-makepkg --needed --syncdeps --clean
-sudo pacman -U --needed otf*.pkg.tar.xz
-git clean -fdX
+# Install Fantasque Sans Mono Large Line Height No Loop K
+install_github_package \
+"https://github.com/Sighery/fantasque-sans-arch-build.git" \
+"otf*.pkg.tar.xz"
 
 # Install my fork of i3exit
-if [ ! -d "$HOME/Programming/i3exit" ]; then
-	cd "$HOME/Programming"
-	git clone https://github.com/Sighery/i3exit.git
-fi
-
-cd "$HOME/Programming/i3exit"
-makepkg --needed --syncdeps --clean
-sudo pacman -U --needed *.pkg.tar.xz
-git clean -fdX
+install_github_package "https://github.com/Sighery/i3exit.git"
 
 # Install Pulse
 install_pulse
