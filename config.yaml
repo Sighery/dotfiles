@@ -156,6 +156,9 @@ dotfiles:
     link: nolink
     actions:
     - install-vscode-packages
+  f_colordiffrc:
+    src: colordiffrc
+    dst: ~/.colordiffrc
 profiles:
   basic-manjaro:
     dotfiles:
@@ -193,6 +196,7 @@ profiles:
     - f_vscode_settings
     - f_vscode_keybindings
     - f_vscode_packages
+    - f_colordiffrc
   sater-manjaro:
     dotfiles:
     - f_nvidia-settings-rc
