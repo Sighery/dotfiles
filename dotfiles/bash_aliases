@@ -17,6 +17,8 @@ alias exaa="exa --all --classify"
 alias exala="exa --all --long --git --header --links --group --classify"
 alias kitten="kitty +kitten"
 alias less="less -x4"
+alias diff="colordiff -u"
+alias colordiff="colordiff -u"
 {#@@ zoo-work specific aliases @@#}
 {%@@ if profile == "zoo-work" @@%}
 {{@@ zoo_work_vpn @@}}
