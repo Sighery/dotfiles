@@ -1,0 +1,8 @@
+[
+  {
+    "command": [
+      "/usr/bin/brave"
+    ],
+    "working_directory": "~"
+  }
+]

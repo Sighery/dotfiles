@@ -159,6 +159,14 @@ dotfiles:
   f_colordiffrc:
     src: colordiffrc
     dst: ~/.colordiffrc
+  d_i3-resurrect-workspaces-sater-manjaro:
+    src: i3/i3-resurrect/sater-manjaro
+    dst: ~/.i3/i3-resurrect
+    link: nolink
+  d_i3-resurrect-workspaces-zoo-work:
+    src: i3/i3-resurrect/zoo-work
+    dst: ~/.i3/i3-resurrect
+    link: nolink
 profiles:
   basic-manjaro:
     dotfiles:
@@ -201,11 +209,13 @@ profiles:
     dotfiles:
     - f_nvidia-settings-rc
     - d_ssh
+    - d_i3-resurrect-workspaces-sater-manjaro
     include:
     - basic-manjaro
   zoo-work:
     dotfiles:
     - d_pip
     - d_autorandr
+    - d_i3-resurrect-workspaces-zoo-work
     include:
     - basic-manjaro

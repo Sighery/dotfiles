@@ -1,0 +1,10 @@
+[
+  {
+    "command": [
+      "/usr/bin/brave",
+      "https://outlook.office.com/owa",
+      "https://zooplus.slack.com"
+    ],
+    "working_directory": "~"
+  }
+]

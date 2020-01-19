@@ -1,0 +1,8 @@
+[
+  {
+    "command": [
+      "/usr/bin/keepassxc"
+    ],
+    "working_directory": "~"
+  }
+]
