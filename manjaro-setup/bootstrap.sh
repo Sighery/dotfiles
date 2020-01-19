@@ -1,7 +1,24 @@
-profile="basic-manjaro"
+normal_profile_name='basic-manjaro'
+normal_profile_config="$HOME/Programming/dotfiles/config.yaml"
+sudo_profile_name='basic-manjaro'
+sudo_profile_config="$HOME/Programming/dotfiles/system-config.yaml"
 
 usage() {
-	printf "Usage: bash $0 [-p|--profile dotdrop-profile]\n"
+	printf -- 'Usage: bash $0\n'
+	printf -- '\t[--normal-profile-name basic-manjaro] '
+	printf -- '[--normal-profile-config config.yaml]\n'
+	printf -- '\t[--sudo-profile-name basic-manjaro] '
+	printf -- '[--sudo-profile-config system-config.yaml]\n'
+	printf -- '\n'
+	printf -- 'ARGUMENTS\n'
+	printf -- '--normal-profile-name: Profile name of the normal dotfiles.\n'
+	printf -- '\t\tDEFAULT: $(hostname) if valid or basic-manjaro\n'
+	printf -- '--normal-profile-config: Path of the normal dotfiles config.\n'
+	printf -- '\t\tDEFAULT: $HOME/Programming/dotfiles/config.yaml\n'
+	printf -- '--sudo-profile-name: Profile name of the sudo dotfiles.\n'
+	printf -- '\t\tDEFAULT: $(hostname) if valid or basic-manjaro\n'
+	printf -- '--sudo-profile-config: Path of the sudo dotfiles config.\n'
+	printf -- '\t\tDEFAULT: $HOME/Programming/dotfiles/system-config.yaml\n'
 }
 
 docker_credentials_pass_posthelp() {
@@ -40,14 +57,29 @@ install_github_package() {
 
 while [ "$1" != "" ]; do
 	case $1 in
-		-p | --profile )	shift
-							profile="$1"
-							;;
-		-h | --help )		usage
-							exit 0
-							;;
-		* )					usage
-							exit 1
+		--normal-profile-name )
+			shift
+			normal_profile_name="$1"
+			;;
+		--normal-profile-config )
+			shift
+			normal_profile_config="$1"
+			;;
+		--sudo-profile-name )
+			shift
+			sudo_profile_name="$1"
+			;;
+		--sudo-profile-config )
+			shift
+			sudo_profile_config="$1"
+			;;
+		-h | --help )
+			usage
+			exit 0
+			;;
+		* )
+			usage
+			exit 1
 	esac
 	shift
 done
@@ -115,10 +147,12 @@ pip install -r dotdrop/requirements.txt --user
 sudo pip install -r dotdrop/requirements.txt
 
 # First install dotfiles
-bash dotdrop.sh --cfg=config.yaml --profile="$profile" install
+bash dotdrop.sh \
+--cfg="$normal_profile_config" --profile="$normal_profile_name" install
 
 # Now install system files
-sudo bash dotdrop.sh --cfg=system-config.yaml --profile="$profile" install
+sudo bash dotdrop.sh \
+--cfg="$sudo_profile_config" --profile="$sudo_profile_name" install
 
 # Let Manjaro set our time and date automatically
 # https://wiki.manjaro.org/System_Maintenance#Time_and_Date
