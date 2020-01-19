@@ -38,7 +38,7 @@ features are listed on its main page, but for my usecase, the main ones are:
   the templates for each different profile that might need a small change.
 - Easily import files. In some cases it requires manual copying and
   configuration, but in most cases it's as easy as
-  `./dotdrop.sh import ~/.dotfile`.
+  `bash dotdrop.sh import ~/.dotfile`.
 - Symlinking. I prefer to have my dotfiles, and some of my system files, set as
   symlinks rather than hard copies.
 - Easily deploy different profiles.
@@ -62,7 +62,7 @@ configuration file being `system-config.yaml`. **Careful with these files.
 Deploy only after checking them, at your own risk.**
 
 You can deploy one single file or directory by specifying it's _dotfile name_:
-`sudo ./dotdrop.sh --cfg=system-config.yaml install f_fstab`.
+`sudo bash dotdrop.sh --cfg=system-config.yaml install f_fstab`.
 
 `sudo` must be used, since dotdrop needs those privileges to copy or link to
 root-owned directories. And `cfg` must be specified so that dotdrop knows not
@@ -76,30 +76,25 @@ Some systems might have it's own directories with bootstrap scripts among other
 utils. You might find its own README explaining the utils. Or you might just
 have to check the scripts themselves to see what they'll do.
 
-One example of this are my Atom utils. If you look inside the `dotfiles`
-folder, you might see the following files: `atom-packages.list`,
-`atom-themes.list`, and `atom-packages.sh`.
-
-I keep an up to date list of my currently used Atom packages and themes. These
-files aren't included with my Dotdrop `config.yaml` since they're not dotfiles
-meant to be anywhere. However, on my `d_atom` config, I have a pre-action
-executing the `atom-packages.sh` script that will take care of installing
-any new packages in a system with Atom, reading the packages and themes it
-needs to install from the previous `.list` files. Then, after that pre-action
-is done, Dotdrop will then symlink actual Atom dotfiles and so I'll have my
-Atom quickly set up and configured to my liking.
+One such util is my `f_vscode_packages` dotfile. It's not actually a dotfile,
+rather it's an up to date list of my currently in use VSCode packages. It
+still gets moved into the VSCode settings directory, but this is fine, since
+using Dotdrop allows me to template this file, making it so I can have
+different packages for each profile, and allows me to set a post action on the
+templated file, so once it's generated, and moved, I can run a command to
+dynamically install each final package.
 
 ### Manjaro Bootstraping
 
 ```bash
 git clone --recurse-submodules -j8 https://github.com/Sighery/dotfiles.git
 cd dotfiles/manjaro-setup
-bash bootstrap.sh [--profile profile]
+bash bootstrap.sh --help
 ```
 
 And then keep an eye on the text, since some commands do require input, and/or
 sudo privileges. Although it will mostly work on its own.
 
-The `bootstrap.sh` takes an optional `-p|--profile` argument. This represents
-the dotfile's profile to use (you can see the available ones at `config.yaml`
-and `system-config.yaml`). If none is given it will use a default, basic one.
+The `bootstrap.sh` takes a few optional arguments. It also has some logic to
+automatically choose the proper profile. Execute `bash bootstrap.sh --help` to
+see an up to date explanation of all the arguments and usage.
