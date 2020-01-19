@@ -65,11 +65,15 @@ HEADERS+=`uname -r | cut -d"." -f2`
 HEADERS+="-headers"
 sudo pacman -S --needed "$HEADERS"
 
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --profile complete
-# Enable rustup completions
-mkdir -p "$HOME/.local/share/bash-completion/completions/"
-rustup completions bash > "$HOME/.local/share/bash-completion/completions/rustup"
+# Install Rust if not already installed
+if ! rustup --version > /dev/null 2>&1; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \
+	| sh -s -- --profile complete
+	# Enable rustup completions
+	mkdir -p "$HOME/.local/share/bash-completion/completions/"
+	rustup completions bash > \
+	"$HOME/.local/share/bash-completion/completions/rustup"
+fi
 
 sudo pacman -S --needed - < official-packages.list
 sudo pacman -Scc
