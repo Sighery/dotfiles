@@ -1,3 +1,6 @@
+#!/bin/bash
+# set -x
+
 normal_profile_name='basic-manjaro'
 normal_profile_config="$HOME/Programming/dotfiles/config.yaml"
 sudo_profile_name='basic-manjaro'
