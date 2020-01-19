@@ -3,14 +3,20 @@ normal_profile_config="$HOME/Programming/dotfiles/config.yaml"
 sudo_profile_name='basic-manjaro'
 sudo_profile_config="$HOME/Programming/dotfiles/system-config.yaml"
 
+# Control whether pacman/yay should clean their caches after any command
+cleanup_packages=0
+
 usage() {
-	printf -- 'Usage: bash $0\n'
+	printf -- 'Usage: bash $0 '
+	printf -- '[--cleanup-packages]\n'
 	printf -- '\t[--normal-profile-name basic-manjaro] '
 	printf -- '[--normal-profile-config config.yaml]\n'
 	printf -- '\t[--sudo-profile-name basic-manjaro] '
 	printf -- '[--sudo-profile-config system-config.yaml]\n'
 	printf -- '\n'
 	printf -- 'ARGUMENTS\n'
+	printf -- '--cleanup-packages: Clean package caches of pacman and yay.\n'
+	printf -- '\t\tDEFAULT: false\n'
 	printf -- '--normal-profile-name: Profile name of the normal dotfiles.\n'
 	printf -- '\t\tDEFAULT: $(hostname) if valid or basic-manjaro\n'
 	printf -- '--normal-profile-config: Path of the normal dotfiles config.\n'
@@ -73,6 +79,9 @@ while [ "$1" != "" ]; do
 			shift
 			sudo_profile_config="$1"
 			;;
+		--cleanup-packages )
+			cleanup_packages=1
+			;;
 		-h | --help )
 			usage
 			exit 0
@@ -88,7 +97,7 @@ done
 # $HOME/Programming/dotfiles/manjaro-setup
 sudo pacman-mirrors --country all --api --protocol https
 sudo pacman -Syyu
-sudo pacman -Scc
+if ((cleanup_packages)); then sudo pacman -Scc; fi
 
 # Wireguard needs Linux headers. Figure out the headers dynamically
 HEADERS="linux"
@@ -108,9 +117,9 @@ if ! rustup --version > /dev/null 2>&1; then
 fi
 
 sudo pacman -S --needed - < official-packages.list
-sudo pacman -Scc
+if ((cleanup_packages)); then sudo pacman -Scc; fi
 yay -S --needed - < aur-packages.list
-yay -Scc
+if ((cleanup_packages)); then yay -Scc; fi
 docker_credentials_pass_posthelp
 
 # One more thing to hopefully set up Kitty as the default terminal
