@@ -25,6 +25,10 @@
 				"priority": 20
 			},
 			{
+				"function": "powerline.segments.shell.last_status",
+				"priority": 30
+			},
+			{
 				"function": "powerline_gitstatus.gitstatus",
 				"priority": 40
 			}
