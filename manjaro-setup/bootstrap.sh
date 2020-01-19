@@ -118,7 +118,7 @@ fi
 
 sudo pacman -S --needed - < official-packages.list
 if ((cleanup_packages)); then sudo pacman -Scc; fi
-yay -S --needed - < aur-packages.list
+yay -S --needed --norebuild --noredownload - < aur-packages.list
 if ((cleanup_packages)); then yay -Scc; fi
 docker_credentials_pass_posthelp
 
