@@ -61,6 +61,45 @@ install_github_package() {
 	cd "$starting_cwd"
 }
 
+hostname_is_dotdrop_profile() {
+	# If hostname is a valid profile name, then it will set itself as the
+	# default profile name, unless a specific one is provided through the CLI
+	# profile_type can be "normal" or "sudo"
+	local profile_type="$1"
+	local profile_config=$(basename "$2")
+
+	local name=$(hostname)
+
+	# This script might be called from a subdirectory, so check if the config
+	# files are declared in this directory or upwards until root
+	local starting_cwd=$(pwd)
+	local config_path="$starting_cwd/$profile_config"
+	while [ "$(pwd)" != '/' ]; do
+		if [ -e "$profile_config" ]; then
+			local current_cwd=$(pwd)
+			config_path="$current_cwd/$profile_config"
+			break
+		fi
+		cd ..
+	done
+
+	cd "$starting_cwd"
+
+	if yq -e '.profiles["'"$name"'"]' "$config_path" > /dev/null 2>&1; then
+		if [ "$profile_type" == "normal" ]; then
+			normal_profile_name="$name"
+		elif [ "$profile_type" == "sudo" ]; then
+			sudo_profile_name="$name"
+		fi
+	fi
+
+	return 0
+}
+
+# Fetch the hostnames before they possibly get overwritten by CLI options
+hostname_is_dotdrop_profile "normal" "$normal_profile_config"
+hostname_is_dotdrop_profile "sudo" "$sudo_profile_config"
+
 while [ "$1" != "" ]; do
 	case $1 in
 		--normal-profile-name )
