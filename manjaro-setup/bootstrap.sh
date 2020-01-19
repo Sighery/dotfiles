@@ -207,4 +207,6 @@ sudo bash dotdrop.sh \
 
 # Let Manjaro set our time and date automatically
 # https://wiki.manjaro.org/System_Maintenance#Time_and_Date
-timedatectl set-ntp true
+if [ "$(timedatectl show --property=NTP --value)" == "no" ]; then
+	timedatectl set-ntp true
+fi
