@@ -12,7 +12,7 @@ sudo_profile_config="$HOME/Programming/dotfiles/system-config.yaml"
 cleanup_packages=0
 
 usage() {
-	printf -- 'Usage: bash $0 '
+	printf -- "Usage: bash $0 "
 	printf -- '[--cleanup-packages]\n'
 	printf -- '\t[--normal-profile-name basic-manjaro] '
 	printf -- '[--normal-profile-config config.yaml]\n'
