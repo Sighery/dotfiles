@@ -52,10 +52,12 @@
 			79,
 			89
 		],
+		"editor.defaultFormatter": "rust-lang.rust",
 	},
 	"editor.formatOnSave": true,
 	"files.exclude": {
 		"**/.git": false
 	},
 	"rewrap.autoWrap.enabled": true,
+	"rust.clippy_preference": "on",
 }
