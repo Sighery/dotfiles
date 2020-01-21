@@ -1,9 +1,11 @@
 #!/bin/bash
 # set -x
 
-normal_profile_name='basic-manjaro'
+default_normal_profile_name='basic-manjaro'
+normal_profile_name=$default_normal_profile_name
 normal_profile_config="$HOME/Programming/dotfiles/config.yaml"
-sudo_profile_name='basic-manjaro'
+default_sudo_profile_name='basic-manjaro'
+sudo_profile_name=$default_sudo_profile_name
 sudo_profile_config="$HOME/Programming/dotfiles/system-config.yaml"
 
 # Control whether pacman/yay should clean their caches after any command
@@ -99,10 +101,6 @@ hostname_is_dotdrop_profile() {
 	return 0
 }
 
-# Fetch the hostnames before they possibly get overwritten by CLI options
-hostname_is_dotdrop_profile "normal" "$normal_profile_config"
-hostname_is_dotdrop_profile "sudo" "$sudo_profile_config"
-
 while [ "$1" != "" ]; do
 	case $1 in
 		--normal-profile-name )
@@ -191,6 +189,14 @@ install_github_package "https://github.com/Sighery/i3-resurrect-manager.git"
 # least one of the packages is not installed, so go ahead with the script
 pulse_libraries=(manjaro-pulse pa-applet pavucontrol)
 pacman -Qi "${pulse_libraries[@]}" > /dev/null 2>&1 || install_pulse
+
+if [ "$default_normal_profile_name" == "$normal_profile_name" ]; then
+	hostname_is_dotdrop_profile "normal" "$normal_profile_config"
+fi
+
+if [ "$default_sudo_profile_name" == "$sudo_profile_name" ]; then
+	hostname_is_dotdrop_profile "sudo" "$sudo_profile_config"
+fi
 
 cd "$HOME/Programming/dotfiles"
 # Set up both needed user and system dependencies for dotdrop
