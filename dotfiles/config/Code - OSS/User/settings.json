@@ -39,6 +39,7 @@
 	"python.linting.enabled": true,
 	"python.linting.pylintEnabled": true,
 	"python.linting.mypyEnabled": true,
+	"python.dataScience.askForKernelRestart": false,
 	"[javascript]": {
 		"editor.rulers": [
 			98,
