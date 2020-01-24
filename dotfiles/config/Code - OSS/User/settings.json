@@ -64,4 +64,5 @@
 	"gitlens.codeLens.enabled": false,
 	"gitlens.advanced.telemetry.enabled": false,
 	"gitlens.codeLens.authors.enabled": false,
+	"explorer.confirmDelete": false,
 }
