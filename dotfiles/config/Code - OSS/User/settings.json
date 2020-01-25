@@ -16,6 +16,7 @@
 	"workbench.activityBar.visible": false,
 	"workbench.sideBar.location": "right",
 	"workbench.editor.enablePreviewFromQuickOpen": false,
+	"workbench.startupEditor": "none",
 	"editor.renderWhitespace": "boundary",
 	"files.insertFinalNewline": true,
 	"workbench.colorTheme": "Community Material Theme Palenight High Contrast",
