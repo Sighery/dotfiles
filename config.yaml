@@ -11,6 +11,7 @@ config:
   showdiff: true
   dotpath: dotfiles
   link_dotfile_default: link
+  diff_command: 'colordiff -r -u {0} {1}'
   import_variables:
   - secrets.yaml:optional
 dotfiles:

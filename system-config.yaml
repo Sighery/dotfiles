@@ -1,6 +1,7 @@
 config:
   create: true
   showdiff: true
+  diff_command: 'colordiff -r -u {0} {1}'
   dotpath: system
 dotfiles:
   f_set-monitor-sink:
