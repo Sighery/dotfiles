@@ -2,7 +2,7 @@
   "border": "pixel",
   "current_border_width": -1,
   "floating": "auto_off",
-  "fullscreen_mode": 0,
+  "fullscreen_mode": 1,
   "geometry": {
     "x": 0,
     "y": 0,
@@ -12,7 +12,7 @@
   "layout": "splith",
   "name": "9",
   "orientation": "horizontal",
-  "percent": null,
+  "percent": 0.2857142857142857,
   "scratchpad_state": "none",
   "sticky": false,
   "type": "workspace",
@@ -32,7 +32,7 @@
       "layout": "splith",
       "name": "KeePassXC",
       "orientation": "none",
-      "percent": 1.0,
+      "percent": 0.5,
       "scratchpad_state": "none",
       "sticky": false,
       "type": "con",
@@ -41,6 +41,32 @@
         {
           "class": "^KeePassXC$",
           "instance": "^keepassxc$"
+        }
+      ]
+    },
+    {
+      "border": "pixel",
+      "current_border_width": 1,
+      "floating": "auto_off",
+      "fullscreen_mode": 0,
+      "geometry": {
+        "x": 0,
+        "y": 0,
+        "width": 955,
+        "height": 595
+      },
+      "layout": "splith",
+      "name": "Kitty",
+      "orientation": "none",
+      "percent": 0.5,
+      "scratchpad_state": "none",
+      "sticky": false,
+      "type": "con",
+      "workspace_layout": "default",
+      "swallows": [
+        {
+          "class": "^kitty$",
+          "instance": "^kitty$"
         }
       ]
     }

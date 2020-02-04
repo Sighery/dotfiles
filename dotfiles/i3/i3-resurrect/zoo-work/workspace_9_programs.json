@@ -4,5 +4,11 @@
       "/usr/bin/keepassxc"
     ],
     "working_directory": "~"
+  },
+  {
+    "command": [
+      "/usr/bin/kitty"
+    ],
+    "working_directory": "~"
   }
 ]
