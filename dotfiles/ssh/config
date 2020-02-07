@@ -2,10 +2,10 @@
 Host github.com
 	User Sighery@users.noreply.github.com
 	AddKeysToAgent yes
-	IdentityFile ~/.ssh/id_rsa
+	IdentityFile ~/.ssh/id_github
 
 # Personal GitLab account
 Host gitlab.com
 	User 4689618-Sighery@users.noreply.gitlab.com
 	AddKeysToAgent yes
-	IdentityFile ~/.ssh/id_ed25519
+	IdentityFile ~/.ssh/id_gitlab
