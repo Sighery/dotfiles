@@ -168,6 +168,9 @@ dotfiles:
     src: i3/i3-resurrect/zoo-work
     dst: ~/.i3/i3-resurrect
     link: nolink
+  f_gpgconf:
+    src: gnupg/gpg.conf
+    dst: ~/.gnupg/gpg.conf
 profiles:
   basic-manjaro:
     dotfiles:
@@ -206,6 +209,7 @@ profiles:
     - f_vscode_keybindings
     - f_vscode_packages
     - f_colordiffrc
+    - f_gpgconf
   sater-manjaro:
     dotfiles:
     - f_nvidia-settings-rc
