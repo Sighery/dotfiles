@@ -41,6 +41,9 @@ dotfiles:
   f_docker_config:
     src: docker/config.json
     dst: /root/.docker/config.json
+  f_makepkgconf:
+    src: etc/makepkg.conf
+    dst: /etc/makepkg.conf
 profiles:
   basic-manjaro:
     dotfiles:
@@ -54,6 +57,7 @@ profiles:
     - f_pulse_conf_script
     - f_xsecurelock_environment
     - f_docker_config
+    - f_makepkgconf
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
