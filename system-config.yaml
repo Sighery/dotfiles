@@ -63,3 +63,7 @@ profiles:
   zoo-work:
     include:
     - basic-manjaro
+  sater-vps:
+    dotfiles:
+    - f_vconsole
+    - f_keyboard
