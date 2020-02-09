@@ -9,3 +9,9 @@ Host gitlab.com
 	User 4689618-Sighery@users.noreply.gitlab.com
 	AddKeysToAgent yes
 	IdentityFile ~/.ssh/id_gitlab
+
+Host sigheryvps
+	HostName sighery.com
+	User {{@@ ssh_sigheryvps_user @@}}
+	IdentityFile ~/.ssh/id_sigheryvps
+	AddKeysToAgent yes
