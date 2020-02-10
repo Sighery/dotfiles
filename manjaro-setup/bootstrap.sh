@@ -160,7 +160,6 @@ sudo pacman -S --needed - < official-packages.list
 if ((cleanup_packages)); then sudo pacman -Scc; fi
 yay -S --needed --norebuild --noredownload - < aur-packages.list
 if ((cleanup_packages)); then yay -Scc; fi
-docker_credentials_pass_posthelp
 
 # One more thing to hopefully set up Kitty as the default terminal
 if [ ! -f "/usr/bin/terminal.original" ]; then
@@ -171,17 +170,6 @@ fi
 if [ ! -d "$HOME/Programming" ]; then
 	mkdir "$HOME/Programming"
 fi
-
-# Install Fantasque Sans Mono Large Line Height No Loop K
-install_github_package \
-"https://github.com/Sighery/fantasque-sans-arch-build.git" \
-"otf*.pkg.tar.xz"
-
-# Install my fork of i3exit
-install_github_package "https://github.com/Sighery/i3exit.git"
-
-# Install i3-resurrect-manager
-install_github_package "https://github.com/Sighery/i3-resurrect-manager.git"
 
 # Install Pulse only if not already executed before
 # The script isn't smart enough to notice past installations so query some of
@@ -210,6 +198,14 @@ bash dotdrop.sh \
 # Now install system files
 sudo bash dotdrop.sh \
 --cfg="$sudo_profile_config" --profile="$sudo_profile_name" install
+
+# After setting the system files, we'll have pacman.conf set with my custom
+# ArchLinux repo at http://archrepo.sighery.com, so update and install custom
+# packages
+sudo pacman -Syy
+sudo pacman -S --needed - < sighery-archrepo-packages.list
+if ((cleanup_packages)); then sudo pacman -Scc; fi
+docker_credentials_pass_posthelp
 
 # Let Manjaro set our time and date automatically
 # https://wiki.manjaro.org/System_Maintenance#Time_and_Date
