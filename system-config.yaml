@@ -44,6 +44,9 @@ dotfiles:
   f_makepkgconf:
     src: etc/makepkg.conf
     dst: /etc/makepkg.conf
+  f_pacmanconf:
+    src: etc/pacman.conf
+    dst: /etc/pacman.conf
 profiles:
   basic-manjaro:
     dotfiles:
@@ -58,6 +61,7 @@ profiles:
     - f_xsecurelock_environment
     - f_docker_config
     - f_makepkgconf
+    - f_pacmanconf
   sater-manjaro:
     dotfiles:
     - f_set-monitor-sink
