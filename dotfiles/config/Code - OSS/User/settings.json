@@ -85,5 +85,6 @@
 				"redirectOutput": true,
 			}
 		]
-	}
+	},
+	"go.useLanguageServer": true,
 }
