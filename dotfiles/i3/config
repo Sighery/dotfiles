@@ -350,6 +350,9 @@ exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
+{%@@ if profile == "zoo-work" @@%}
+exec_always --no-startup-id autorandr --change --force
+{%@@ endif @@%}
 # exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
