@@ -96,4 +96,17 @@
 	},
 	"go.useLanguageServer": true,
 	"explorer.confirmDragAndDrop": false,
+	"terraform.languageServer": {
+		"enabled": true,
+		"args": [],
+	},
+	"terraform.indexing": {
+		"enabled": true,
+		"liveIndexing": true,
+		"delay": 500,
+		"exclude": [
+			".terraform/**/*",
+			"**/.terraform/**/*",
+		],
+	},
 }
