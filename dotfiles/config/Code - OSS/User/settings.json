@@ -30,6 +30,10 @@
 		78,
 		70
 	],
+	"[markdown]": {
+		"editor.quickSuggestions": false,
+		"files.trimTrailingWhitespace": false,
+	},
 	"[python]": {
 		"editor.formatOnPaste": false,
 		"editor.rulers": [
