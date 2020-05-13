@@ -101,7 +101,7 @@
 		"args": [],
 	},
 	"terraform.indexing": {
-		"enabled": true,
+		"enabled": false,
 		"liveIndexing": true,
 		"delay": 500,
 		"exclude": [
