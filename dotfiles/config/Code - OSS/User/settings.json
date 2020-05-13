@@ -27,8 +27,14 @@
 		"editorRuler.foreground": "#ff4081",
 	},
 	"editor.rulers": [
-		78,
-		70
+		{
+			"column": 78,
+			"color": "#ff4081"
+		},
+		{
+			"column": 70,
+			"color": "#ffa700"
+		}
 	],
 	"[markdown]": {
 		"editor.quickSuggestions": false,
@@ -37,9 +43,18 @@
 	"[python]": {
 		"editor.formatOnPaste": false,
 		"editor.rulers": [
-			87,
-			71,
-			79
+			{
+				"column": 87,
+				"color": "#ff4081"
+			},
+			{
+				"column": 71,
+				"color": "#5F6368"
+			},
+			{
+				"column": 79,
+				"color": "#ffa700"
+			}
 		],
 	},
 	"[terraform]": {
@@ -53,16 +68,34 @@
 	"python.dataScience.askForKernelRestart": false,
 	"[javascript]": {
 		"editor.rulers": [
-			98,
-			71,
-			79
+			{
+				"column": 98,
+				"color": "#ff4081"
+			},
+			{
+				"column": 71,
+				"color": "#5F6368"
+			},
+			{
+				"column": 79,
+				"color": "#ffa700"
+			}
 		],
 	},
 	"[rust]": {
 		"editor.rulers": [
-			98,
-			79,
-			89
+			{
+				"column": 98,
+				"color": "#ff4081"
+			},
+			{
+				"column": 79,
+				"color": "#5F6368"
+			},
+			{
+				"column": 89,
+				"color": "#ffa700"
+			}
 		],
 		"editor.defaultFormatter": "rust-lang.rust",
 	},
