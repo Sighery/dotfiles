@@ -142,4 +142,5 @@
 			"**/.terraform/**/*",
 		],
 	},
+	"workbench.colorTheme": "Material Theme Palenight High Contrast",
 }
