@@ -143,4 +143,19 @@
 		],
 	},
 	"workbench.colorTheme": "Material Theme Palenight High Contrast",
+	"editor.tokenColorCustomizations": {
+		"[Material Theme Palenight High Contrast]": {
+			"textMateRules": [
+				{
+					"scope": [
+						"keyword.control.flow.block-scalar.literal.yaml",
+						"keyword.control.flow.block-scalar.folded.yaml",
+					],
+					"settings": {
+						"fontStyle": "",
+					},
+				},
+			],
+		},
+	},
 }
