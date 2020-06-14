@@ -129,6 +129,7 @@
 	},
 	"go.useLanguageServer": true,
 	"explorer.confirmDragAndDrop": false,
+	"yaml.schemaStore.enable": true,
 	"terraform.languageServer": {
 		"enabled": true,
 		"args": [],
