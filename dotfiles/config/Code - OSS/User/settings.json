@@ -133,15 +133,6 @@
 		"enabled": true,
 		"args": [],
 	},
-	"terraform.indexing": {
-		"enabled": false,
-		"liveIndexing": true,
-		"delay": 500,
-		"exclude": [
-			".terraform/**/*",
-			"**/.terraform/**/*",
-		],
-	},
 	"workbench.colorTheme": "Material Theme Palenight High Contrast",
 	"editor.tokenColorCustomizations": {
 		"[Material Theme Palenight High Contrast]": {
