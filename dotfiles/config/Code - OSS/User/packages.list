@@ -1,15 +1,19 @@
+bungcip.better-toml
 dbaeumer.vscode-eslint
 eamodio.gitlens
 Equinusocio.vsc-material-theme
 equinusocio.vsc-material-theme-icons
 golang.Go
 hashicorp.terraform
+matklad.rust-analyzer
 ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode.atom-keybindings
 redhat.vscode-yaml
 rust-lang.rust
+serayuzgur.crates
 stkb.rewrap
+vadimcn.vscode-lldb
 {%@@ if profile == "zoo-work" @@%}
 janjoerke.jenkins-pipeline-linter-connector
 {%@@ endif @@%}
