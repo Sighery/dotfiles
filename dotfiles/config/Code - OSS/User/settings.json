@@ -151,4 +151,6 @@
 		},
 	},
 	"crates.upToDateDecorator": "",
+	"rust-analyzer.inlayHints.typeHints": false,
+	"rust-analyzer.inlayHints.parameterHints": false,
 }
