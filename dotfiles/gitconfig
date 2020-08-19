@@ -2,6 +2,7 @@
 {%@@ if profile in ["basic-manjaro", "sater-manjaro"] @@%}
 	email = Sighery@users.noreply.github.com
 	name = Sighery
+	signingkey = 9454A24E1B5E963078B6E9317C02D10683ADCFB8
 {%@@ elif profile == "zoo-work" @@%}
 	email = {{@@ zoo_work_email @@}}
 	name = {{@@ short_full_name @@}}
