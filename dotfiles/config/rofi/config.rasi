@@ -1,7 +1,7 @@
 configuration {
 	modi: "combi,window,run,drun,ssh,keys";
 	terminal: "rofi-sensible-terminal";
-	theme: "~/.config/rofi/themes/sighery.rasi";
+	theme: "~/.config/rofi/themes/dmenu-lb.rasi";
 	combi-modi: "drun,run";
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/

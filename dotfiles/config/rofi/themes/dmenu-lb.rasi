@@ -1,5 +1,7 @@
 /**
+ * ROFI Color theme
  * Based on lb.rasi
+ * User: Sighery
  */
 
 * {
@@ -32,135 +34,131 @@
     alternate-active-foreground: @active-foreground;
     active-background:           rgba ( 0, 0, 0, 0 % );
     selected-active-background:  rgba ( 170, 170, 17, 100 % );
+    gruvbox-light-bg0-soft:      #f2e5bc;
     font:                        "Fantasque Sans Mono 13";
 }
 
-#window {
+window {
     background-color: @background;
-    border:           1;
-    padding:          5;
+    border:           1px;
+    padding:          5px;
     location:         north;
-    width:            100%;
+    width:            1920px;
+    children:         [ inputbar, message, listview ];
 }
 
-#mainbox {
-    border:  0;
-    padding: 0;
-	children: [ testbox, listview ];
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    1px;
+    width:      100%;
+    children:   [
+        prompt, textbox-prompt-colon, entry, case-indicator, mode-switcher
+    ];
 }
 
-#testbox {
-    orientation: horizontal;
-    children: [ inputbar, mode-switcher ];
-}
-
-#message {
+message {
     border:       1px dash 0px 0px;
     border-color: @separatorcolor;
     padding:      1px;
 }
 
-#listview {
-    layout: horizontal;
-    expand: true;
-    border:       2px solid 0px 0px;
+listview {
+    layout:       horizontal;
+    fixed-height: 1;
+    border:       2px dash 0px 0px;
     border-color: @separatorcolor;
     spacing:      5px;
-    lines:        100;
+    scrollbar:    false;
+    cycle:        true;
+    dynamic:      false;
+    padding:      2px;
 }
 
-#element {
+prompt {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em;
+    text-color: @normal-foreground;
+}
+
+entry {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+case-indicator {
+    spacing:    0;
+    text-color: @normal-foreground;
+}
+
+mode-switcher {
+    spacing: 20px;
+    width:   30%;
+    border:  0px;
+    background-color: @gruvbox-light-bg0-soft;
+}
+
+element {
     border:  0;
-    padding: 1px ;
+    padding: 1px;
 }
 
-#element.normal.normal {
+textbox {
+    text-color: @foreground;
+}
+
+button selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+element normal.normal {
     background-color: @normal-background;
     text-color:       @normal-foreground;
 }
 
-#element.normal.urgent {
+element normal.urgent {
     background-color: @urgent-background;
     text-color:       @urgent-foreground;
 }
 
-#element.normal.active {
+element normal.active {
     background-color: @active-background;
     text-color:       @active-foreground;
 }
 
-#element.selected.normal {
+element selected.normal {
     background-color: @selected-normal-background;
     text-color:       @selected-normal-foreground;
 }
 
-#element.selected.urgent {
+element selected.urgent {
     background-color: @selected-urgent-background;
     text-color:       @selected-urgent-foreground;
 }
 
-#element.selected.active {
+element selected.active {
     background-color: @selected-active-background;
     text-color:       @selected-active-foreground;
 }
 
-#element.alternate.normal {
+element alternate.normal {
     background-color: @alternate-normal-background;
     text-color:       @alternate-normal-foreground;
 }
 
-#element.alternate.urgent {
+element alternate.urgent {
     background-color: @alternate-urgent-background;
     text-color:       @alternate-urgent-foreground;
 }
 
-#element.alternate.active {
+element alternate.active {
     background-color: @alternate-active-background;
     text-color:       @alternate-active-foreground;
-}
-
-#mode-switcher {
-    spacing:         20px;
-    width:           30%;
-}
-
-#button {
-    background-color: @normal-background;
-    text-color:       @normal-foreground;
-}
-
-#button.selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
-}
-
-#inputbar {
-    expand:     true;
-    spacing:    0;
-    text-color: @normal-foreground;
-    padding:    1px;
-    width:      70%;
-    children:   [ prompt, textbox-prompt-colon, entry, case-indicator ];
-}
-
-#prompt {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
-
-#textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
-}
-
-#entry {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
-
-#case-indicator {
-    spacing:    0;
-    text-color: @normal-foreground;
 }
