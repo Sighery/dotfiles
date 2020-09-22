@@ -59,7 +59,8 @@
 	},
 	"[terraform]": {
 		"editor.tabSize": 2,
-		"editor.insertSpaces": true
+		"editor.insertSpaces": true,
+		"editor.formatOnSave": false
 	},
 	"python.formatting.provider": "black",
 	"python.linting.enabled": true,
