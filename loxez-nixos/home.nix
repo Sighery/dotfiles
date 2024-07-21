@@ -1,0 +1,149 @@
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./home-sighery/i3.nix
+    ./home-sighery/vscode.nix
+    ./home-sighery/kitty.nix
+    ./home-sighery/rofi.nix
+    ./home-sighery/dunst.nix
+    #./home-sighery/mimeapps.nix
+  ];
+
+  home.username = "sighery";
+  home.homeDirectory = "/home/sighery";
+  home.stateVersion = "24.05";
+  programs.home-manager.enable = true;
+
+  home.file."Pictures/.keep".text = "";
+
+  home.file.".colordiffrc".text = ''
+    banner=no
+  '';
+
+  programs.obs-studio.enable = true;
+
+  programs.bash = {
+    enable = true;
+
+    initExtra = ''
+      _kitten_completions() {
+          local src
+          local limit
+          # We need some slight changes so that we can use kitty's native
+          # autocompletion. Kitty won't understand our "kitten" command, but
+          # if we turn "kitten" into "kitty +kitten" it will be able to
+          # autocomplete just fine
+          local unaliased
+          unaliased=("kitty" "+kitten" "''${COMP_WORDS[@]:1}")
+          # Send all words up to the word the cursor is currently on
+          let limit=1+$COMP_CWORD+1
+          src=$(printf "%s
+      " "''${unaliased[@]:0:$limit}" | kitty +complete bash)
+          if [[ $? == 0 ]]; then
+              eval ''${src}
+          fi
+      }
+
+      complete -o nospace -F _kitten_completions kitten
+
+      tabs -4
+    '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
+  programs.firefox.enable = true;
+
+  programs.gpg = {
+    enable = true;
+
+    settings = {
+      keyid-format = "0xlong";
+      with-fingerprint = true;
+      with-subkey-fingerprints = true;
+      with-keygrip = true;
+      use-agent = true;
+      keyserver = "eu.pool.sks-keyservers.net";
+      local-user = "9454A24E1B5E963078B6E9317C02D10683ADCFB8";
+    };
+  };
+
+  xdg.configFile."khal/config".text = ''
+    [locale]
+    timeformat = %H:%M
+    dateformat = %Y-%m-%d
+    longdateformat = %Y-%m-%d
+    datetimeformat = %Y-%m-%d %H:%M
+    longdatetimeformat = %Y-%m-%d %H:%M
+
+    [calendars]
+      [[home]]
+        path = ${config.home.homeDirectory}/.calendars/home/
+  '';
+  
+  programs.git = {
+    enable = true;
+    package = pkgs.gitAndTools.gitFull;
+
+    includes = [
+      {
+        condition = "gitdir:~/Programming/";
+	
+	contents = {
+	  user = {  
+            email = "11218602+Sighery@users.noreply.github.com";
+	    name = "Sighery";
+            signingKey = "9454A24E1B5E963078B6E9317C02D10683ADCFB8";
+	  };
+
+	  commit = {
+	    gpgSign = "true";
+	  };
+
+	  core = {
+	    pager = "less -x1,5";
+	  };
+
+	  rerere = {
+	    enabled = "true";
+	  };
+
+	  status = {
+	    showUntrackedFiles = "all";
+	  };
+
+	  format = {
+	    pretty = "fuller";
+	  };
+	};
+      }
+    ];
+
+  };
+  
+  programs.ssh = {
+    enable = true;
+    
+    matchBlocks = {
+      "github.com" = {
+        user = "11218602+Sighery@users.noreply.github.com";
+        identityFile = "~/.ssh/lexoz_github";
+        identitiesOnly = true;
+        extraOptions."AddKeysToAgent" = "yes";
+      };
+      "gitlab.com" = {
+        user = "4689618-Sighery@users.noreply.gitlab.com";
+        identityFile = "~/.ssh/id_gitlab";
+        extraOptions."AddKeysToAgent" = "yes";
+      };
+    };
+  };
+
+  services.kdeconnect = {
+    enable = true;
+  };
+}

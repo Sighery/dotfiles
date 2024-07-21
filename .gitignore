@@ -2,3 +2,6 @@
 **/ranger/plugins/__pycache__/
 
 secrets.yaml
+
+# Nix build output
+result
