@@ -129,6 +129,7 @@
     packages = with pkgs; [
       kdePackages.kate
       spotify
+      discord
       arduino-ide arduino-cli
     ];
   };
@@ -144,6 +145,7 @@
     "nvidia-x11" "nvidia-settings"
     "slack"
     "vscode-extension-ms-vsliveshare-vsliveshare"
+    "discord"
   ];
 
   documentation = {
