@@ -102,7 +102,6 @@
       "editor.insertSpaces" = false;
       "window.menuBarVisibility" = "hidden";
       "window.enableMenuBarMnemonics" = false;
-      "workbench.activityBar.visible" = false;
       "workbench.sideBar.location" = "right";
       "workbench.editor.enablePreviewFromQuickOpen" = false;
       "workbench.startupEditor" = "none";
@@ -181,7 +180,11 @@
         "validateOnSave" = true;
       };
       "[markdown]" = {
-        "editor.quickSuggestions" = false;
+        "editor.quickSuggestions" = {
+          "comments" = "off";
+          "strings" = "off";
+          "other" = "off";
+        };
         "files.trimTrailingWhitespace" = false;
       };
       "[terraform]" = {
@@ -200,7 +203,7 @@
         "editor.formatOnSave" = true;
         "editor.formatOnPaste" = false;
         "editor.codeActionsOnSave" = {
-          "source.organizeImports" = true;
+          "source.organizeImports" = "explicit";
         };
         "editor.rulers" = [
           {
