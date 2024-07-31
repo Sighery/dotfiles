@@ -122,10 +122,14 @@
   users.users.sighery = {
     isNormalUser = true;
     description = "Sighery";
-    extraGroups = [ "networkmanager" "wheel" "docker" "adbusers" ];
+    extraGroups = [
+      "networkmanager" "wheel" "docker" "adbusers"
+      "dialout"
+    ];
     packages = with pkgs; [
       kdePackages.kate
       spotify
+      arduino-ide arduino-cli
     ];
   };
 
