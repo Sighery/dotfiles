@@ -131,6 +131,7 @@
       spotify
       discord
       arduino-ide arduino-cli
+      droidcam
     ];
   };
 
