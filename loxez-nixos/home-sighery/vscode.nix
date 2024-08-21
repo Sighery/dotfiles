@@ -103,6 +103,7 @@
       "window.menuBarVisibility" = "hidden";
       "window.enableMenuBarMnemonics" = false;
       "workbench.sideBar.location" = "right";
+      "workbench.activityBar.location" = "hidden";
       "workbench.editor.enablePreviewFromQuickOpen" = false;
       "workbench.startupEditor" = "none";
       "editor.renderWhitespace" = "boundary";
