@@ -204,6 +204,7 @@
     jmtpfs
     khal
     foliate calibre
+    qbittorrent
   ];
 
   environment.variables = {
