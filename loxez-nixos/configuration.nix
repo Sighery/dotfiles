@@ -270,6 +270,11 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+  };
+
   virtualisation.docker = {
     enable = true;
     enableOnBoot = false;
