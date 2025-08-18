@@ -5,13 +5,12 @@
     enable = true;
     package = pkgs.vscodium;
 
-    extensions = (with pkgs.vscode-extensions; [
+    profiles.default.extensions = (with pkgs.vscode-extensions; [
       bbenoist.nix
       dbaeumer.vscode-eslint
       eamodio.gitlens
       golang.go
       hashicorp.terraform
-      matklad.rust-analyzer
       ms-azuretools.vscode-docker
       ms-python.python
       ms-vsliveshare.vsliveshare
@@ -20,7 +19,8 @@
       bungcip.better-toml
       stkb.rewrap
       redhat.vscode-yaml
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
+      james-yu.latex-workshop
     ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "vsc-material-theme";
@@ -42,7 +42,7 @@
       }
     ];
 
-    keybindings = [
+    profiles.default.keybindings = [
       {
         key = "ctrl+shift+l";
         command = "workbench.action.editor.changeLanguageMode";
@@ -56,6 +56,11 @@
       {
         key = "ctrl+m";
         command = "-editor.action.toggleTabFocusMode";
+      }
+      {
+        key = "ctrl+\\";
+        command = "workbench.action.toggleSidebarVisibility";
+        when = "viewContainer.workbench.view.explorer.enabled";
       }
       {
         key = "ctrl+alt+-";
@@ -85,7 +90,7 @@
       }
     ];
 
-    userSettings = {
+    profiles.default.userSettings = {
       "update.mode" = "manual";
       "python.experiments.enabled" = false;
       "liveshare.diagnosticMode" = true;

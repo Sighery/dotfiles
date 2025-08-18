@@ -76,6 +76,13 @@
     };
   };
 
+  programs.keychain = {
+    enable = true;
+
+    enableBashIntegration = true;
+    extraFlags = [ "--quiet" "--noask" ];
+  };
+
   xdg.configFile."khal/config".text = ''
     [locale]
     timeformat = %H:%M
@@ -133,16 +140,29 @@
     enable = true;
     
     matchBlocks = {
+      "*" = {
+        extraOptions."AddKeysToAgent" = "yes";
+      };
       "github.com" = {
         user = "11218602+Sighery@users.noreply.github.com";
         identityFile = "~/.ssh/lexoz_github";
         identitiesOnly = true;
-        extraOptions."AddKeysToAgent" = "yes";
       };
       "gitlab.com" = {
         user = "4689618-Sighery@users.noreply.gitlab.com";
         identityFile = "~/.ssh/id_gitlab";
-        extraOptions."AddKeysToAgent" = "yes";
+      };
+      "kpw5" = {
+        user = "root";
+        hostname = "192.168.0.43";
+        identityFile = "~/.ssh/kpw5";
+        identitiesOnly = true;
+      };
+      "kscribe" = {
+        user = "root";
+        hostname = "192.168.0.43";
+        identityFile = "~/.ssh/kscribe";
+        identitiesOnly = true;
       };
     };
   };

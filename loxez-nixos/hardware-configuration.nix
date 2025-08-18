@@ -41,22 +41,28 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/92cfa4a3-3634-4cdf-9de0-35acea6311da";
+    device = "/dev/disk/by-uuid/eaa55638-e4ce-4cb9-91f4-f78d8352b3f6";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F62A-FA19";
+    device = "/dev/disk/by-uuid/4E7B-7107";
     fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
+    options = [ "fmask=0077" "dmask=0077" ];
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/8b4383b3-a2d8-4c2b-ba0a-c48d360f0add"; }
+    { device = "/dev/disk/by-uuid/9314d9f7-9110-496d-8630-efc160124f4b"; }
   ];
 
   fileSystems."/mnt/870data" = {
-   device = "/dev/disk/by-uuid/7AFD08C46698D595";
+   device = "/dev/disk/by-uuid/01DAF6502F4C7F50";
+   fsType = "ntfs";
+   options = [ "nofail" "defaults" "rw" "exec" "umask=000" ];
+  };
+
+  fileSystems."/mnt/980pro1tb" = {
+   device = "/dev/disk/by-uuid/01D95E8AEB9E53E0";
    fsType = "ntfs";
    options = [ "nofail" "defaults" "rw" "exec" "umask=000" ];
   };

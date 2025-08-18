@@ -97,7 +97,7 @@
   };
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -148,6 +148,10 @@
     "vscode-extension-ms-vsliveshare-vsliveshare"
     "discord"
   ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "segger-jlink-qt4-810"
+  ];
+  nixpkgs.config.segger-jlink.acceptLicense = true;
 
   documentation = {
     enable = true;
@@ -184,11 +188,12 @@
     wget curl
     brave firefox nyxt
     moreutils less eza
-    gnome.cheese scrot peek
+    cheese scrot peek
     yq jq colordiff
+    ripgrep
     kitty
     libreoffice
-    gnome.gnome-keyring gnome.seahorse
+    gnome-keyring seahorse
     ranger pcmanfm lxmenu-data shared-mime-info
     docker docker-compose
     zip unzip
@@ -204,7 +209,9 @@
     jmtpfs
     khal
     foliate calibre
-    qbittorrent
+    tauon picard audacity
+    wireshark
+    #qbittorrent
   ];
 
   environment.variables = {
@@ -267,6 +274,8 @@
   services.udisks2.enable = true;
   services.devmon.enable = true;
 
+  services.udev.packages = [ pkgs.nrf-udev pkgs.segger-jlink ];
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
@@ -292,6 +301,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
-
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
