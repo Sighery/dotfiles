@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   xdg.configFile."kitty/diff.conf".text = ''
@@ -105,4 +110,3 @@
     };
   };
 }
-

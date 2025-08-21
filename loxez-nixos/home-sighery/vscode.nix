@@ -1,46 +1,41 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
 
-    profiles.default.extensions = (with pkgs.vscode-extensions; [
-      bbenoist.nix
-      dbaeumer.vscode-eslint
-      eamodio.gitlens
-      golang.go
-      hashicorp.terraform
-      ms-azuretools.vscode-docker
-      ms-python.python
-      ms-vsliveshare.vsliveshare
-      serayuzgur.crates
-      vadimcn.vscode-lldb
-      bungcip.better-toml
-      stkb.rewrap
-      redhat.vscode-yaml
-      rust-lang.rust-analyzer
-      james-yu.latex-workshop
-    ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "vsc-material-theme";
-        publisher = "Equinusocio";
-        version = "33.7.0";
-        sha256 = "qwnu48dPjJN/wlaiwHS4SU3Yn4Y3GuOB1W+QoSjcgKw=";
-      }
-      {
-        name = "vsc-material-theme-icons";
-        publisher = "Equinusocio";
-        version = "2.7.3";
-        sha256 = "4apT2OOtkxgnwn2/hQlCZDn8XdOBLQqZt17Q2M1n64c=";
-      }
-      {
-        name = "atom-keybindings";
-        publisher = "ms-vscode";
-        version = "3.3.0";
-        sha256 = "vzOb/DUV44JMzcuQJgtDB6fOpTKzq298WSSxVKlYE4o=";
-      }
-    ];
+    profiles.default.extensions =
+      (with pkgs.vscode-extensions; [
+        bbenoist.nix
+        dbaeumer.vscode-eslint
+        eamodio.gitlens
+        golang.go
+        hashicorp.terraform
+        ms-azuretools.vscode-docker
+        ms-python.python
+        ms-vsliveshare.vsliveshare
+        serayuzgur.crates
+        vadimcn.vscode-lldb
+        bungcip.better-toml
+        stkb.rewrap
+        redhat.vscode-yaml
+        rust-lang.rust-analyzer
+        james-yu.latex-workshop
+      ])
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "atom-keybindings";
+          publisher = "ms-vscode";
+          version = "3.3.0";
+          sha256 = "vzOb/DUV44JMzcuQJgtDB6fOpTKzq298WSSxVKlYE4o=";
+        }
+      ];
 
     profiles.default.keybindings = [
       {
@@ -100,8 +95,7 @@
       "editor.guides.bracketPairs" = "active";
       "editor.formatOnPaste" = true;
       "editor.minimap.enabled" = false;
-      "telemetry.enableCrashReporter" = false;
-      "telemetry.enableTelemetry" = false;
+      "telemetry.telemetryLevel" = "off";
       "files.autoSave" = "afterDelay";
       "editor.fontFamily" = "'monospace', monospace, 'Droid Sans Mono', 'Droid Sans Fallback'";
       "editor.insertSpaces" = false;
@@ -113,7 +107,7 @@
       "workbench.startupEditor" = "none";
       "editor.renderWhitespace" = "boundary";
       "files.insertFinalNewline" = true;
-      "workbench.colorTheme" = "Material Theme Palenight High Contrast";
+      "workbench.colorTheme" = "Default Dark Modern";
       "editor.tokenColorCustomizations" = {
         "[Material Theme Palenight High Contrast]" = {
           "textMateRules" = [
@@ -132,7 +126,10 @@
       "files.trimFinalNewlines" = true;
       "files.trimTrailingWhitespace" = true;
       "python.formatting.provider" = "black";
-      "python.sortImports.args" = [ "--profile" "black" ];
+      "python.sortImports.args" = [
+        "--profile"
+        "black"
+      ];
       "source.organizeImports" = true;
       "python.linting.enabled" = true;
       "python.linting.pylintEnabled" = true;
@@ -178,9 +175,7 @@
       ];
       "terraform.languageServer" = {
         "external" = true;
-        "args" = [
-          "serve"
-        ];
+        "args" = [ "serve" ];
       };
       "terraform-ls.experimentalFeatures" = {
         "validateOnSave" = true;
@@ -204,8 +199,24 @@
         "editor.insertSpaces" = true;
       };
       "black-formatter.path" = [ "venv/bin/black" ];
+      "[c]" = {
+        "editor.rulers" = [
+          {
+            "column" = 98;
+            "color" = "#FF4081";
+          }
+          {
+            "column" = 79;
+            "color" = "#5F6368";
+          }
+          {
+            "column" = 89;
+            "color" = "#FFA700";
+          }
+        ];
+      };
       "[python]" = {
-        "editor.defaultFormatter" = "ms-python.black-formatter";
+        "editor.defaultFormatter" = "ms-python.python";
         "editor.formatOnSave" = true;
         "editor.formatOnPaste" = false;
         "editor.codeActionsOnSave" = {
@@ -227,7 +238,7 @@
         ];
       };
       "[rust]" = {
-        "editor.defaultFormatter" = "rust-lang.rust";
+        "editor.defaultFormatter" = "rust-lang.rust-analyzer";
         "editor.rulers" = [
           {
             "column" = 98;

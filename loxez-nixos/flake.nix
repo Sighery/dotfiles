@@ -12,27 +12,63 @@
       url = "github:Sighery/fantasque-sans-mono-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = { self, nixpkgs, home-manager, fantasque-sans-mono-nixos, ... }@inputs: {
-    nixosConfigurations.loxez = nixpkgs.lib.nixosSystem rec {
-      system = "x86_64-linux";
-      modules = [
-        {
-	  nixpkgs.overlays = [
-	    (_: _: { fantasque-sans-mono = fantasque-sans-mono-nixos.packages.${system}.default; })
-	  ];
-	}
-
-        ./configuration.nix
-
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          home-manager.users.sighery = import ./home.nix;
-        }
-      ];
+    # Patched Spotify
+    patched-spotify = {
+      url = "github:NL-TCH/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      fantasque-sans-mono-nixos,
+      patched-spotify,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+      nixosConfigurations.loxez = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          {
+            nixpkgs.overlays = [
+              (_: _: {
+                fantasque-sans-mono = fantasque-sans-mono-nixos.packages.${system}.default;
+                spotify-adblock = import "${patched-spotify.outPath}/pkgs/spotify-adblock" {
+                  inherit (pkgs)
+                    spotify
+                    stdenv
+                    rustPlatform
+                    fetchFromGitHub
+                    xorg
+                    zip
+                    unzip
+                    ;
+                };
+              })
+            ];
+          }
+
+          (import ./configuration.nix { inherit inputs; })
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.sighery = import ./home.nix;
+          }
+        ];
+      };
+    };
 }

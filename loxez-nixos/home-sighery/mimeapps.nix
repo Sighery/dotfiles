@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   xdg.mimeApps = {
@@ -16,8 +21,14 @@
       "application/xhtml+xml" = [ "brave-browser.desktop" ];
       "application/x-extension-xhtml" = [ "brave-browser.desktop" ];
       "application/x-extension-xht" = [ "brave-browser.desktop" ];
-      "image/jpeg" = [ "viewnior.desktop" "gpicview.desktop" ];
-      "image/png" = [ "viewnior.desktop" "gpicview.desktop" ];
+      "image/jpeg" = [
+        "viewnior.desktop"
+        "gpicview.desktop"
+      ];
+      "image/png" = [
+        "viewnior.desktop"
+        "gpicview.desktop"
+      ];
       "text/plain" = [ "mousepad.desktop" ];
       "x-scheme-handler/mailto" = [ "userapp-Thunderbird.desktop" ];
       "message/rfc822" = [ "userapp-Thunderbird.desktop" ];
@@ -39,8 +50,14 @@
       "application/xhtml+xml" = [ "brave-browser.desktop" ];
       "application/x-extension-xhtml" = [ "brave-browser.desktop" ];
       "application/x-extension-xht" = [ "brave-browser.desktop" ];
-      "image/jpeg" = [ "viewnior.desktop" "gpicview.desktop" ];
-      "image/png" = [ "viewnior.desktop" "gpicview.desktop" ];
+      "image/jpeg" = [
+        "viewnior.desktop"
+        "gpicview.desktop"
+      ];
+      "image/png" = [
+        "viewnior.desktop"
+        "gpicview.desktop"
+      ];
       "text/plain" = [ "mousepad.desktop" ];
       "x-scheme-handler/mailto" = [ "userapp-Thunderbird.desktop" ];
       "message/rfc822" = [ "userapp-Thunderbird.desktop" ];

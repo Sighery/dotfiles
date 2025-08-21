@@ -1,9 +1,13 @@
-{ lib, fetchurl, unzip }:
+{
+  lib,
+  fetchurl,
+  unzip,
+}:
 
 let
   version = "1.7.2";
-in
 
+in
 fetchurl rec {
   name = "fantasque-sans-mono-${version}";
 

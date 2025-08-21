@@ -1,8 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+{ inputs }:
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 #let
 #  fantasque-sans-mono = pkgs.callPackage fonts/fantasque-sans-mono {};
@@ -14,7 +20,12 @@
   ];
 
   # Enable Flakes and Nix Command
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+
+  programs.nix-ld.enable = true;
 
   networking.hostName = "loxez"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -66,7 +77,7 @@
 
       extraPackages = with pkgs; [
         rofi
-	i3status
+        i3status
       ];
     };
 
@@ -77,9 +88,9 @@
 
       extraSeatDefaults = ''
         greeter-hide-users=true
-	greeter-show-manual-login=true
-	allow-guest=false
-	greeter-setup-script=${pkgs.numlockx}/bin/numlockx on
+        greeter-show-manual-login=true
+        allow-guest=false
+        greeter-setup-script=${pkgs.numlockx}/bin/numlockx on
       '';
     };
   };
@@ -106,6 +117,7 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
+  services.playerctld.enable = true;
 
   # Bluetooth
   hardware.bluetooth = {
@@ -123,14 +135,18 @@
     isNormalUser = true;
     description = "Sighery";
     extraGroups = [
-      "networkmanager" "wheel" "docker" "adbusers"
+      "networkmanager"
+      "wheel"
+      "docker"
+      "adbusers"
       "dialout"
     ];
     packages = with pkgs; [
       kdePackages.kate
-      spotify
+      spotify-adblock
       discord
-      arduino-ide arduino-cli
+      arduino-ide
+      arduino-cli
       droidcam
     ];
   };
@@ -141,16 +157,18 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify" "spotify-unwrapped"
-    "nvidia-x11" "nvidia-settings"
-    "slack"
-    "vscode-extension-ms-vsliveshare-vsliveshare"
-    "discord"
-  ];
-  nixpkgs.config.permittedInsecurePackages = [
-    "segger-jlink-qt4-810"
-  ];
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "spotify"
+      "spotify-unwrapped"
+      "nvidia-x11"
+      "nvidia-settings"
+      "slack"
+      "vscode-extension-ms-vsliveshare-vsliveshare"
+      "discord"
+    ];
+  nixpkgs.config.permittedInsecurePackages = [ "segger-jlink-qt4-810" ];
   nixpkgs.config.segger-jlink.acceptLicense = true;
 
   documentation = {
@@ -184,33 +202,60 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Flakes requires git
-    git tig
-    wget curl
-    brave firefox nyxt
-    moreutils less eza
-    cheese scrot peek
-    yq jq colordiff
+    git
+    tig
+    wget
+    curl
+    brave
+    firefox
+    nyxt
+    moreutils
+    less
+    eza
+    cheese
+    scrot
+    peek
+    yq
+    jq
+    colordiff
     ripgrep
     kitty
     libreoffice
-    gnome-keyring seahorse
-    ranger pcmanfm lxmenu-data shared-mime-info
-    docker docker-compose
-    zip unzip
-    numlockx xsecurelock xclip
-    i3 i3-resurrect dunst libnotify
+    gnome-keyring
+    seahorse
+    ranger
+    kdePackages.dolphin
+    lxmenu-data
+    shared-mime-info
+    docker
+    docker-compose
+    zip
+    unzip
+    numlockx
+    xsecurelock
+    xclip
+    i3
+    i3-resurrect
+    dunst
+    libnotify
     dconf
     gimp
     vlc
     home-manager
     keepassxc
-    pavucontrol ncpamixer
-    rofi rofi-pass
+    pavucontrol
+    ncpamixer
+    rofi
+    rofi-pass
     jmtpfs
     khal
-    foliate calibre
-    tauon picard audacity
+    foliate
+    calibre
+    tauon
+    picard
+    audacity
     wireshark
+    playerctl
     #qbittorrent
   ];
 
@@ -240,6 +285,11 @@
 
   programs.dconf.enable = true;
 
+  programs.ghidra = {
+    enable = true;
+    gdb = true;
+  };
+
   programs.neovim = {
     enable = true;
     withPython3 = true;
@@ -250,7 +300,15 @@
     configure = {
       customRC = ''
         set number relativenumber
+        set tabstop=4 shiftwidth=4
+        syntax on
+        set ruler
+        set smarttab
       '';
+      packages.myPlugins = with pkgs.vimPlugins; {
+        start = [ guess-indent-nvim ];
+        opt = [ ];
+      };
     };
   };
 
@@ -258,14 +316,10 @@
     enableDefaultPackages = true;
     fontDir.enable = true;
 
-    packages = [
-      pkgs.fantasque-sans-mono
-    ];
+    packages = [ pkgs.fantasque-sans-mono ];
 
     fontconfig.enable = true;
-    fontconfig.defaultFonts.monospace = [
-      "Fantasque Sans Mono"
-    ];
+    fontconfig.defaultFonts.monospace = [ "Fantasque Sans Mono" ];
   };
 
   # List services that you want to enable:
@@ -274,7 +328,10 @@
   services.udisks2.enable = true;
   services.devmon.enable = true;
 
-  services.udev.packages = [ pkgs.nrf-udev pkgs.segger-jlink ];
+  services.udev.packages = [
+    pkgs.nrf-udev
+    pkgs.segger-jlink
+  ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

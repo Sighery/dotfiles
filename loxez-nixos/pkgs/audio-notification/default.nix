@@ -1,5 +1,14 @@
-{ lib, stdenv, fetchFromGitHub, bash, coreutils, gawk, wireplumber, bc, makeWrapper }:
-
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  bash,
+  coreutils,
+  gawk,
+  wireplumber,
+  bc,
+  makeWrapper,
+}:
 
 stdenv.mkDerivation rec {
   pname = "audio-notification";
@@ -12,7 +21,10 @@ stdenv.mkDerivation rec {
     sha256 = "OjujJMhrqFugeGQg+jJbjIGCspDfpE7YJNpkwaAMXa0=";
   };
 
-  buildInputs = [ coreutils bash ];
+  buildInputs = [
+    coreutils
+    bash
+  ];
   nativeBuildInputs = [ makeWrapper ];
 
   dontBuild = true;
@@ -22,7 +34,14 @@ stdenv.mkDerivation rec {
     cp -a audio_notification.sh $out/bin/audio-notification
     chmod +x $out/bin/audio-notification
     wrapProgram $out/bin/audio-notification \
-      --prefix PATH : ${ lib.makeBinPath [ bash wireplumber bc gawk ] }
+      --prefix PATH : ${
+        lib.makeBinPath [
+          bash
+          wireplumber
+          bc
+          gawk
+        ]
+      }
   '';
 
   meta = with lib; {

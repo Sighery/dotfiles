@@ -1,5 +1,13 @@
-{ lib, stdenv, fetchFromGitHub, bash, coreutils, gawk, libpulseaudio, alsaLib }:
-
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  bash,
+  coreutils,
+  gawk,
+  libpulseaudio,
+  alsaLib,
+}:
 
 stdenv.mkDerivation rec {
   pname = "i3-volume";
@@ -12,7 +20,13 @@ stdenv.mkDerivation rec {
     sha256 = "1xihl6h6grqgk7qll1knqvxnryfqni6317lrlbww0sk71l3w0ryv";
   };
 
-  buildInputs = [ coreutils bash gawk libpulseaudio alsaLib ];
+  buildInputs = [
+    coreutils
+    bash
+    gawk
+    libpulseaudio
+    alsaLib
+  ];
 
   dontBuild = true;
 

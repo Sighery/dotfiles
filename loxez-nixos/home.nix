@@ -7,7 +7,8 @@
     ./home-sighery/kitty.nix
     ./home-sighery/rofi.nix
     ./home-sighery/dunst.nix
-    #./home-sighery/mimeapps.nix
+    ./home-sighery/neovim.nix
+    ./home-sighery/mimeapps.nix
   ];
 
   home.username = "sighery";
@@ -80,7 +81,10 @@
     enable = true;
 
     enableBashIntegration = true;
-    extraFlags = [ "--quiet" "--noask" ];
+    extraFlags = [
+      "--quiet"
+      "--noask"
+    ];
   };
 
   xdg.configFile."khal/config".text = ''
@@ -95,7 +99,7 @@
       [[home]]
         path = ${config.home.homeDirectory}/.calendars/home/
   '';
-  
+
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
@@ -103,46 +107,45 @@
     includes = [
       {
         condition = "gitdir:~/Programming/";
-	
-	contents = {
-	  user = {  
+
+        contents = {
+          user = {
             email = "11218602+Sighery@users.noreply.github.com";
-	    name = "Sighery";
+            name = "Sighery";
             signingKey = "9454A24E1B5E963078B6E9317C02D10683ADCFB8";
-	  };
+          };
 
-	  commit = {
-	    gpgSign = "true";
-	  };
+          commit = {
+            gpgSign = "true";
+          };
 
-	  core = {
-	    pager = "less -x1,5";
-	  };
+          core = {
+            pager = "less -x1,5";
+          };
 
-	  rerere = {
-	    enabled = "true";
-	  };
+          rerere = {
+            enabled = "true";
+          };
 
-	  status = {
-	    showUntrackedFiles = "all";
-	  };
+          status = {
+            showUntrackedFiles = "all";
+          };
 
-	  format = {
-	    pretty = "fuller";
-	  };
-	};
+          format = {
+            pretty = "fuller";
+          };
+        };
       }
     ];
 
   };
-  
+
   programs.ssh = {
     enable = true;
-    
+
+    addKeysToAgent = "yes";
+
     matchBlocks = {
-      "*" = {
-        extraOptions."AddKeysToAgent" = "yes";
-      };
       "github.com" = {
         user = "11218602+Sighery@users.noreply.github.com";
         identityFile = "~/.ssh/lexoz_github";
@@ -160,7 +163,7 @@
       };
       "kscribe" = {
         user = "root";
-        hostname = "192.168.0.43";
+        hostname = "192.168.0.113";
         identityFile = "~/.ssh/kscribe";
         identitiesOnly = true;
       };

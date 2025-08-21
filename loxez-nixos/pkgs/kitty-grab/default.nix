@@ -1,5 +1,10 @@
-{ lib, stdenv, fetchFromGitHub, coreutils, kitty }:
-
+{
+  lib,
+  stdenv,
+  fetchFromGitHub,
+  coreutils,
+  kitty,
+}:
 
 stdenv.mkDerivation rec {
   pname = "kitty-grab";
@@ -12,7 +17,10 @@ stdenv.mkDerivation rec {
     sha256 = "1x13wfgz3mbmvnhnr24inmc7934b4ims9qmrikaly9cmgkp2xsdz";
   };
 
-  buildInputs = [ coreutils kitty ];
+  buildInputs = [
+    coreutils
+    kitty
+  ];
 
   dontBuild = true;
 

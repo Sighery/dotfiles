@@ -76,11 +76,32 @@
         "type": "github"
       }
     },
+    "patched-spotify": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1747771465,
+        "narHash": "sha256-aeNFOPPWtamrkb9/pdSqOWxtcr07f9Gqo0RRd5gQNZs=",
+        "owner": "NL-TCH",
+        "repo": "nur-packages",
+        "rev": "9762f014bf6f6115da22547eba3698a95be3ab01",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NL-TCH",
+        "repo": "nur-packages",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "fantasque-sans-mono-nixos": "fantasque-sans-mono-nixos",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "patched-spotify": "patched-spotify"
       }
     },
     "systems": {
