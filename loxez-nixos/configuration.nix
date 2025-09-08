@@ -261,6 +261,9 @@
     #qbittorrent
   ];
 
+  # Fix for Dolphin lacking file associations
+  environment.etc."xdg/menus/applications.menu".source = "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+
   environment.variables = {
     BROWSER = "brave";
     TERMINAL = "kitty";
