@@ -155,7 +155,7 @@
     matchBlocks = {
       "github.com" = {
         user = "11218602+Sighery@users.noreply.github.com";
-        identityFile = "~/.ssh/lexoz_github";
+        identityFile = "~/.ssh/loxez_github";
         identitiesOnly = true;
       };
       "gitlab.com" = {
@@ -164,7 +164,7 @@
       };
       "kpw5" = {
         user = "root";
-        hostname = "192.168.0.43";
+        hostname = "192.168.0.44";
         identityFile = "~/.ssh/kpw5";
         identitiesOnly = true;
       };
