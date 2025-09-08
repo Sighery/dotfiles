@@ -117,7 +117,7 @@
           "${mod}+Return" = "exec ${pkgs.i3}/bin/i3-sensible-terminal";
           "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show combi";
           "${mod}+F1" = "exec ${pkgs.vscodium}/bin/codium";
-          "${mod}+F2" = "exec ${pkgs.brave}/bin/brave";
+          "${mod}+F2" = "exec ${pkgs.brave}/bin/brave --password-store=basic";
           "${mod}+Shift+F2" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+F3" = "exec ${pkgs.i3}/bin/i3-sensible-terminal ${pkgs.ranger}/bin/ranger";
           "${mod}+Shift+F3" = "exec ${pkgs.kdePackages.dolphin}/bin/dolphin";
