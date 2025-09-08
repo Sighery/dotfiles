@@ -256,6 +256,8 @@
     audacity
     wireshark
     playerctl
+    ghidra gdb
+    minicom tio
     #qbittorrent
   ];
 
