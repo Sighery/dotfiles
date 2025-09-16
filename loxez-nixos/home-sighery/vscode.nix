@@ -159,6 +159,7 @@
         "docker-compose.yaml" = "yaml";
         "*.auto.tfvars" = "terraform";
         "*.tfvars" = "terraform";
+        "*.h" = "c";
       };
       "workbench.colorCustomizations" = {
         "editorRuler.foreground" = "#FF4081";
