@@ -1,0 +1,100 @@
+{
+	"NewTabPage": {
+		"CustomizeChromeExplicitlyClosed": true
+	},
+	"brave": {
+		"ad_block": {
+			"developer_mode": true
+		},
+		"brave_private_new_tab": {
+			"private_window_disclaimer_dismissed": true
+		},
+		"default_private_search_provider_guid": "485bf7d3-0215-45af-87dc-538868000001",
+		"enable_window_closing_confirm": false,
+		"fb_embed_default": false,
+		"has_seen_brave_welcome_page": true,
+		"location_bar_is_wide": true,
+		"new_tab_page": {
+			"show_branded_background_image": false,
+			"show_brave_news": false,
+			"show_rewards": false,
+			"show_together": false
+		},
+		"rewards": {
+			"show_brave_rewards_button_in_location_bar": false
+		},
+		"shields": {
+			"advanced_view_enabled": true
+		},
+		"show_bookmarks_button": false,
+		"show_side_panel_button": false,
+		"sidebar": {
+			"hidden_built_in_items": [
+				7
+			],
+			"item_added_feedback_bubble_shown_count": 1,
+			"last_used_built_in_item_type": 0,
+			"sidebar_items": [
+				{
+					"built_in_item_type": 1,
+					"type": 0
+				},
+				{
+					"built_in_item_type": 2,
+					"type": 0
+				},
+				{
+					"built_in_item_type": 3,
+					"type": 0
+				},
+				{
+					"built_in_item_type": 4,
+					"type": 0
+				}
+			]
+		},
+		"today": {
+			"should_show_toolbar_button": false
+		},
+		"twitter_embed_default": false,
+		"wallet": {
+			"show_wallet_icon_on_toolbar": false
+		}
+	},
+	"browser": {
+		"app_window_placement": {
+			"DevToolsApp": {
+				"always_on_top": false,
+				"bottom": 1297,
+				"left": 3462,
+				"maximized": false,
+				"right": 4614,
+				"top": 1,
+				"work_area_bottom": 1299,
+				"work_area_left": 0,
+				"work_area_right": 4616,
+				"work_area_top": 0
+			}
+		}
+	},
+	"credentials_enable_autosignin": false,
+	"credentials_enable_service": false,
+	"default_search_provider": {
+		"guid": "485bf7d3-0215-45af-87dc-538868000001"
+	},
+	"extensions": {
+		"ui": {
+			"developer_mode": true
+		}
+	},
+	"payments": {
+		"can_make_payment_enabled": false
+	},
+	"protocol_handler": {
+		"allowed_origin_protocol_pairs": {
+			"https://open.spotify.com": {
+				"spotify": true
+			}
+		}
+	}
+}
