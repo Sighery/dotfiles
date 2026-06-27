@@ -2,11 +2,11 @@
   "nodes": {
     "dotfiles-secrets": {
       "locked": {
-        "lastModified": 1782402211,
-        "narHash": "sha256-Ef6jT+pfbBHvVdgWldrTkzYh0a0+a2MXotJAVTs0a9w=",
+        "lastModified": 1782566681,
+        "narHash": "sha256-yE/5EzvFuJkkAuhxcNFQZnCRIFVZkqczLUQcXYMuc3I=",
         "owner": "Sighery",
         "repo": "dotfiles-secrets",
-        "rev": "1c67c32ea3c205806aad93085d8199eea577a905",
+        "rev": "d464ab56771e7e422141058e360fc986582f43b1",
         "type": "github"
       },
       "original": {
@@ -22,15 +22,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1781184346,
-        "narHash": "sha256-cZRlW47U6A2nWvAmnZeeO6Xvq23gxYbVLel4KxqOrcQ=",
-        "owner": "nix-community",
+        "lastModified": 1782504937,
+        "narHash": "sha256-2fwBTmBj+JbADkpcxJnT+VdsYPnrbXYArch3g9zpw2c=",
+        "owner": "Sighery",
         "repo": "home-manager",
-        "rev": "ea6d221d7aa85652d014b6f719dddf036037515b",
+        "rev": "1cd9e9c2a90da2e5d0b1c066988b003239e6f84b",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "Sighery",
         "ref": "release-26.05",
         "repo": "home-manager",
         "type": "github"
@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781199525,
-        "narHash": "sha256-vI8gDgoltpQeLVr/qeier+c09xEQLtV213RcQWwYufQ=",
+        "lastModified": 1782406982,
+        "narHash": "sha256-VeQRy8XJOpCIch2/FHU9KmuU6H8OPjG6TIrfhvaGWFg=",
         "owner": "Sighery",
         "repo": "sighery-nixpkgs",
-        "rev": "9f4566f6fbb29275a47871398f87843057ade46e",
+        "rev": "cadb6216c418a98ba389cb731375262ec0a8390b",
         "type": "github"
       },
       "original": {
