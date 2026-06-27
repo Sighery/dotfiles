@@ -22,7 +22,7 @@
     ../common/main.nix
 
     ../common/secrets-setup.nix
-    ./syncthing.nix
+    ../common/secrets-syncthing.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
