@@ -4,27 +4,17 @@ let
   hostname = osConfig.networking.hostName;
 in
 {
-  sops.secrets."syncthing/gui_pass" = {
-    mode = "0400";
-  };
-  sops.secrets."syncthing/key" = {
-    mode = "0400";
-  };
-  sops.secrets."syncthing/cert" = {
-    mode = "0400";
-  };
-
   services.syncthing = {
     enable = true;
 
-    key = config.sops.secrets."syncthing/key".path;
-    cert = config.sops.secrets."syncthing/cert".path;
+    key = osConfig.sops.secrets."syncthing/key".path;
+    cert = osConfig.sops.secrets."syncthing/cert".path;
 
     guiAddress = inputs.dotfiles-secrets."${hostname}".syncthing.gui_address;
     # syncthing generate --home=path/ --gui-user=user --gui-password=-
     guiCredentials = {
       username = inputs.dotfiles-secrets."${hostname}".syncthing.gui_user;
-      passwordFile = config.sops.secrets."syncthing/gui_pass".path;
+      passwordFile = osConfig.sops.secrets."syncthing/gui_pass".path;
     };
 
     overrideDevices = false;

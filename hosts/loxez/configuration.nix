@@ -20,12 +20,12 @@
 
     ../common/main.nix
 
+    ../common/secrets-setup.nix
+    ../common/secrets-syncthing.nix
+
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
-  sops.defaultSopsFile = "${inputs.dotfiles-secrets}/secrets/${config.networking.hostName}/main.yaml";
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [

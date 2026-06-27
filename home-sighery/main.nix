@@ -27,9 +27,6 @@
   home.homeDirectory = "/home/sighery";
   home.stateVersion = "25.05";
 
-  sops.defaultSopsFile = "${inputs.dotfiles-secrets}/secrets/${osConfig.networking.hostName}/main.yaml";
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-
   home.packages = with pkgs; [
     i3-balance-workspace
   ];

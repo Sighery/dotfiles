@@ -6,15 +6,14 @@
     ../common/neovim.nix
     ../common/openssh.nix
 
+    ../common/secrets-setup.nix
+
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
     ./users.nix
     ./nginx.nix
     ./fail2ban.nix
   ];
-
-  sops.defaultSopsFile = "${inputs.dotfiles-secrets}/secrets/${config.networking.hostName}/main.yaml";
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;

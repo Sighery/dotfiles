@@ -21,14 +21,12 @@
     ../common/wireless.nix
     ../common/main.nix
 
+    ../common/secrets-setup.nix
     ./syncthing.nix
 
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
-  sops.defaultSopsFile = "${inputs.dotfiles-secrets}/secrets/${config.networking.hostName}/main.yaml";
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   networking.hostName = "tiber";
 
