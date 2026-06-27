@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.gpg = {
@@ -17,8 +17,13 @@
 
   services.gpg-agent = {
     enable = true;
+    enableBashIntegration = true;
+
+    enableSshSupport = false;
 
     defaultCacheTtl = 86400;
     maxCacheTtl = 86400;
+
+    pinentry.package = pkgs.pinentry-curses;
   };
 }

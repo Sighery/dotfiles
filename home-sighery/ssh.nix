@@ -1,5 +1,8 @@
-{ inputs, ... }:
+{ osConfig, inputs, ... }:
 
+let
+  hostname = osConfig.networking.hostName;
+in
 {
   programs.ssh = {
     enable = true;
@@ -16,19 +19,9 @@
     # '';
 
     settings = {
-      "*" = {
-        forwardAgent = true;
-        addKeysToAgent = "yes";
-        serverAliveInterval = 0;
-        serverAliveCountMax = 3;
-        userKnownHostsFile = "~/.ssh/known_hosts";
-      };
       "github.com" = {
         user = inputs.dotfiles-secrets.git.github.personal_email;
-        identityFile = [
-          "~/.ssh/loxez_github"
-          "~/.ssh/tiber_github"
-        ];
+        identityFile = "~/.ssh/${hostname}_github";
         identitiesOnly = true;
       };
       "gitlab.com" = {
@@ -135,17 +128,19 @@
         identitiesOnly = true;
         WarnWeakCrypto = "no";
       };
+      "*" = {
+        ForwardAgent = false;
+        AddKeysToAgent = "yes";
+        Compression = false;
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlMaster = "no";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        ControlPersist = "no";
+      };
     };
   };
 
-  programs.keychain = {
-    enable = true;
-
-    enableBashIntegration = true;
-    extraFlags = [
-      "--quiet"
-      "--noask"
-    ];
-    keys = [ ];
-  };
+  services.ssh-agent.enable = true;
 }
