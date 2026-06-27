@@ -15,6 +15,10 @@ let
     [Definition]
     failregex = ^<HOST> - - .+? "(\\\w+){5,}
   '';
+  nginx-cookie-handshake-filter = pkgs.writeText "nginx-cookie-handshake" ''
+    [Definition]
+    failregex = ^<HOST> - - .+?[Cc]ookie:\s*?mstshash=
+  '';
   nginx-404-filter = pkgs.writeText "nginx-404" ''
     [Definition]
     failregex = ^<HOST>.+?"(\w+) .*?" 404
@@ -126,6 +130,16 @@ in
       port = "http,https";
     };
 
+    jails.nginx-cookie-handshake.settings = {
+      enabled = true;
+      filter = "nginx-cookie-handshake";
+      backend = "auto";
+      logpath = nginx-logpath;
+      maxretry = 1;
+      banaction = "iptables-multiport";
+      port = "http,https";
+    };
+
     # This rule will trigger when over 10 404s happen within 10 seconds
     jails.nginx-404.settings = {
       enabled = true;
@@ -142,5 +156,6 @@ in
   environment.etc."fail2ban/filter.d/nginx-444.local".source = nginx-444-filter;
   environment.etc."fail2ban/filter.d/nginx-ssh-probe.local".source = nginx-ssh-probe-filter;
   environment.etc."fail2ban/filter.d/nginx-ssl-handshake.local".source = nginx-ssl-handshake-filter;
+  environment.etc."fail2ban/filter.d/nginx-cookie-handshake.local".source = nginx-cookie-handshake-filter;
   environment.etc."fail2ban/filter.d/nginx-404.local".source = nginx-404-filter;
 }
