@@ -54,7 +54,7 @@ in
         user = "wilem";
         hostname = "sighery.com";
         port = builtins.elemAt inputs.dotfiles-secrets.wilem.ssh.ports 0;
-        identityFile = "~/.ssh/wilem_wilem";
+        identityFile = "~/.ssh/wilem_wilem-${hostname}";
         identitiesOnly = true;
       };
       # "kcolor-116" = lib.hm.dag.entryAfter [ "*" ] {

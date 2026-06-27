@@ -15,7 +15,10 @@
       "wheel"
     ];
     openssh.authorizedKeys.keys = [
+      # loxez
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAWoGIqTR7VVVGX7kawtK9cSCwZzj4ifHz2uEb/u1f1u"
+      # tiber
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFF90HgMiRdJwQE5OKQYBKThlT0NPXJcOsOGid1JRuY9"
     ];
   };
 
