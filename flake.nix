@@ -118,6 +118,7 @@
 
           ./hosts/wilem/configuration.nix
           sighery-nixpkgs.nixosModules.goaccess
+          sighery-nixpkgs.nixosModules.syncthing-relay
 
           sops-nix.nixosModules.sops
         ];

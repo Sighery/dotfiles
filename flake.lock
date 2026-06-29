@@ -2,11 +2,11 @@
   "nodes": {
     "dotfiles-secrets": {
       "locked": {
-        "lastModified": 1782566681,
-        "narHash": "sha256-yE/5EzvFuJkkAuhxcNFQZnCRIFVZkqczLUQcXYMuc3I=",
+        "lastModified": 1782754948,
+        "narHash": "sha256-k01AmNl2GrUSbPMj+Z4AysijAc886dEQXfJCLXbptAM=",
         "owner": "Sighery",
         "repo": "dotfiles-secrets",
-        "rev": "d464ab56771e7e422141058e360fc986582f43b1",
+        "rev": "c7bc684498b6ea73e8aba7296437959473e1b3fe",
         "type": "github"
       },
       "original": {
@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782406982,
-        "narHash": "sha256-VeQRy8XJOpCIch2/FHU9KmuU6H8OPjG6TIrfhvaGWFg=",
+        "lastModified": 1782752982,
+        "narHash": "sha256-CzzzzXcgLAdqGTLEqe3aLy3F5roiKZTPQ0Lklh2qgas=",
         "owner": "Sighery",
         "repo": "sighery-nixpkgs",
-        "rev": "cadb6216c418a98ba389cb731375262ec0a8390b",
+        "rev": "38110bc27c255ddec3156feffc8f9677ab0decac",
         "type": "github"
       },
       "original": {

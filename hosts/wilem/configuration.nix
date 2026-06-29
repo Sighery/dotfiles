@@ -10,9 +10,11 @@
 
     ./hardware-configuration.nix
     ./networking.nix # generated at runtime by nixos-infect
+
     ./users.nix
     ./nginx.nix
     ./fail2ban.nix
+    ./syncthing-relay.nix
   ];
 
   boot.tmp.cleanOnBoot = true;

@@ -27,7 +27,7 @@ in
 
         startBrowser = false;
 
-        globalAnnounceEnabled = false;
+        globalAnnounceEnabled = true;
         localAnnounceEnabled = true;
 
         listenAddresses =
