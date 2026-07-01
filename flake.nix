@@ -106,6 +106,36 @@
         specialArgs = { inherit inputs; };
       };
 
+      nixosConfigurations.sonar = nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        modules = [
+          {
+            nixpkgs.overlays = [
+              sighery-nixpkgs.overlays.default
+            ];
+          }
+
+          ./hosts/sonar/configuration.nix
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.sharedModules = [
+              sops-nix.homeManagerModules.sops
+            ];
+            home-manager.extraSpecialArgs = { inherit inputs; };
+
+            home-manager.users.sighery = import ./home-sighery/main.nix;
+          }
+
+          sops-nix.nixosModules.sops
+        ];
+
+        specialArgs = { inherit inputs; };
+      };
+
       nixosConfigurations.wilem = nixpkgs.lib.nixosSystem {
         inherit system;
 
