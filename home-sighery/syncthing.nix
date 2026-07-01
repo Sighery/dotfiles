@@ -4,6 +4,8 @@ let
   hostname = osConfig.networking.hostName;
 in
 {
+  home.file."${inputs.dotfiles-secrets.syncthing.keepass_path}/.keep".text = "";
+
   services.syncthing = {
     enable = true;
 
@@ -34,9 +36,11 @@ in
           inputs.dotfiles-secrets."${hostname}".syncthing.listenAddresses;
       };
 
-      devices = lib.filterAttrs (
-        name: _: name != hostname
-      ) inputs.dotfiles-secrets.syncthing.devices;
+      devices = lib.filterAttrs
+        (
+          name: _: name != hostname
+        )
+        inputs.dotfiles-secrets.syncthing.devices;
 
       folders = inputs.dotfiles-secrets."${hostname}".syncthing.folders;
     };
