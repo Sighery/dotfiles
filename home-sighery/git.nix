@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
+{ lib, osConfig, pkgs, inputs, ... }:
 
+let
+  hostname = osConfig.networking.hostName;
+in
 {
   programs.git = {
     enable = true;
@@ -44,6 +47,7 @@
           };
         };
       }
-    ];
+    ]
+    ++ lib.optional (hostname == "sonar") inputs.dotfiles-secrets.sonar.work_git_git;
   };
 }

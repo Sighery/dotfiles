@@ -1,4 +1,4 @@
-{ osConfig, inputs, ... }:
+{ lib, osConfig, inputs, ... }:
 
 let
   hostname = osConfig.networking.hostName;
@@ -139,7 +139,8 @@ in
         ControlPath = "~/.ssh/master-%r@%n:%p";
         ControlPersist = "no";
       };
-    };
+    }
+    // lib.optionalAttrs (hostname == "sonar") inputs.dotfiles-secrets.sonar.work_git_ssh;
   };
 
   services.ssh-agent.enable = true;

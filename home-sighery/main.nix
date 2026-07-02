@@ -33,6 +33,7 @@
 
   home.file."Pictures/.keep".text = "";
   home.file."Programming/.keep".text = "";
+  home.file."Work/.keep".text = "";
 
   home.file.".colordiffrc".text = ''
     banner=no
