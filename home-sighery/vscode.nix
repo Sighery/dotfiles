@@ -84,6 +84,16 @@
         command = "workbench.action.quickInputBack";
         when = "inQuickOpen";
       }
+      {
+        key = "ctrl+shift+c";
+        command = "copyRelativeFilePath";
+        when = "editorFocus";
+      }
+      {
+        key = "ctrl+alt+c";
+        command = "copyFilePath";
+        when = "editorFocus";
+      }
     ];
 
     profiles.default.userSettings = {
