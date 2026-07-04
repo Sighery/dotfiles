@@ -1,9 +1,8 @@
-{ config
-, lib
-, pkgs
-, ...
-}:
+{ config, lib, pkgs, ... }:
 
+let
+  antislop-settings = lib.importJSON "${pkgs.vscode-antislop-settings}/settings.json";
+in
 {
   programs.vscodium = {
     enable = true;
@@ -96,7 +95,7 @@
       }
     ];
 
-    profiles.default.userSettings = {
+    profiles.default.userSettings = lib.recursiveUpdate antislop-settings {
       "update.mode" = "manual";
       "liveshare.diagnosticMode" = true;
       "liveshare.diagnosticLogging" = true;
@@ -111,79 +110,13 @@
       "editor.insertSpaces" = false;
       "window.menuBarVisibility" = "hidden";
       "window.enableMenuBarMnemonics" = false;
-      # == Gitlens annoying rebase editor ==
+
+      # Gitlens annoying rebase editor
       "gitlens.rebaseEditor.openOnPausedRebase" = "false";
       "workbench.editorAssociations" = {
         "git-rebase-todo" = "default";
       };
-      # == AI slop ==
-      "chat.disableAIFeatures" = true;
-      "workbench.settings.showAISearchToggle" = false;
-      "accessibility.verbosity.inlineChat" = false;
-      "accessibility.verbosity.panelChat" = false;
-      "ansible.lightspeed.suggestions.waitWindow" = 360000;
-      "chat.agent.enabled" = false;
-      "chat.agent.maxRequests" = 0;
-      "chat.commandCenter.enabled" = false;
-      "chat.detectParticipant.enabled" = false;
-      "chat.extensionTools.enabled" = false;
-      "chat.focusWindowOnConfirmation" = false;
-      "chat.implicitContext.enabled" = {
-        "panel" = "never";
-      };
-      "chat.implicitContext.suggestedContext" = false;
-      "chat.instructionsFilesLocations" = {
-        ".github/instructions" = false;
-      };
-      "chat.mcp.access" = "none";
-      "chat.mcp.discovery.enabled" = {
-        "claude-desktop" = false;
-        "windsurf" = false;
-        "cursor-global" = false;
-        "cursor-workspace" = false;
-      };
-      "chat.promptFiles" = false;
-      "chat.promptFilesLocations" = {
-        ".github/prompts" = false;
-      };
-      "chat.sendElementsToChat.attachCSS" = false;
-      "chat.sendElementsToChat.attachImages" = false;
-      "chat.sendElementsToChat.enabled" = false;
-      "chat.setupFromDialog" = false;
-      "chat.showAgentSessionsViewDescription" = false;
-      "chat.tools.todos.showWidget" = false;
-      "chat.useAgentsMdFile" = false;
-      "chat.useFileStorage" = false;
-      "dataWrangler.experiments.copilot.enabled" = false;
-      "diffEditor.ignoreTrimWhitespace" = false;
-      "github.copilot.editor.enableAutoCompletions" = false;
-      "github.copilot.editor.enableCodeActions" = false;
-      "github.copilot.enable" = false;
-      "github.copilot.nextEditSuggestions.enabled" = false;
-      "github.copilot.renameSuggestions.triggerAutomatically" = false;
-      "githubPullRequests.codingAgent.enabled" = false;
-      "githubPullRequests.experimental.chat" = false;
-      "gitlab.duoChat.enabled" = false;
-      "inlineChat.holdToSpeech" = false;
-      "inlineChat.lineNaturalLanguageHint" = false;
-      "mcp" = {
-        "inputs" = [ ];
-        "servers" = { };
-      };
-      "notebook.experimental.generate" = false;
-      "python.analysis.aiCodeActions" = {
-        "convertFormatString" = false;
-        "convertLambdaToNamedFunction" = false;
-        "generateDocstring" = false;
-        "generateSymbol" = false;
-        "implementAbstractClasses" = false;
-      };
-      "python.experiments.enabled" = false;
-      "remote.SSH.experimental.chat" = false;
-      "telemetry.feedback.enabled" = false;
-      "terminal.integrated.initialHint" = false;
-      "workbench.editor.empty.hint" = "hidden";
-      # == AI slop ==
+
       "workbench.sideBar.location" = "right";
       "workbench.activityBar.location" = "hidden";
       "workbench.secondarySideBar.defaultVisibility" = "hidden";

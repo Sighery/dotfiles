@@ -85,11 +85,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782752982,
-        "narHash": "sha256-CzzzzXcgLAdqGTLEqe3aLy3F5roiKZTPQ0Lklh2qgas=",
+        "lastModified": 1783165606,
+        "narHash": "sha256-BmmcyBSsZ7xPu4TyVo1JDyj7ASK6nOo4kFEfaa2CRoI=",
         "owner": "Sighery",
         "repo": "sighery-nixpkgs",
-        "rev": "38110bc27c255ddec3156feffc8f9677ab0decac",
+        "rev": "d096dd553bdaf844effcec708cc521e30e9ef3bb",
         "type": "github"
       },
       "original": {
