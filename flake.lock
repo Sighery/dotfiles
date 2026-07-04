@@ -22,11 +22,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1782504937,
-        "narHash": "sha256-2fwBTmBj+JbADkpcxJnT+VdsYPnrbXYArch3g9zpw2c=",
+        "lastModified": 1783151475,
+        "narHash": "sha256-zCUom1HnYDxwjwhBZ6TNJgIDQhP5v3TbpjYVFXITwxM=",
         "owner": "Sighery",
         "repo": "home-manager",
-        "rev": "1cd9e9c2a90da2e5d0b1c066988b003239e6f84b",
+        "rev": "9aa500ad005814478948e17e77d188e34ae0552d",
         "type": "github"
       },
       "original": {
