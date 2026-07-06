@@ -34,4 +34,8 @@
 
   users.users.sighery.extraGroups = [ "docker" ];
   virtualisation.docker.enableOnBoot = true;
+
+  environment.systemPackages = with pkgs; [
+    remmina
+  ];
 }
