@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   sops.secrets."wireless" = {
@@ -22,4 +22,8 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    wpa_supplicant_gui
+  ];
 }

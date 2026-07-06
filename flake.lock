@@ -2,11 +2,11 @@
   "nodes": {
     "dotfiles-secrets": {
       "locked": {
-        "lastModified": 1782977163,
-        "narHash": "sha256-X5zolszM9obS6hUc77cy+zr8LbRBpImAT1NudRhM4LQ=",
+        "lastModified": 1783348064,
+        "narHash": "sha256-gOzOo0EPtQoNtuzt9qB1yHb21eojJ9W8nXT2HFb5M1k=",
         "owner": "Sighery",
         "repo": "dotfiles-secrets",
-        "rev": "487e50384018ea6cee5d880934633810a15e2065",
+        "rev": "145d0fa03a68f97eddbe124fac95cb5b059a9384",
         "type": "github"
       },
       "original": {
