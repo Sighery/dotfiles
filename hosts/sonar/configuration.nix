@@ -31,4 +31,7 @@
 
   networking.hostName = "sonar";
   system.stateVersion = "26.05";
+
+  users.users.sighery.extraGroups = [ "docker" ];
+  virtualisation.docker.enableOnBoot = true;
 }
