@@ -18,6 +18,7 @@
       ../common/documentation.nix
       ../common/users.nix
       ../common/i18n.nix
+      ../common/arandr.nix
 
       ../common/wireless.nix
       ../common/main.nix
