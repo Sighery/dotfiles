@@ -20,10 +20,11 @@
       ../common/i18n.nix
       ../common/arandr.nix
 
-      ../common/wireless.nix
+      ../common/secrets-setup.nix
+
+      ../common/wireless-networkmanager.nix
       ../common/main.nix
 
-      ../common/secrets-setup.nix
       ../common/secrets-syncthing.nix
 
       # Include the results of the hardware scan.
