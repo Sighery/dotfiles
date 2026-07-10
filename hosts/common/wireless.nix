@@ -17,9 +17,6 @@
       "${inputs.dotfiles-secrets.wireless.home_ssid}" = {
         pskRaw = "ext:home_psk";
       };
-      "${inputs.dotfiles-secrets.wireless.work_ssid}" = {
-        pskRaw = "ext:work_psk";
-      };
     };
   };
 
