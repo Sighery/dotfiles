@@ -12,6 +12,7 @@
 
   environment.systemPackages = [
     pkgs.networkmanagerapplet
+    pkgs.networkmanager_dmenu
   ];
 
   networking.networkmanager = {

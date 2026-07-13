@@ -21,6 +21,7 @@
     ./ssh.nix
     ./git.nix
     ./syncthing.nix
+    ./networkmanager-dmenu.nix
   ];
 
   home.username = "sighery";
