@@ -17,6 +17,7 @@
     ../common/documentation.nix
     ../common/users.nix
     ../common/i18n.nix
+    ../common/brave-policies.nix
     ../common/arandr.nix
 
     ../common/wireless.nix

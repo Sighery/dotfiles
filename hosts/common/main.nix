@@ -115,32 +115,6 @@
   environment.etc."xdg/menus/applications.menu".source =
     "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
-  # Brave managed configuration
-  environment.etc."/brave/policies/managed/GroupPolicy.json".text = builtins.toJSON {
-    BraveRewardsDisabled = 1;
-    BraveWalletDisabled = 1;
-    BraveAIChatEnabled = 0;
-    BraveNewsDisabled = 1;
-    BraveP3AEnabled = "Disabled";
-    BraveStatsPingEnabled = 0;
-    BraveWebDiscoveryEnabled = 0;
-    AIModeSettings = 1;
-    GenAILocalFoundationalModelSettings = 0;
-    AutofillPredictionSettings = 2;
-    CreateThemesSettings = 2;
-    DevToolsGenAiSettings = 1;
-    FindsSettings = 2;
-    GeminiActOnWebSettings = 1;
-    GeminiSettings = 1;
-    GenAIInlineImageSettings = 2;
-    GenAIPhotoEditingSettings = 2;
-    GenAISmartGroupingSettings = 2;
-    GenAIVcBackgroundSettings = 2;
-    GenAiChromeOsSmartActionsSettings = 2;
-    GenAiDefaultSettings = 2;
-    AutofillCreditCardEnabled = false;
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
