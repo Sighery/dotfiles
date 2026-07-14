@@ -22,6 +22,7 @@
     ./git.nix
     ./syncthing.nix
     ./networkmanager-dmenu.nix
+    ./dbeaver.nix
   ];
 
   home.username = "sighery";
