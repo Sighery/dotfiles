@@ -172,6 +172,10 @@ in
       "crates.upToDateDecorator" = "";
       "rust-analyzer.inlayHints.typeHints" = false;
       "rust-analyzer.inlayHints.parameterHints" = false;
+      "go.survey.prompt" = false;
+      "go.showWelcome" = false;
+      "go.toolsManagement.autoUpdate" = false;
+      "go.toolsManagement.checkForUpdates" = "off";
       "files.exclude" = {
         "**/.git" = false;
       };
