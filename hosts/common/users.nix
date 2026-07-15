@@ -11,8 +11,6 @@
       "dialout"
     ];
     packages = with pkgs; [
-      kdePackages.kate
-      spotify
       audio-notification
       xclipboard
     ] ++ lib.optionals
@@ -20,6 +18,8 @@
         config.networking.hostName == "loxez"
           || config.networking.hostName == "tiber"
       ) [
+      pkgs.kdePackages.kate
+      pkgs.spotify
       pkgs.discord
     ];
   };

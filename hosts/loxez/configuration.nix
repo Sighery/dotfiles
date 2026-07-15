@@ -4,6 +4,7 @@
   imports = [
     ../common/i3wm.nix
     ../common/env-packages.nix
+    ../common/env-packages-personal.nix
     ../common/env-aliases.nix
     ../common/env-variables.nix
     ../common/nix-experiments.nix

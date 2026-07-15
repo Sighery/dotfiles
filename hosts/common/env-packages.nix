@@ -1,8 +1,7 @@
 { pkgs, ... }:
 
 {
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # To search, run: nix search wget
   environment.systemPackages = with pkgs; [
     # Flakes requires git
     git
@@ -42,7 +41,6 @@
     unzip
     unrar
     rar
-    steam-run
     numlockx
     xsecurelock
     xclip
@@ -53,32 +51,15 @@
     gimp-with-plugins
     gimpPlugins.resynthesizer
     tree
-    vlc
     keepassxc
     pavucontrol
     ncpamixer
     rofi
     rofi-pass
-    jmtpfs
     khal
-    calibre
-    tauon
-    wireshark
     playerctl
-    ghidra
     gdb
-    minicom
-    tio
-    scrcpy
-    scrcpy-rofi
-    ffmpeg-helpers
-    gcc
-    gnum4
-    gnumake
     file
-    yt-dlp
-    ffmpeg
-    qbittorrent
     inetutils
     screen
   ];
