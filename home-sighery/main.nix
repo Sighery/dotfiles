@@ -23,6 +23,7 @@
     ./syncthing.nix
     ./networkmanager-dmenu.nix
     ./dbeaver.nix
+    ./spotify.nix
   ];
 
   home.username = "sighery";
