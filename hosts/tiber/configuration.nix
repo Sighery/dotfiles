@@ -20,6 +20,7 @@
     ../common/i18n.nix
     ../common/brave-policies.nix
     ../common/arandr.nix
+    ../common/laptops.nix
 
     ../common/wireless.nix
     ../common/main.nix

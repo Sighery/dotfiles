@@ -16,6 +16,8 @@
         #volumebin = "${i3-volume}/bin/i3-volume";
         volumebin = "${pkgs.wireplumber}/bin/wpctl";
         audionotif = "${pkgs.audio-notification}/bin/audio-notification";
+        brightbin = "${pkgs.brightnessctl}/bin/brightnessctl";
+        brightnotif = "${pkgs.brightness-notification}/bin/brightness-notification";
         statuscmd = "i3status";
         # i3blocks uses SIGRTMIN+10 by default, i3status uses SIGUSR1 by default
         statussig = "SIGUSR1";
@@ -152,6 +154,9 @@
             ''exec --no-startup-id "${pkgs.playerctl}/bin/playerctl --player=spotify,%any next"'';
           "XF86AudioPrev" =
             ''exec --no-startup-id "${pkgs.playerctl}/bin/playerctl --player=spotify,%any previous"'';
+
+          "XF86MonBrightnessUp" = "exec --no-startup-id ${brightbin} set +5% && ${brightnotif}";
+          "XF86MonBrightnessDown" = "exec --no-startup-id ${brightbin} set 5%- && ${brightnotif}";
 
           "${mod}+j" = "focus left";
           "${mod}+Left" = "focus left";
