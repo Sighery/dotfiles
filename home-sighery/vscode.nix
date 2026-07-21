@@ -176,6 +176,7 @@ in
       "go.showWelcome" = false;
       "go.toolsManagement.autoUpdate" = false;
       "go.toolsManagement.checkForUpdates" = "off";
+      "editor.acceptSuggestionOnCommitCharacter" = false;
       "files.exclude" = {
         "**/.git" = false;
       };
