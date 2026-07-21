@@ -27,6 +27,7 @@ in
         rust-lang.rust-analyzer
         james-yu.latex-workshop
         streetsidesoftware.code-spell-checker
+        vscodevim.vim
       ])
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
