@@ -177,6 +177,8 @@ in
       "go.showWelcome" = false;
       "go.toolsManagement.autoUpdate" = false;
       "go.toolsManagement.checkForUpdates" = "off";
+      "security.workspace.trust.banner" = "never";
+      "security.workspace.trust.startupPrompt" = "never";
       "editor.acceptSuggestionOnCommitCharacter" = false;
       "files.exclude" = {
         "**/.git" = false;
