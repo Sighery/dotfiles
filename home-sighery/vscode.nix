@@ -308,7 +308,7 @@ in
         "editor.insertSpaces" = true;
         "editor.tabSize" = 2;
       };
-      "[javascript][typescript]" = {
+      "[javascript][typescript][typescriptreact]" = {
         "editor.insertSpaces" = true;
         "editor.tabSize" = 2;
         "editor.rulers" = [
