@@ -28,6 +28,7 @@
       id = "work_wifi";
       type = "wifi";
       autoconnect = true;
+      autoconnect-priority = 300;
     };
     wifi = {
       mode = "infrastructure";
@@ -39,6 +40,8 @@
     };
     ipv4 = {
       method = "auto";
+      route-metric = 10;
+      dns-priority = 1;
     };
     ipv6 = {
       method = "auto";
