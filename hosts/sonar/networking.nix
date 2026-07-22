@@ -60,8 +60,7 @@
       method = "auto";
     };
     ipv6 = {
-      addr-gen-mode = "stable-privacy";
-      method = "auto";
+      method = "disabled";
     };
     vpn = {
       gateway = "$VPN_GATEWAY";
