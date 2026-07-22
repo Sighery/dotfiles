@@ -181,6 +181,7 @@ in
       "security.workspace.trust.startupPrompt" = "never";
       "editor.acceptSuggestionOnCommitCharacter" = false;
       "extensions.ignoreRecommendations" = true;
+      "vim.smartRelativeLine" = true;
       "files.exclude" = {
         "**/.git" = false;
       };
