@@ -180,6 +180,7 @@ in
       "security.workspace.trust.banner" = "never";
       "security.workspace.trust.startupPrompt" = "never";
       "editor.acceptSuggestionOnCommitCharacter" = false;
+      "extensions.ignoreRecommendations" = true;
       "files.exclude" = {
         "**/.git" = false;
       };
