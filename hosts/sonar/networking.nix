@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   sops.secrets."networkmanager/wifi/work_ssid" = { };
@@ -49,35 +49,37 @@
     };
   };
 
-  networking.networkmanager.ensureProfiles.profiles."Work VPN" = {
-    connection = {
-      id = "work_vpn";
-      type = "vpn";
-      permissions = "user:sighery:;";
-      autoconnect = false;
+  networking.networkmanager.ensureProfiles.profiles."Work VPN" =
+    lib.recursiveUpdate inputs.dotfiles-secrets.sonar.work_vpn_nm_config {
+      connection = {
+        id = "work_vpn";
+        type = "vpn";
+        permissions = "user:sighery:;";
+        autoconnect = false;
+      };
+      ipv4 = {
+        method = "auto";
+        never-default = true;
+      };
+      ipv6 = {
+        method = "disabled";
+      };
+      vpn = {
+        gateway = "$VPN_GATEWAY";
+        ipsec-enabled = "yes";
+        ipsec-psk-flags = "0";
+        machine-auth-type = "psk";
+        machine-certpass-flags = "0";
+        mru = "1400";
+        mtu = "1400";
+        password-flags = "0";
+        service-type = "org.freedesktop.NetworkManager.l2tp";
+        user = "$VPN_USER";
+        user-auth-type = "password";
+      };
+      vpn-secrets = {
+        password = "$VPN_PASSWORD";
+        ipsec-psk = "$VPN_IPSEC_PSK";
+      };
     };
-    ipv4 = {
-      method = "auto";
-    };
-    ipv6 = {
-      method = "disabled";
-    };
-    vpn = {
-      gateway = "$VPN_GATEWAY";
-      ipsec-enabled = "yes";
-      ipsec-psk-flags = "0";
-      machine-auth-type = "psk";
-      machine-certpass-flags = "0";
-      mru = "1400";
-      mtu = "1400";
-      password-flags = "0";
-      service-type = "org.freedesktop.NetworkManager.l2tp";
-      user = "$VPN_USER";
-      user-auth-type = "password";
-    };
-    vpn-secrets = {
-      password = "$VPN_PASSWORD";
-      ipsec-psk = "$VPN_IPSEC_PSK";
-    };
-  };
 }
