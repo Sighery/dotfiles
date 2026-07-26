@@ -29,6 +29,11 @@ in
         identityFile = "~/.ssh/id_gitlab";
         identitiesOnly = true;
       };
+      "codeberg.org" = {
+        user = inputs.dotfiles-secrets.git.codeberg.personal_email;
+        identityFile = "~/.ssh/${hostname}_codeberg";
+        identitiesOnly = true;
+      };
       "saterpi3" = {
         user = "sighery";
         hostname = "192.168.0.30";

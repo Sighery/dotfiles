@@ -47,6 +47,21 @@ in
           };
         };
       }
+      {
+        condition = "hasconfig:remote.*.url:*://*codeberg.org/**";
+
+        contents = {
+          user = {
+            email = inputs.dotfiles-secrets.git.codeberg.personal_email;
+            name = "Sighery";
+            signingKey = "9454A24E1B5E963078B6E9317C02D10683ADCFB8";
+          };
+
+          commit = {
+            gpgSign = "true";
+          };
+        };
+      }
     ]
     ++ lib.optional (hostname == "sonar") inputs.dotfiles-secrets.sonar.work_git_git;
   };
