@@ -1,5 +1,8 @@
 { config, pkgs, inputs, ... }:
 
+let
+  relayPort = inputs.dotfiles-secrets.syncthing.relays.wilem.port;
+in
 {
   sops.secrets."syncthing-relay/key" = { };
   sops.secrets."syncthing-relay/cert" = { };
@@ -12,15 +15,16 @@
   services.syncthing.relay = {
     enable = true;
 
-    port = inputs.dotfiles-secrets.syncthing.relays.wilem.port;
-
-    enableStatusSrv = false;
+    port = relayPort;
 
     key = config.sops.secrets."syncthing-relay/key".path;
     cert = config.sops.secrets."syncthing-relay/cert".path;
     token = config.sops.secrets."tokens/wilem".path;
 
-    providedBy = "Sighery";
+    statusListenAddress = null;
+    statusPort = null;
+
+    providedBy = "sighery.com";
 
     extraOptions = [
       "--debug"
@@ -28,6 +32,6 @@
   };
 
   networking.firewall.allowedTCPPorts = [
-    inputs.dotfiles-secrets.syncthing.relays.wilem.port
+    relayPort
   ];
 }
