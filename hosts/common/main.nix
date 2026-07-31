@@ -1,7 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ];
+  imports = [
+    ./dolphin-associations-fix.nix
+  ];
 
   #programs.nix-ld.enable = true;
   #programs.nix-ld.libraries = with pkgs; [
@@ -109,11 +111,6 @@
   #  "segger-jlink-qt4-874"
   #];
   #nixpkgs.config.segger-jlink.acceptLicense = true;
-
-
-  # Fix for Dolphin lacking file associations
-  environment.etc."xdg/menus/applications.menu".source =
-    "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
