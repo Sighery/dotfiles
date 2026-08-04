@@ -24,6 +24,7 @@
     ./networkmanager-dmenu.nix
     ./dbeaver.nix
     ./spotify.nix
+    ./laptops.nix
   ];
 
   home.username = "sighery";
