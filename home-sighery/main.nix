@@ -25,6 +25,8 @@
     ./dbeaver.nix
     ./spotify.nix
     ./laptops.nix
+
+    ./autorandr-sonar.nix
   ];
 
   home.username = "sighery";
