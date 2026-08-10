@@ -26,7 +26,7 @@
     ./spotify.nix
     ./laptops.nix
 
-    ./autorandr-sonar.nix
+    ./sonar/autorandr.nix
   ];
 
   home.username = "sighery";
@@ -35,7 +35,8 @@
 
   home.packages = with pkgs; [
     i3-balance-workspace
-  ];
+  ]
+  ++ lib.optional config.services.autorandr.enable pkgs.arandr;
 
   home.file."Pictures/.keep".text = "";
   home.file."Programming/.keep".text = "";
