@@ -41,6 +41,14 @@
   users.users.sighery.extraGroups = [ "docker" ];
   virtualisation.docker.enableOnBoot = true;
 
+  services.libinput = {
+    enable = true;
+
+    touchpad = {
+      accelProfile = "flat";
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     remmina
     dbeaver-bin
