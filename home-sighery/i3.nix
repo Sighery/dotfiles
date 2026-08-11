@@ -134,7 +134,8 @@
           #"XF86AudioRaiseVolume" = "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ ${volumestep}%+ && ${audionotif}";
           #"XF86AudioLowerVolume" = "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ ${volumestep}%- && ${audionotif}";
           #"XF86AudioMute" = "exec --no-startup-id ${volumebin} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${audionotif}";
-          "XF86AudioMute" = "exec --no-startup-id ${volumebin} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMute" =
+            "exec --no-startup-id ${volumebin} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${audionotif}";
           "XF86AudioRaiseVolume" =
             "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ ${volumestep}%+ && ${audionotif}";
           "XF86AudioLowerVolume" =
