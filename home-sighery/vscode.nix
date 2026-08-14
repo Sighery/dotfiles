@@ -165,6 +165,10 @@ in
       "gitlens.showWelcomeOnInstall" = false;
       "gitlens.showWhatsNewAfterUpgrades" = false;
       "gitlens.ai.enabled" = false;
+      "gitlens.plusFeatures.enabled" = false;
+      "gitlens.cloudPatches.enabled" = false;
+      "gitlens.advanced.skipOnboarding" = true;
+      "gitlens.telemetry.enabled" = false;
       "explorer.confirmDelete" = false;
       "go.useLanguageServer" = true;
       "explorer.confirmDragAndDrop" = false;
