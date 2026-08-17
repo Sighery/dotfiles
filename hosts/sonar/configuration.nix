@@ -19,8 +19,8 @@
       ../common/users.nix
       ../common/i18n.nix
       ../common/brave-policies.nix
-      ../common/arandr.nix
       ../common/laptops.nix
+      ../common/autorandr.nix
 
       ../common/secrets-setup.nix
 
