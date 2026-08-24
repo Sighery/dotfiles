@@ -10,6 +10,7 @@
       ../common/nix-experiments.nix
       ../common/fonts.nix
       ../common/neovim.nix
+      ../common/keyboards.nix
       ../common/logitech.nix
       ../common/audio.nix
       ../common/bluetooth.nix
