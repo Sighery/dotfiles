@@ -94,7 +94,7 @@
 
           criteria = [
             { class = "GParted"; }
-            { class = "Pavucontrol"; }
+            { class = "(?i)pavucontrol"; }
             { class = "(?i)virtualbox"; }
           ];
         };
