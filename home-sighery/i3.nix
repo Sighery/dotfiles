@@ -99,6 +99,17 @@
           ];
         };
 
+        assigns = {
+          "9" = [
+            {
+              class = "KeePassXC";
+            }
+            {
+              class = "Spotify";
+            }
+          ];
+        };
+
         gaps = {
           smartBorders = "on";
           smartGaps = true;
