@@ -27,6 +27,7 @@
     ./laptops.nix
 
     ./sonar/autorandr.nix
+    ./sonar/i3.nix
   ];
 
   home.username = "sighery";
