@@ -34,10 +34,10 @@ in
         identityFile = "~/.ssh/${hostname}_codeberg";
         identitiesOnly = true;
       };
-      "saterpi3" = {
-        user = "sighery";
-        hostname = "192.168.0.30";
-        identityFile = "~/.ssh/id_saterpi";
+      "panda" = {
+        user = "panda";
+        hostname = "192.168.0.193";
+        identityFile = "~/.ssh/panda_panda-${hostname}";
         identitiesOnly = true;
       };
       "kpw5" = {

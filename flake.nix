@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +27,7 @@
     { self
     , nixpkgs
     , nixpkgs-unstable
+    , disko
     , sops-nix
     , home-manager
     , sighery-nixpkgs
@@ -167,6 +172,24 @@
           ./hosts/wilem/configuration.nix
           sighery-nixpkgs.nixosModules.goaccess
           sighery-nixpkgs.nixosModules.syncthing-relay
+
+          sops-nix.nixosModules.sops
+        ];
+
+        specialArgs = { inherit inputs; };
+      };
+
+      nixosConfigurations.panda = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+
+        modules = [
+          disko.nixosModules.disko
+
+          {
+            system.stateVersion = stateVersion;
+            networking.hostName = "panda";
+          }
+          ./hosts/panda/configuration.nix
 
           sops-nix.nixosModules.sops
         ];

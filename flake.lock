@@ -1,12 +1,32 @@
 {
   "nodes": {
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1781152676,
+        "narHash": "sha256-RxWs5ND31KzTG7wvMM+PMfUjyNpmIEr999lqNARaM5o=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "ff8702b4de27f72b4c78573dfb89ec74e36abdf1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "dotfiles-secrets": {
       "locked": {
-        "lastModified": 1785095282,
-        "narHash": "sha256-lMU4Mm3uaJD9dTz1hapn6V6HJyo2obWyt4tCJB8GCe8=",
+        "lastModified": 1788042961,
+        "narHash": "sha256-e5hPCoEWxdG1N4S0iYHcNNQkvh3lsCg9HSUa4EfMdxw=",
         "owner": "Sighery",
         "repo": "dotfiles-secrets",
-        "rev": "23a196dd5ff9dd4beaabb656a6ea79732fe0cff2",
+        "rev": "c71f304105585a6a42af3610d3fdee28fd31d7ff",
         "type": "github"
       },
       "original": {
@@ -70,6 +90,7 @@
     },
     "root": {
       "inputs": {
+        "disko": "disko",
         "dotfiles-secrets": "dotfiles-secrets",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
