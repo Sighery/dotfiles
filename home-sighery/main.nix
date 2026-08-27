@@ -32,7 +32,7 @@
 
   home.username = "sighery";
   home.homeDirectory = "/home/sighery";
-  home.stateVersion = "26.05";
+  home.stateVersion = osConfig.system.stateVersion;
 
   home.packages = with pkgs; [
     i3-balance-workspace

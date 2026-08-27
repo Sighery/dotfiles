@@ -39,6 +39,8 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+      stateVersion = "26.05";
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
@@ -56,6 +58,10 @@
             ];
           }
 
+          {
+            system.stateVersion = stateVersion;
+            networking.hostName = "loxez";
+          }
           ./hosts/loxez/configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -86,6 +92,10 @@
             ];
           }
 
+          {
+            system.stateVersion = stateVersion;
+            networking.hostName = "tiber";
+          }
           ./hosts/tiber/configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -116,6 +126,10 @@
             ];
           }
 
+          {
+            system.stateVersion = stateVersion;
+            networking.hostName = "sonar";
+          }
           ./hosts/sonar/configuration.nix
 
           home-manager.nixosModules.home-manager
@@ -146,6 +160,10 @@
             ];
           }
 
+          {
+            system.stateVersion = stateVersion;
+            networking.hostName = "wilem";
+          }
           ./hosts/wilem/configuration.nix
           sighery-nixpkgs.nixosModules.goaccess
           sighery-nixpkgs.nixosModules.syncthing-relay

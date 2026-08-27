@@ -20,7 +20,6 @@
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
 
-  networking.hostName = "wilem";
   networking.domain = "";
   networking.firewall.enable = true;
 
@@ -36,6 +35,4 @@
   environment.systemPackages = with pkgs; [
     rrsync
   ];
-
-  system.stateVersion = "26.05";
 }
