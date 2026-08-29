@@ -7,8 +7,11 @@ in
   programs.vscodium = {
     enable = true;
 
+    mutableExtensionsDir = false;
+    profiles.default.enableExtensionUpdateCheck = false;
+
     profiles.default.extensions =
-      (with pkgs.vscode-extensions; [
+      with pkgs.vscode-extensions; [
         bbenoist.nix
         dbaeumer.vscode-eslint
         eamodio.gitlens
@@ -21,20 +24,25 @@ in
         ms-vsliveshare.vsliveshare
         serayuzgur.crates
         vadimcn.vscode-lldb
-        bungcip.better-toml
         stkb.rewrap
         redhat.vscode-yaml
         rust-lang.rust-analyzer
         james-yu.latex-workshop
         streetsidesoftware.code-spell-checker
         vscodevim.vim
-      ])
+      ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "atom-keybindings";
           publisher = "ms-vscode";
           version = "3.3.0";
           sha256 = "vzOb/DUV44JMzcuQJgtDB6fOpTKzq298WSSxVKlYE4o=";
+        }
+        {
+          name = "toml";
+          publisher = "be5invis";
+          version = "0.6.0";
+          sha256 = "sha256-yk7buEyQIw6aiUizAm+sgalWxUibIuP9crhyBaOjC2E=";
         }
       ];
 
