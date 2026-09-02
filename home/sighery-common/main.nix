@@ -44,12 +44,6 @@
     banner=no
   '';
 
-  programs.obs-studio.enable = true;
-  programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [
-    droidcam-obs
-    obs-pipewire-audio-capture
-  ];
-
   programs.screen = {
     enable = true;
     screenrc = ''

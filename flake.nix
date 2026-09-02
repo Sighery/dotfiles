@@ -78,7 +78,7 @@
             ];
             home-manager.extraSpecialArgs = { inherit (inputs) secrets; };
 
-            home-manager.users.sighery = ./home/sighery-common/main.nix;
+            home-manager.users.sighery = ./home/sighery-loxez/main.nix;
           }
 
           sops-nix.nixosModules.sops
