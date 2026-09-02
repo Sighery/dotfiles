@@ -1,10 +1,7 @@
-{ lib, pkgs, osConfig, ... }:
+{ ... }:
 
-let
-  hostname = osConfig.networking.hostName;
-in
 {
-  xsession.windowManager.i3.config.workspaceOutputAssign = lib.mkIf (hostname == "sonar") [
+  xsession.windowManager.i3.config.workspaceOutputAssign = [
     {
       workspace = "1";
       output = [ "eDP-1" ];

@@ -1,8 +1,6 @@
-{ lib, pkgs, osConfig, ... }:
+{ lib, ... }:
 
 let
-  hostname = osConfig.networking.hostName;
-
   edp1-fingerprint = "00ffffffffffff0030e464070000000000200104952213780238d5975e598e271c5054000000010101010101010101010101010101012e3680a070381f403020350058c21000001a582b80a070381f403020350058c21000001a000000fe004d39375946803135365746430a000000000000413199001000000a010a202000a7";
   edp1-config = {
     crtc = 0;
@@ -25,7 +23,7 @@ let
   };
 in
 {
-  programs.autorandr = lib.mkIf (hostname == "sonar") {
+  programs.autorandr = {
     enable = true;
 
     profiles.standalone = {
@@ -72,7 +70,7 @@ in
     };
   };
 
-  services.autorandr = lib.mkIf (hostname == "sonar") {
+  services.autorandr = {
     enable = true;
     ignoreLid = true;
     matchEdid = true;
