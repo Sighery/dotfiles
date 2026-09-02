@@ -46,9 +46,12 @@
 
   users.users.sighery.packages = with pkgs; [
     darktable
+    discord
     droidcam
+    kdePackages.kate
     ns-usbloader
     nsz
+    spotify
   ];
 
   # Allow unfree packages

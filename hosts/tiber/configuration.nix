@@ -40,6 +40,11 @@
     };
   };
 
+  users.users.sighery.packages = with pkgs; [
+    kdePackages.kate
+    spotify
+  ];
+
   users.users.sighery.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOxQ9pRCIOB5vbPl2CQiWJscbmX5Ct1hpbJXFJWL9QlA"
   ];
