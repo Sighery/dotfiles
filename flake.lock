@@ -20,21 +20,6 @@
         "type": "github"
       }
     },
-    "dotfiles-secrets": {
-      "locked": {
-        "lastModified": 1788042961,
-        "narHash": "sha256-e5hPCoEWxdG1N4S0iYHcNNQkvh3lsCg9HSUa4EfMdxw=",
-        "owner": "Sighery",
-        "repo": "dotfiles-secrets",
-        "rev": "c71f304105585a6a42af3610d3fdee28fd31d7ff",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Sighery",
-        "repo": "dotfiles-secrets",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -91,12 +76,27 @@
     "root": {
       "inputs": {
         "disko": "disko",
-        "dotfiles-secrets": "dotfiles-secrets",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "secrets": "secrets",
         "sighery-nixpkgs": "sighery-nixpkgs",
         "sops-nix": "sops-nix"
+      }
+    },
+    "secrets": {
+      "locked": {
+        "lastModified": 1788042961,
+        "narHash": "sha256-e5hPCoEWxdG1N4S0iYHcNNQkvh3lsCg9HSUa4EfMdxw=",
+        "owner": "Sighery",
+        "repo": "dotfiles-secrets",
+        "rev": "c71f304105585a6a42af3610d3fdee28fd31d7ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Sighery",
+        "repo": "dotfiles-secrets",
+        "type": "github"
       }
     },
     "sighery-nixpkgs": {

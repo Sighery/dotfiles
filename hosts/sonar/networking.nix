@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, secrets, ... }:
 
 {
   sops.secrets."networkmanager/wifi/work_ssid" = { };
@@ -50,7 +50,7 @@
   };
 
   networking.networkmanager.ensureProfiles.profiles."Work VPN" =
-    lib.recursiveUpdate inputs.dotfiles-secrets.sonar.work_vpn_nm_config {
+    lib.recursiveUpdate secrets.sonar.work_vpn_nm_config {
       connection = {
         id = "work_vpn";
         type = "vpn";

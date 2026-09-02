@@ -1,4 +1,4 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, secrets, ... }:
 
 {
   imports = [
@@ -23,7 +23,7 @@
   networking.domain = "";
   networking.firewall.enable = true;
 
-  services.openssh.ports = inputs.dotfiles-secrets.wilem.ssh.ports;
+  services.openssh.ports = secrets.wilem.ssh.ports;
 
   users.users.root.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnbrcZkPamaq6zB8lqfkbNno2C2+pAw0h+ZxrXChRiW"

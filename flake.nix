@@ -20,7 +20,7 @@
       url = "github:Sighery/sighery-nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dotfiles-secrets.url = "github:Sighery/dotfiles-secrets?shallow=1";
+    secrets.url = "github:Sighery/dotfiles-secrets";
   };
 
   outputs =
@@ -31,7 +31,7 @@
     , sops-nix
     , home-manager
     , sighery-nixpkgs
-    , dotfiles-secrets
+    , secrets
     , ...
     }@inputs:
     let
@@ -76,7 +76,7 @@
             home-manager.sharedModules = [
               sops-nix.homeManagerModules.sops
             ];
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit (inputs) secrets; };
 
             home-manager.users.sighery = ./home-sighery/main.nix;
           }
@@ -84,7 +84,7 @@
           sops-nix.nixosModules.sops
         ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit (inputs) secrets; };
       };
 
       nixosConfigurations.tiber = nixpkgs.lib.nixosSystem {
@@ -110,7 +110,7 @@
             home-manager.sharedModules = [
               sops-nix.homeManagerModules.sops
             ];
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit (inputs) secrets; };
 
             home-manager.users.sighery = ./home-sighery/main.nix;
           }
@@ -118,7 +118,7 @@
           sops-nix.nixosModules.sops
         ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit (inputs) secrets; };
       };
 
       nixosConfigurations.sonar = nixpkgs.lib.nixosSystem {
@@ -144,7 +144,7 @@
             home-manager.sharedModules = [
               sops-nix.homeManagerModules.sops
             ];
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit (inputs) secrets; };
 
             home-manager.users.sighery = ./home-sighery/main.nix;
           }
@@ -152,7 +152,7 @@
           sops-nix.nixosModules.sops
         ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit (inputs) secrets; };
       };
 
       nixosConfigurations.wilem = nixpkgs.lib.nixosSystem {
@@ -176,7 +176,7 @@
           sops-nix.nixosModules.sops
         ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit (inputs) secrets; };
       };
 
       nixosConfigurations.panda = nixpkgs.lib.nixosSystem {
@@ -194,7 +194,7 @@
           sops-nix.nixosModules.sops
         ];
 
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit (inputs) secrets; };
       };
     };
 }

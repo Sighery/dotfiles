@@ -1,10 +1,10 @@
-{ config, lib, osConfig, inputs, ... }:
+{ config, lib, osConfig, secrets, ... }:
 
 let
   hostname = osConfig.networking.hostName;
 in
 {
-  home.file."${inputs.dotfiles-secrets.syncthing.keepass_path}/.keep".text = "";
+  home.file."${secrets.syncthing.keepass_path}/.keep".text = "";
 
   services.syncthing = {
     enable = true;
@@ -12,10 +12,10 @@ in
     key = osConfig.sops.secrets."syncthing/key".path;
     cert = osConfig.sops.secrets."syncthing/cert".path;
 
-    guiAddress = inputs.dotfiles-secrets."${hostname}".syncthing.gui_address;
+    guiAddress = secrets."${hostname}".syncthing.gui_address;
     # syncthing generate --home=path/ --gui-user=user --gui-password=-
     guiCredentials = {
-      username = inputs.dotfiles-secrets."${hostname}".syncthing.gui_user;
+      username = secrets."${hostname}".syncthing.gui_user;
       passwordFile = osConfig.sops.secrets."syncthing/gui_pass".path;
     };
 
@@ -33,16 +33,16 @@ in
         localAnnounceEnabled = true;
 
         listenAddresses =
-          inputs.dotfiles-secrets."${hostname}".syncthing.listenAddresses;
+          secrets."${hostname}".syncthing.listenAddresses;
       };
 
       devices = lib.filterAttrs
         (
           name: _: name != hostname
         )
-        inputs.dotfiles-secrets.syncthing.devices;
+        secrets.syncthing.devices;
 
-      folders = inputs.dotfiles-secrets."${hostname}".syncthing.folders;
+      folders = secrets."${hostname}".syncthing.folders;
     };
   };
 

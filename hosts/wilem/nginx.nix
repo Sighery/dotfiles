@@ -1,4 +1,4 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, secrets, ... }:
 
 let
   nginx-301-redirects = pkgs.writeText "nginx-301-redirects.conf" ''
@@ -273,18 +273,18 @@ in
     enableNginx = false;
   };
 
-  sops.secrets."${inputs.dotfiles-secrets.wilem.acme.provider}/api-key" = {
+  sops.secrets."${secrets.wilem.acme.provider}/api-key" = {
     mode = "0400";
     owner = config.users.users.acme.name;
   };
-  sops.secrets."${inputs.dotfiles-secrets.wilem.acme.provider}/api-secret" = {
+  sops.secrets."${secrets.wilem.acme.provider}/api-secret" = {
     mode = "0400";
     owner = config.users.users.acme.name;
   };
 
   security.acme = {
     acceptTerms = true;
-    defaults.email = inputs.dotfiles-secrets.wilem.acme.email;
+    defaults.email = secrets.wilem.acme.email;
 
     certs."sighery.com" = {
       domain = "sighery.com";
@@ -292,12 +292,12 @@ in
         "www.sighery.com"
         "analytics.sighery.com"
       ];
-      dnsProvider = inputs.dotfiles-secrets.wilem.acme.provider;
+      dnsProvider = secrets.wilem.acme.provider;
       credentialFiles = {
-        "${lib.toUpper inputs.dotfiles-secrets.wilem.acme.provider}_API_KEY_FILE" =
-          config.sops.secrets."${inputs.dotfiles-secrets.wilem.acme.provider}/api-key".path;
-        "${lib.toUpper inputs.dotfiles-secrets.wilem.acme.provider}_API_SECRET_FILE" =
-          config.sops.secrets."${inputs.dotfiles-secrets.wilem.acme.provider}/api-secret".path;
+        "${lib.toUpper secrets.wilem.acme.provider}_API_KEY_FILE" =
+          config.sops.secrets."${secrets.wilem.acme.provider}/api-key".path;
+        "${lib.toUpper secrets.wilem.acme.provider}_API_SECRET_FILE" =
+          config.sops.secrets."${secrets.wilem.acme.provider}/api-secret".path;
       };
       dnsPropagationCheck = true;
     };

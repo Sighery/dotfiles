@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ secrets, ... }:
 
 {
   programs.keepassxc = {
@@ -28,6 +28,6 @@
 
         TrayIconAppearance = "monochrome-light";
       };
-    } // inputs.dotfiles-secrets.extraKeepassxcSettings;
+    } // secrets.extraKeepassxcSettings;
   };
 }

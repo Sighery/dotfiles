@@ -1,11 +1,11 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, secrets, ... }:
 
 {
   sops.secrets."networkmanager/wifi/home/ssid" = {
-    sopsFile = "${inputs.dotfiles-secrets}/secrets/common/networking-wireless.yaml";
+    sopsFile = "${secrets}/secrets/common/networking-wireless.yaml";
   };
   sops.secrets."networkmanager/wifi/home/psk" = {
-    sopsFile = "${inputs.dotfiles-secrets}/secrets/common/networking-wireless.yaml";
+    sopsFile = "${secrets}/secrets/common/networking-wireless.yaml";
   };
 
   systemd.network.wait-online.enable = false;

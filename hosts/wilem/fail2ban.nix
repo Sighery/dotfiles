@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, secrets, ... }:
 
 let
   nginx-logpath = "/var/log/nginx/access.log";
@@ -28,7 +28,7 @@ in
   services.fail2ban = {
     enable = true;
 
-    ignoreIP = inputs.dotfiles-secrets.wilem.fail2ban_ignoreips;
+    ignoreIP = secrets.wilem.fail2ban_ignoreips;
 
     extraPackages = with pkgs; [ ipset ];
     banaction = "iptables-ipset-proto6-allports";

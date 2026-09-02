@@ -1,14 +1,14 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, secrets, ... }:
 
 let
-  relayPort = inputs.dotfiles-secrets.syncthing.relays.wilem.port;
+  relayPort = secrets.syncthing.relays.wilem.port;
 in
 {
   sops.secrets."syncthing-relay/key" = { };
   sops.secrets."syncthing-relay/cert" = { };
 
   sops.secrets."tokens/wilem" = {
-    sopsFile = "${inputs.dotfiles-secrets}/secrets/common/syncthing-relay.yaml";
+    sopsFile = "${secrets}/secrets/common/syncthing-relay.yaml";
     restartUnits = [ "syncthing-relay.service" ];
   };
 

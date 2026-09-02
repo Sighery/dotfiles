@@ -1,4 +1,4 @@
-{ lib, osConfig, pkgs, inputs, ... }:
+{ lib, osConfig, pkgs, secrets, ... }:
 
 let
   hostname = osConfig.networking.hostName;
@@ -37,7 +37,7 @@ in
 
         contents = {
           user = {
-            email = inputs.dotfiles-secrets.git.github.personal_email;
+            email = secrets.git.github.personal_email;
             name = "Sighery";
             signingKey = "9454A24E1B5E963078B6E9317C02D10683ADCFB8";
           };
@@ -52,7 +52,7 @@ in
 
         contents = {
           user = {
-            email = inputs.dotfiles-secrets.git.codeberg.personal_email;
+            email = secrets.git.codeberg.personal_email;
             name = "Sighery";
             signingKey = "9454A24E1B5E963078B6E9317C02D10683ADCFB8";
           };
@@ -63,6 +63,6 @@ in
         };
       }
     ]
-    ++ lib.optional (hostname == "sonar") inputs.dotfiles-secrets.sonar.work_git_git;
+    ++ lib.optional (hostname == "sonar") secrets.sonar.work_git_git;
   };
 }

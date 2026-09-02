@@ -1,4 +1,4 @@
-{ lib, osConfig, inputs, ... }:
+{ lib, osConfig, secrets, ... }:
 
 let
   hostname = osConfig.networking.hostName;
@@ -20,7 +20,7 @@ in
 
     settings = {
       "github.com" = {
-        user = inputs.dotfiles-secrets.git.github.personal_email;
+        user = secrets.git.github.personal_email;
         identityFile = "~/.ssh/${hostname}_github";
         identitiesOnly = true;
       };
@@ -30,7 +30,7 @@ in
         identitiesOnly = true;
       };
       "codeberg.org" = {
-        user = inputs.dotfiles-secrets.git.codeberg.personal_email;
+        user = secrets.git.codeberg.personal_email;
         identityFile = "~/.ssh/${hostname}_codeberg";
         identitiesOnly = true;
       };
@@ -58,7 +58,7 @@ in
       "wilem" = {
         user = "wilem";
         hostname = "sighery.com";
-        port = builtins.elemAt inputs.dotfiles-secrets.wilem.ssh.ports 0;
+        port = builtins.elemAt secrets.wilem.ssh.ports 0;
         identityFile = "~/.ssh/wilem_wilem-${hostname}";
         identitiesOnly = true;
       };
@@ -145,7 +145,7 @@ in
         ControlPersist = "no";
       };
     }
-    // lib.optionalAttrs (hostname == "sonar") inputs.dotfiles-secrets.sonar.work_git_ssh;
+    // lib.optionalAttrs (hostname == "sonar") secrets.sonar.work_git_ssh;
   };
 
   services.ssh-agent.enable = true;
