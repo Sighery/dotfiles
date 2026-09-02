@@ -78,7 +78,7 @@
             ];
             home-manager.extraSpecialArgs = { inherit inputs; };
 
-            home-manager.users.sighery = import ./home-sighery/main.nix;
+            home-manager.users.sighery = ./home-sighery/main.nix;
           }
 
           sops-nix.nixosModules.sops
@@ -112,7 +112,7 @@
             ];
             home-manager.extraSpecialArgs = { inherit inputs; };
 
-            home-manager.users.sighery = import ./home-sighery/main.nix;
+            home-manager.users.sighery = ./home-sighery/main.nix;
           }
 
           sops-nix.nixosModules.sops
@@ -146,7 +146,7 @@
             ];
             home-manager.extraSpecialArgs = { inherit inputs; };
 
-            home-manager.users.sighery = import ./home-sighery/main.nix;
+            home-manager.users.sighery = ./home-sighery/main.nix;
           }
 
           sops-nix.nixosModules.sops
