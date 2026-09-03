@@ -3,24 +3,42 @@
 {
   sops.secrets."networkmanager/wifi/work_ssid" = { };
   sops.secrets."networkmanager/wifi/work_psk" = { };
-  sops.secrets."networkmanager/vpn/gateway" = { };
-  sops.secrets."networkmanager/vpn/user" = { };
-  sops.secrets."networkmanager/vpn/password" = { };
-  sops.secrets."networkmanager/vpn/ipsec_psk" = { };
+
+  sops.secrets."networkmanager/vpn/l2tp/gateway" = { };
+  sops.secrets."networkmanager/vpn/l2tp/user" = { };
+  sops.secrets."networkmanager/vpn/l2tp/password" = { };
+  sops.secrets."networkmanager/vpn/l2tp/ipsec_psk" = { };
+
+  sops.secrets."networkmanager/vpn/openvpn/remote" = { };
+  sops.secrets."networkmanager/vpn/openvpn/username" = { };
+  sops.secrets."networkmanager/vpn/openvpn/cert_pass" = { };
+  sops.secrets."networkmanager/vpn/openvpn/password" = { };
+  sops.secrets."networkmanager/vpn/openvpn/cipher" = { };
+  sops.secrets."networkmanager/vpn/openvpn/ca" = { };
+  sops.secrets."networkmanager/vpn/openvpn/cert" = { };
+  sops.secrets."networkmanager/vpn/openvpn/key" = { };
 
   networking.networkmanager.plugins = with pkgs; [
     networkmanager-fortisslvpn
     networkmanager-l2tp
     networkmanager-strongswan
+    networkmanager-openvpn
   ];
 
   networking.networkmanager.ensureProfiles.environmentFiles = [
     config.sops.secrets."networkmanager/wifi/work_ssid".path
     config.sops.secrets."networkmanager/wifi/work_psk".path
-    config.sops.secrets."networkmanager/vpn/gateway".path
-    config.sops.secrets."networkmanager/vpn/user".path
-    config.sops.secrets."networkmanager/vpn/password".path
-    config.sops.secrets."networkmanager/vpn/ipsec_psk".path
+
+    config.sops.secrets."networkmanager/vpn/l2tp/gateway".path
+    config.sops.secrets."networkmanager/vpn/l2tp/user".path
+    config.sops.secrets."networkmanager/vpn/l2tp/password".path
+    config.sops.secrets."networkmanager/vpn/l2tp/ipsec_psk".path
+
+    config.sops.secrets."networkmanager/vpn/openvpn/remote".path
+    config.sops.secrets."networkmanager/vpn/openvpn/username".path
+    config.sops.secrets."networkmanager/vpn/openvpn/cert_pass".path
+    config.sops.secrets."networkmanager/vpn/openvpn/password".path
+    config.sops.secrets."networkmanager/vpn/openvpn/cipher".path
   ];
 
   networking.networkmanager.ensureProfiles.profiles."Work Wifi" = {
@@ -49,10 +67,10 @@
     };
   };
 
-  networking.networkmanager.ensureProfiles.profiles."Work VPN" =
-    lib.recursiveUpdate secrets.sonar.work_vpn_nm_config {
+  networking.networkmanager.ensureProfiles.profiles."Work L2TP" =
+    lib.recursiveUpdate secrets.sonar.nm_config.work_l2tp {
       connection = {
-        id = "work_vpn";
+        id = "work_l2tp";
         type = "vpn";
         permissions = "user:sighery:;";
         autoconnect = false;
@@ -65,7 +83,7 @@
         method = "disabled";
       };
       vpn = {
-        gateway = "$VPN_GATEWAY";
+        gateway = "$L2TP_GATEWAY";
         ipsec-enabled = "yes";
         ipsec-psk-flags = "0";
         machine-auth-type = "psk";
@@ -74,12 +92,51 @@
         mtu = "1400";
         password-flags = "0";
         service-type = "org.freedesktop.NetworkManager.l2tp";
-        user = "$VPN_USER";
+        user = "$L2TP_USER";
         user-auth-type = "password";
       };
       vpn-secrets = {
-        password = "$VPN_PASSWORD";
-        ipsec-psk = "$VPN_IPSEC_PSK";
+        password = "$L2TP_PASSWORD";
+        ipsec-psk = "$L2TP_IPSEC_PSK";
+      };
+    };
+
+  networking.networkmanager.ensureProfiles.profiles."Work OpenVPN" =
+    lib.recursiveUpdate secrets.sonar.nm_config.work_openvpn {
+      connection = {
+        id = "work_openvpn";
+        type = "vpn";
+        autoconnect = false;
+      };
+      ipv4 = {
+        method = "auto";
+      };
+      ipv6 = {
+        method = "auto";
+      };
+      vpn = {
+        remote = "$OPENVPN_REMOTE";
+        auth = "none";
+        password-flags = "0";
+        cert-pass-flags = "0";
+        connection-type = "password-tls";
+        service-type = "org.freedesktop.NetworkManager.openvpn";
+        username = "$OPENVPN_USERNAME";
+        ca = config.sops.secrets."networkmanager/vpn/openvpn/ca".path;
+        cert = config.sops.secrets."networkmanager/vpn/openvpn/cert".path;
+        key = config.sops.secrets."networkmanager/vpn/openvpn/key".path;
+        cipher = "$OPENVPN_CIPHER";
+        challenge-response-flags = "2";
+        dev = "tun";
+        mssfix = "1420";
+        ping = "15";
+        ping-restart = "45";
+        reneg-seconds = "3600";
+        tunnel-mtu = "1500";
+      };
+      vpn-secrets = {
+        cert-pass = "$OPENVPN_CERT_PASS";
+        password = "$OPENVPN_PASSWORD";
       };
     };
 }
