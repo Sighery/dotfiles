@@ -41,6 +41,7 @@
   };
 
   users.users.sighery.packages = with pkgs; [
+    discord
     kdePackages.kate
     spotify
   ];
