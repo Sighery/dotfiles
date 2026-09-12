@@ -15,7 +15,7 @@ let
     [Definition]
     failregex = ^<HOST> - - .+? "(\\\w+){5,}
   '';
-  nginx-cookie-handshake-filter = pkgs.writeText "nginx-cookie-handshake" ''
+  nginx-rdp-discovery-filter = pkgs.writeText "nginx-rdp-discovery" ''
     [Definition]
     failregex = ^<HOST> - - .+?[Cc]ookie:\s*?mstshash=
   '';
@@ -130,9 +130,9 @@ in
       port = "http,https";
     };
 
-    jails.nginx-cookie-handshake.settings = {
+    jails.nginx-rdp-discovery.settings = {
       enabled = true;
-      filter = "nginx-cookie-handshake";
+      filter = "nginx-rdp-discovery";
       backend = "auto";
       logpath = nginx-logpath;
       maxretry = 1;
@@ -156,6 +156,6 @@ in
   environment.etc."fail2ban/filter.d/nginx-444.local".source = nginx-444-filter;
   environment.etc."fail2ban/filter.d/nginx-ssh-probe.local".source = nginx-ssh-probe-filter;
   environment.etc."fail2ban/filter.d/nginx-ssl-handshake.local".source = nginx-ssl-handshake-filter;
-  environment.etc."fail2ban/filter.d/nginx-cookie-handshake.local".source = nginx-cookie-handshake-filter;
+  environment.etc."fail2ban/filter.d/nginx-rdp-discovery.local".source = nginx-rdp-discovery-filter;
   environment.etc."fail2ban/filter.d/nginx-404.local".source = nginx-404-filter;
 }
