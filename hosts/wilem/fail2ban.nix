@@ -9,7 +9,7 @@ let
   '';
   nginx-ssh-probe-filter = pkgs.writeText "nginx-ssh-probe" ''
     [Definition]
-    failregex = ^<HOST> - - .*SSH-2.0-Go
+    failregex = ^<HOST> - - .*SSH-2.0-
   '';
   nginx-tls-handshake-filter = pkgs.writeText "nginx-tls-handshake" ''
     [Definition]
