@@ -11,7 +11,7 @@ let
     [Definition]
     failregex = ^<HOST> - - .*SSH-2.0-Go
   '';
-  nginx-ssl-handshake-filter = pkgs.writeText "nginx-ssl-handshake" ''
+  nginx-tls-handshake-filter = pkgs.writeText "nginx-tls-handshake" ''
     [Definition]
     failregex = ^<HOST> - - .+? "(\\\w+){5,}
   '';
@@ -120,9 +120,9 @@ in
       port = "http,https";
     };
 
-    jails.nginx-ssl-handshake.settings = {
+    jails.nginx-tls-handshake.settings = {
       enabled = true;
-      filter = "nginx-ssl-handshake";
+      filter = "nginx-tls-handshake";
       backend = "auto";
       logpath = nginx-logpath;
       maxretry = 1;
@@ -155,7 +155,7 @@ in
 
   environment.etc."fail2ban/filter.d/nginx-444.local".source = nginx-444-filter;
   environment.etc."fail2ban/filter.d/nginx-ssh-probe.local".source = nginx-ssh-probe-filter;
-  environment.etc."fail2ban/filter.d/nginx-ssl-handshake.local".source = nginx-ssl-handshake-filter;
+  environment.etc."fail2ban/filter.d/nginx-tls-handshake.local".source = nginx-tls-handshake-filter;
   environment.etc."fail2ban/filter.d/nginx-rdp-discovery.local".source = nginx-rdp-discovery-filter;
   environment.etc."fail2ban/filter.d/nginx-404.local".source = nginx-404-filter;
 }
