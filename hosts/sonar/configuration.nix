@@ -1,40 +1,42 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      ../common/i3wm.nix
-      ../common/env-packages.nix
-      ../common/env-aliases.nix
-      ../common/env-variables.nix
-      ../common/nix-experiments.nix
-      ../common/fonts.nix
-      ../common/neovim.nix
-      ../common/keyboards.nix
-      ../common/logitech.nix
-      ../common/audio.nix
-      ../common/bluetooth.nix
-      ../common/docker.nix
-      ../common/openssh.nix
-      ../common/documentation.nix
-      ../common/users.nix
-      ../common/i18n.nix
-      ../common/brave-policies.nix
-      ../common/laptops.nix
-      ../common/autorandr.nix
+  imports = [
+    ../common/i3wm.nix
+    ../common/env-packages.nix
+    ../common/env-aliases.nix
+    ../common/env-variables.nix
+    ../common/nix-experiments.nix
+    ../common/fonts.nix
+    ../common/neovim.nix
+    ../common/keyboards.nix
+    ../common/logitech.nix
+    ../common/audio.nix
+    ../common/bluetooth.nix
+    ../common/docker.nix
+    ../common/openssh.nix
+    ../common/documentation.nix
+    ../common/users.nix
+    ../common/i18n.nix
+    ../common/brave-policies.nix
+    ../common/laptops.nix
+    ../common/autorandr.nix
+    ../common/firefox.nix
+    ../common/dconf.nix
+    ../common/usb-automounting.nix
+    ../common/dolphin-associations-fix.nix
 
-      ../common/secrets-setup.nix
+    ../common/secrets-setup.nix
 
-      ../common/wireless-networkmanager.nix
-      ../common/main.nix
+    ../common/wireless-networkmanager.nix
+    ../common/main.nix
 
-      ../common/secrets-syncthing.nix
+    ../common/secrets-syncthing.nix
 
-      ./networking.nix
+    ./networking.nix
 
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+    ./hardware-configuration.nix
+  ];
 
   users.users.sighery.extraGroups = [ "docker" ];
   virtualisation.docker.enableOnBoot = true;
@@ -52,4 +54,6 @@
     remmina
     dbeaver-bin
   ];
+
+  networking.firewall.enable = false;
 }

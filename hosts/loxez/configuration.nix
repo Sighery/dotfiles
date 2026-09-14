@@ -19,13 +19,18 @@
     ../common/users.nix
     ../common/i18n.nix
     ../common/brave-policies.nix
+    ../common/firefox.nix
+    ../common/dconf.nix
+    ../common/usb-automounting.nix
+    ../common/dolphin-associations-fix.nix
+    ../common/kindles-networking.nix
+    ../common/ghidra.nix
 
     ../common/main.nix
 
     ../common/secrets-setup.nix
     ../common/secrets-syncthing.nix
 
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -40,8 +45,6 @@
     "armv6l-linux"
   ];
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   services.xserver.videoDrivers = [ "nvidia" ];
 
   users.users.sighery.packages = with pkgs; [
@@ -54,15 +57,12 @@
     spotify
   ];
 
-  # Allow unfree packages
   nixpkgs.config.permittedInsecurePackages = [
     "segger-jlink-qt4-810"
     "segger-jlink-qt4-874"
   ];
   nixpkgs.config.segger-jlink.acceptLicense = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     picard
     audacity
@@ -72,8 +72,6 @@
     qbittorrent
     android-tools
   ];
-
-  #nixpkgs.config.segger-jlink.acceptLicense = true;
 
   services.udev.packages = [
     pkgs.nrf-udev
@@ -89,9 +87,5 @@
     openFirewall = true;
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   networking.firewall.enable = false;
 }

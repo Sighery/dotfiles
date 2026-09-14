@@ -21,6 +21,10 @@
     ../common/brave-policies.nix
     ../common/arandr.nix
     ../common/laptops.nix
+    ../common/firefox.nix
+    ../common/dconf.nix
+    ../common/usb-automounting.nix
+    ../common/dolphin-associations-fix.nix
 
     ../common/wireless.nix
     ../common/main.nix
@@ -28,7 +32,6 @@
     ../common/secrets-setup.nix
     ../common/secrets-syncthing.nix
 
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -49,4 +52,6 @@
   users.users.sighery.openssh.authorizedKeys.keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOxQ9pRCIOB5vbPl2CQiWJscbmX5Ct1hpbJXFJWL9QlA"
   ];
+
+  networking.firewall.enable = false;
 }

@@ -46,6 +46,7 @@
       };
 
       stateVersion = "26.05";
+      timezone = "Europe/Vienna";
     in
     {
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
@@ -66,6 +67,7 @@
           {
             system.stateVersion = stateVersion;
             networking.hostName = "loxez";
+            time.timeZone = timezone;
           }
           ./hosts/loxez/configuration.nix
 
@@ -100,6 +102,7 @@
           {
             system.stateVersion = stateVersion;
             networking.hostName = "tiber";
+            time.timeZone = timezone;
           }
           ./hosts/tiber/configuration.nix
 
@@ -134,6 +137,7 @@
           {
             system.stateVersion = stateVersion;
             networking.hostName = "sonar";
+            time.timeZone = timezone;
           }
           ./hosts/sonar/configuration.nix
 
@@ -168,6 +172,7 @@
           {
             system.stateVersion = stateVersion;
             networking.hostName = "wilem";
+            time.timeZone = "Europe/Berlin";
           }
           ./hosts/wilem/configuration.nix
           sighery-nixpkgs.nixosModules.goaccess
@@ -188,6 +193,7 @@
           {
             system.stateVersion = stateVersion;
             networking.hostName = "panda";
+            time.timeZone = timezone;
           }
           ./hosts/panda/configuration.nix
 
