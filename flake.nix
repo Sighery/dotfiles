@@ -35,16 +35,20 @@
     , ...
     }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      unstablePkgs = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
+      forAllSystems =
+        import ./lib/for-all-systems.nix { inherit (nixpkgs) lib; };
+      allowUnfreePredicate =
+        import ./lib/unfree.nix { inherit (nixpkgs) lib; };
 
+      unstablePkgs =
+        forAllSystems [ "x86_64-linux" ] (
+          system: import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfreePredicate = allowUnfreePredicate;
+          }
+        );
+
+      system = "x86_64-linux";
       stateVersion = "26.05";
       timezone = "Europe/Vienna";
     in
@@ -59,12 +63,14 @@
             nixpkgs.overlays = [
               sighery-nixpkgs.overlays.default
               (_: _: {
-                davinci-resolve = unstablePkgs.davinci-resolve;
+                davinci-resolve = unstablePkgs.${system}.davinci-resolve;
               })
             ];
           }
 
           {
+            nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
+
             system.stateVersion = stateVersion;
             networking.hostName = "loxez";
             time.timeZone = timezone;
@@ -100,6 +106,8 @@
           }
 
           {
+            nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
+
             system.stateVersion = stateVersion;
             networking.hostName = "tiber";
             time.timeZone = timezone;
@@ -135,6 +143,8 @@
           }
 
           {
+            nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
+
             system.stateVersion = stateVersion;
             networking.hostName = "sonar";
             time.timeZone = timezone;

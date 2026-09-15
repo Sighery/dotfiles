@@ -57,25 +57,12 @@
     spotify
   ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "segger-jlink-qt4-810"
-    "segger-jlink-qt4-874"
-  ];
-  nixpkgs.config.segger-jlink.acceptLicense = true;
-
   environment.systemPackages = with pkgs; [
     picard
     audacity
-    nrfconnect
-    nrfconnect-bluetooth-low-energy
     davinci-resolve
     qbittorrent
     android-tools
-  ];
-
-  services.udev.packages = [
-    pkgs.nrf-udev
-    pkgs.segger-jlink
   ];
 
   services.udev.extraRules = ''
