@@ -1,8 +1,6 @@
-{ nixpkgs, nixpkgs-unstable, sops-nix, home-manager, disko, secrets, sighery-nixpkgs }:
+{ self, nixpkgs, nixpkgs-unstable, sops-nix, home-manager, disko, secrets, forAllSystems, stateVersion }:
 
 let
-  forAllSystems =
-    import ./lib/for-all-systems.nix { inherit (nixpkgs) lib; };
   allowUnfreePredicate =
     import ./lib/unfree.nix { inherit (nixpkgs) lib; };
 
@@ -17,8 +15,6 @@ let
       config.allowUnfreePredicate = allowUnfreePredicate;
     }
   );
-
-  stateVersion = "26.05";
 in
 {
   loxez = makeNixosSystem {
@@ -30,7 +26,7 @@ in
     extraModules = [
       {
         nixpkgs.overlays = [
-          sighery-nixpkgs.overlays.default
+          self.outputs.overlays.default
           (_: _: {
             davinci-resolve = unstablePkgs.x86_64-linux.davinci-resolve;
           })
@@ -49,7 +45,7 @@ in
     extraModules = [
       {
         nixpkgs.overlays = [
-          sighery-nixpkgs.overlays.default
+          self.outputs.overlays.default
         ];
       }
     ];
@@ -64,7 +60,7 @@ in
     extraModules = [
       {
         nixpkgs.overlays = [
-          sighery-nixpkgs.overlays.default
+          self.outputs.overlays.default
         ];
       }
     ];
@@ -80,12 +76,12 @@ in
     extraModules = [
       {
         nixpkgs.overlays = [
-          sighery-nixpkgs.overlays.default
+          self.outputs.overlays.default
         ];
       }
 
-      sighery-nixpkgs.nixosModules.goaccess
-      sighery-nixpkgs.nixosModules.syncthing-relay
+      self.outputs.nixosModules.goaccess
+      self.outputs.nixosModules.syncthing-relay
     ];
   };
 

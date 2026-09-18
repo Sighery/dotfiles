@@ -80,7 +80,6 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "secrets": "secrets",
-        "sighery-nixpkgs": "sighery-nixpkgs",
         "sops-nix": "sops-nix"
       }
     },
@@ -96,26 +95,6 @@
       "original": {
         "owner": "Sighery",
         "repo": "dotfiles-secrets",
-        "type": "github"
-      }
-    },
-    "sighery-nixpkgs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789498274,
-        "narHash": "sha256-xwOzWaFgceLBrzAzS2oyCOjGVoDZXtmQuQ2+ouah91o=",
-        "owner": "Sighery",
-        "repo": "sighery-nixpkgs",
-        "rev": "36da9da7a9aa5bd5c8534437d44825d436a8a30d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Sighery",
-        "repo": "sighery-nixpkgs",
         "type": "github"
       }
     },
