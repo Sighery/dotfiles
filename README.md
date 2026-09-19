@@ -1,6 +1,21 @@
 # Dotfiles
 
-## Remote deploy setup
+## Update packages
+
+Using [nix-update]:
+
+```sh
+nix run github:Mic92/nix-update -- --flake spotify-adblock
+```
+
+To specify some version
+
+```sh
+nix run github:Mic92/nix-update -- --flake vscode-antislop-settings --version=2a8fb23de3c44ecdd78bf5777da5d6db4b9ebe90
+```
+
+
+## Remote install setup
 
 Using [nixos-anywhere] and [disko]. First I generate the new SSH keys ahead of
 time:
@@ -39,6 +54,8 @@ nix run github:nix-community/nixos-anywhere -- \
 	--target-host "root@$TARGET_IP"
 ```
 
+### Remote deploy
+
 After that, I can deploy changes with this command (this builds in the
 remote):
 
@@ -52,7 +69,8 @@ nixos-rebuild \
 	switch
 ```
 
-### Private secrets flake
+
+## Private secrets flake
 
 My secrets, managed by sops-nix, as well as sensitive data that is not quite
 secrets, is in a separate private repository.
@@ -71,5 +89,7 @@ export NIX_CONFIG='access-tokens = github.com=pat_here'
 ```
 
 
+
+[nix-update]: https://github.com/Mic92/nix-update
 [nixos-anywhere]: https://github.com/nix-community/nixos-anywhere
 [disko]: https://github.com/nix-community/disko
