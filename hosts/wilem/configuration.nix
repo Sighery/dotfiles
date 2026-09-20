@@ -5,6 +5,7 @@
     ../common/nix-experiments.nix
     ../common/neovim.nix
     ../common/openssh.nix
+    ../common/binary-cache-pubkeys.nix
 
     ../common/secrets-setup.nix
 

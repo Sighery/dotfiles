@@ -25,7 +25,8 @@
     ../common/dolphin-associations-fix.nix
     ../common/kindles-networking.nix
     ../common/ghidra.nix
-    ../common/binary-cache-use.nix
+    ../common/binary-cache-pubkeys.nix
+    ../common/binary-cache-substituters.nix
 
     ../common/main.nix
 

@@ -25,7 +25,8 @@
     ../common/dconf.nix
     ../common/usb-automounting.nix
     ../common/dolphin-associations-fix.nix
-    ../common/binary-cache-use.nix
+    ../common/binary-cache-pubkeys.nix
+    ../common/binary-cache-substituters.nix
 
     ../common/wireless.nix
     ../common/main.nix
