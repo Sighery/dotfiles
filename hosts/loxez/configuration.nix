@@ -25,11 +25,15 @@
     ../common/dolphin-associations-fix.nix
     ../common/kindles-networking.nix
     ../common/ghidra.nix
+    ../common/binary-cache-use.nix
 
     ../common/main.nix
 
     ../common/secrets-setup.nix
     ../common/secrets-syncthing.nix
+
+    ../common/binary-cache-sign.nix
+    ../common/binary-cache-serve.nix
 
     ./hardware-configuration.nix
   ];
