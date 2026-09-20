@@ -25,12 +25,16 @@
     ../common/dconf.nix
     ../common/usb-automounting.nix
     ../common/dolphin-associations-fix.nix
+    ../common/binary-cache-use.nix
 
     ../common/wireless.nix
     ../common/main.nix
 
     ../common/secrets-setup.nix
     ../common/secrets-syncthing.nix
+
+    ../common/binary-cache-sign.nix
+    ../common/binary-cache-serve.nix
 
     ./hardware-configuration.nix
   ];

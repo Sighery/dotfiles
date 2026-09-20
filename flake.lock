@@ -85,11 +85,11 @@
     },
     "secrets": {
       "locked": {
-        "lastModified": 1789864993,
-        "narHash": "sha256-8a4jLnZEYWs96DmjTzp977GCbxnxZX8Dz5Jvv13T4aE=",
+        "lastModified": 1789940264,
+        "narHash": "sha256-X1dTxKtflDxvtLWRybxIHb4H54Lon0SL2piYz8hdsXo=",
         "owner": "Sighery",
         "repo": "dotfiles-secrets",
-        "rev": "fc2b4b05f1d4b49e6db6d8dfa143110f443bfc9e",
+        "rev": "53a26d8c1eb89527d8b80df66e48c8b453584db3",
         "type": "github"
       },
       "original": {
