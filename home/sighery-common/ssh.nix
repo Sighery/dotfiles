@@ -36,12 +36,33 @@ in
         identityFile = "~/.ssh/${hostname}_codeberg";
         identitiesOnly = true;
       };
+
       "panda" = {
         user = "panda";
         hostname = "192.168.0.193";
         identityFile = "~/.ssh/panda_panda-${hostname}";
         identitiesOnly = true;
       };
+      "wilem" = {
+        user = "wilem";
+        hostname = "sighery.com";
+        port = builtins.elemAt secrets.wilem.ssh.ports 0;
+        identityFile = "~/.ssh/wilem_wilem-${hostname}";
+        identitiesOnly = true;
+      };
+      "tiber" = {
+        user = "sighery";
+        hostname = secrets.home_lan.tiber_wlp;
+        identityFile = "~/.ssh/tiber_sighery-${hostname}";
+        identitiesOnly = true;
+      };
+      "loxez" = {
+        user = "sighery";
+        hostname = secrets.home_lan.loxez_eth;
+        identityFile = "~/.ssh/loxez_sighery-${hostname}";
+        identitiesOnly = true;
+      };
+
       "kpw5" = {
         user = "root";
         #hostname = "192.168.0.43";
@@ -56,13 +77,6 @@ in
         identityFile = "~/.ssh/kpw5";
         identitiesOnly = true;
         WarnWeakCrypto = "no";
-      };
-      "wilem" = {
-        user = "wilem";
-        hostname = "sighery.com";
-        port = builtins.elemAt secrets.wilem.ssh.ports 0;
-        identityFile = "~/.ssh/wilem_wilem-${hostname}";
-        identitiesOnly = true;
       };
       # "kcolor-116" = lib.hm.dag.entryAfter [ "*" ] {
       #   #match = ''originalhost kcolor exec "${pkgs.netcat}/bin/nc -z -w1 192.168.0.116 22 >/dev/null 2>&1"'';
@@ -135,6 +149,7 @@ in
         identitiesOnly = true;
         WarnWeakCrypto = "no";
       };
+
       "*" = {
         ForwardAgent = false;
         AddKeysToAgent = "yes";
