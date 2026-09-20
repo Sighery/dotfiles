@@ -54,7 +54,8 @@
   ];
 
   users.users.sighery.openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOxQ9pRCIOB5vbPl2CQiWJscbmX5Ct1hpbJXFJWL9QlA"
+    # Loxez
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHNmd/jJt0fge+oLY88e+O8U8LHaQdyBxpKbvcfd7Vd"
   ];
 
   networking.firewall.enable = false;
