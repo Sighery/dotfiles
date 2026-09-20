@@ -78,5 +78,10 @@
     openFirewall = true;
   };
 
+  users.users.sighery.openssh.authorizedKeys.keys = [
+    # Tiber
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMJ9YACD3IkFImsFytVAoM1jU9K0xFTMV0WeJdnAxbog"
+  ];
+
   networking.firewall.enable = false;
 }
