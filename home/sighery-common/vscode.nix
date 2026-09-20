@@ -105,6 +105,9 @@ in
     ];
 
     profiles.default.userSettings = lib.recursiveUpdate antislop-settings {
+      # TODO: https://gist.github.com/rpavlik/95d6c40d8407805e2c20bdf6d9efa44e?permalink_comment_id=6379775#gistcomment-6379775
+      "chat.agent.sandbox.enabled" = "on";
+
       "update.mode" = "manual";
       "liveshare.diagnosticMode" = true;
       "liveshare.diagnosticLogging" = true;
