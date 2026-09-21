@@ -57,5 +57,10 @@
     dbeaver-bin
   ];
 
+  users.users.sighery.openssh.authorizedKeys.keys = [
+    # Loxez
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNfy3AUP7MPXRbJi+EXOQsXtiRujlh+nAIeLiCQFBrf"
+  ];
+
   networking.firewall.enable = false;
 }
