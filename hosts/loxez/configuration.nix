@@ -15,6 +15,7 @@
     ../common/bluetooth.nix
     ../common/docker.nix
     ../common/openssh.nix
+    ../common/mdns.nix
     ../common/documentation.nix
     ../common/users.nix
     ../common/i18n.nix
