@@ -53,6 +53,7 @@
     discord
     kdePackages.kate
     spotify
+    wpa_supplicant_gui
   ];
 
   users.users.sighery.openssh.authorizedKeys.keys = [
