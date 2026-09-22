@@ -5,6 +5,7 @@
     ../common/nix-experiments.nix
     ../common/neovim.nix
     ../common/openssh.nix
+    ../common/mdns.nix
     ../common/binary-cache-pubkeys.nix
     ../common/binary-cache-ncro.nix
     ../common/binary-cache-ncro-lan.nix
