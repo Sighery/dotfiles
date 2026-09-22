@@ -1,6 +1,8 @@
 { nixpkgs
 , sops-nix
 , home-manager
+, disko
+, ncro
 , secrets
 , allowUnfreePredicate
 }:
@@ -8,6 +10,8 @@
 { stateVersion
 , hostname
 , desktopSystem ? true
+, diskoEnabled ? false
+, ncroEnabled ? false
 , extraModules ? [ ]
 , system ? "x86_64-linux"
 , timezone ? "Europe/Vienna"
@@ -43,7 +47,9 @@ nixpkgs.lib.nixosSystem {
   ]
     ++ [
     sops-nix.nixosModules.sops
-  ];
+  ]
+    ++ nixpkgs.lib.optional diskoEnabled disko.nixosModules.disko
+    ++ nixpkgs.lib.optional ncroEnabled ncro.nixosModules.ncro;
 
   specialArgs = { inherit secrets; };
 }

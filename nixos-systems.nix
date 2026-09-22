@@ -1,4 +1,4 @@
-{ self, nixpkgs, nixpkgs-unstable, sops-nix, home-manager, disko, secrets, forAllSystems, stateVersion }:
+{ self, nixpkgs, nixpkgs-unstable, sops-nix, home-manager, disko, ncro, secrets, forAllSystems, stateVersion }:
 
 let
   allowUnfreePredicate =
@@ -6,7 +6,8 @@ let
 
   makeNixosSystem =
     import ./lib/make-nixos-system.nix {
-      inherit nixpkgs sops-nix home-manager secrets allowUnfreePredicate;
+      inherit nixpkgs sops-nix home-manager disko ncro secrets
+        allowUnfreePredicate;
     };
 
   unstablePkgs = forAllSystems [ "x86_64-linux" ] (
@@ -22,6 +23,7 @@ in
     system = "x86_64-linux";
     timezone = "Europe/Vienna";
     hostname = "loxez";
+    ncroEnabled = true;
 
     extraModules = [
       {
@@ -41,6 +43,7 @@ in
     system = "x86_64-linux";
     timezone = "Europe/Vienna";
     hostname = "tiber";
+    ncroEnabled = true;
 
     extraModules = [
       {
@@ -56,6 +59,7 @@ in
     system = "x86_64-linux";
     timezone = "Europe/Vienna";
     hostname = "sonar";
+    ncroEnabled = true;
 
     extraModules = [
       {
@@ -91,9 +95,7 @@ in
     system = "aarch64-linux";
     hostname = "panda";
     desktopSystem = false;
-
-    extraModules = [
-      disko.nixosModules.disko
-    ];
+    diskoEnabled = true;
+    ncroEnabled = true;
   };
 }

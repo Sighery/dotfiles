@@ -26,7 +26,8 @@
     ../common/usb-automounting.nix
     ../common/dolphin-associations-fix.nix
     ../common/binary-cache-pubkeys.nix
-    ../common/binary-cache-substituters.nix
+    # TODO: Remove once ncro gets merged to nixpkgs
+    ../common/binary-cache-ncro.nix
 
     ../common/secrets-setup.nix
 

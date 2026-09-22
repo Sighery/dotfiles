@@ -16,6 +16,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ncro = {
+      url = "github:manic-systems/ncro";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     secrets.url = "github:Sighery/dotfiles-secrets";
   };
 
@@ -23,9 +27,10 @@
     { self
     , nixpkgs
     , nixpkgs-unstable
-    , disko
-    , sops-nix
     , home-manager
+    , sops-nix
+    , disko
+    , ncro
     , secrets
     , ...
     }@inputs:
@@ -63,7 +68,7 @@
 
       nixosConfigurations = import ./nixos-systems.nix {
         inherit self nixpkgs nixpkgs-unstable sops-nix home-manager disko
-          secrets forAllSystems stateVersion;
+          ncro secrets forAllSystems stateVersion;
       };
     };
 }

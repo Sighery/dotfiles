@@ -6,7 +6,8 @@
     ../common/neovim.nix
     ../common/openssh.nix
     ../common/binary-cache-pubkeys.nix
-    ../common/binary-cache-substituters.nix
+    ../common/binary-cache-ncro.nix
+    ../common/binary-cache-ncro-lan.nix
 
     ../common/secrets-setup.nix
 
