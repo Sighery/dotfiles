@@ -14,6 +14,8 @@
 
     ./users.nix
 
+    ./networking.nix
+
     ./disk-config.nix
     ./hardware-configuration.nix
   ];
