@@ -10,6 +10,7 @@
     ../common/binary-cache-ncro-lan.nix
 
     ../common/secrets-setup.nix
+    ../common/wireless.nix
 
     ./users.nix
 
