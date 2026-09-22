@@ -39,7 +39,7 @@ in
 
       "panda" = {
         user = "panda";
-        hostname = "192.168.0.193";
+        hostname = "panda.local";
         identityFile = "~/.ssh/panda_panda-${hostname}";
         identitiesOnly = true;
       };
@@ -52,13 +52,13 @@ in
       };
       "tiber" = {
         user = "sighery";
-        hostname = secrets.home_lan.tiber_wlp;
+        hostname = "tiber.local";
         identityFile = "~/.ssh/tiber_sighery-${hostname}";
         identitiesOnly = true;
       };
       "loxez" = {
         user = "sighery";
-        hostname = secrets.home_lan.loxez_eth;
+        hostname = "loxez.local";
         identityFile = "~/.ssh/loxez_sighery-${hostname}";
         identitiesOnly = true;
       };
