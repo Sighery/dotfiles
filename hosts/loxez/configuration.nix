@@ -36,6 +36,7 @@
     ../common/binary-cache-sign.nix
     ../common/binary-cache-serve.nix
 
+    ./networking.nix
     ./hardware-configuration.nix
   ];
 
