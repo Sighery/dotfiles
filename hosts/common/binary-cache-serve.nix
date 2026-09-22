@@ -9,5 +9,7 @@
     openFirewall = true;
 
     secretKeyFile = config.sops.secrets."binary_cache".path;
+
+    extraParams = "--priority 50";
   };
 }
