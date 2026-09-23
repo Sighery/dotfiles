@@ -10,6 +10,7 @@ pkgs: {
   openirl-srt = pkgs.callPackage ./openirl-srt { };
   openirl-srt-live-server = pkgs.callPackage ./openirl-srt-live-server { };
   openirl-srtla = pkgs.callPackage ./openirl-srtla { };
+  rpi3-uefi-firmware = pkgs.callPackage ./rpi3-uefi-firmware { };
   scrcpy-rofi = pkgs.callPackage ./scrcpy-rofi { };
   spotify-adblock = pkgs.callPackage ./spotify-adblock { };
   vineflower = pkgs.callPackage ./vineflower { };
