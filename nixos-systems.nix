@@ -8,6 +8,8 @@ let
     import ./lib/make-nixos-system.nix {
       inherit nixpkgs sops-nix home-manager disko ncro secrets
         allowUnfreePredicate;
+
+      selfOverlay = self.outputs.overlays.default;
     };
 
   unstablePkgs = forAllSystems [ "x86_64-linux" ] (
@@ -28,7 +30,6 @@ in
     extraModules = [
       {
         nixpkgs.overlays = [
-          self.outputs.overlays.default
           (_: _: {
             davinci-resolve = unstablePkgs.x86_64-linux.davinci-resolve;
           })
@@ -44,14 +45,6 @@ in
     timezone = "Europe/Vienna";
     hostname = "tiber";
     ncroEnabled = true;
-
-    extraModules = [
-      {
-        nixpkgs.overlays = [
-          self.outputs.overlays.default
-        ];
-      }
-    ];
   };
 
   sonar = makeNixosSystem {
@@ -60,14 +53,6 @@ in
     timezone = "Europe/Vienna";
     hostname = "sonar";
     ncroEnabled = true;
-
-    extraModules = [
-      {
-        nixpkgs.overlays = [
-          self.outputs.overlays.default
-        ];
-      }
-    ];
   };
 
   wilem = makeNixosSystem {
@@ -78,12 +63,6 @@ in
     desktopSystem = false;
 
     extraModules = [
-      {
-        nixpkgs.overlays = [
-          self.outputs.overlays.default
-        ];
-      }
-
       self.outputs.nixosModules.goaccess
       self.outputs.nixosModules.syncthing-relay
     ];

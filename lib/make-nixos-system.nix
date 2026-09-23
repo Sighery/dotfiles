@@ -4,12 +4,14 @@
 , disko
 , ncro
 , secrets
+, selfOverlay
 , allowUnfreePredicate
 }:
 
 { stateVersion
 , hostname
 , desktopSystem ? true
+, selfOverlayEnabled ? true
 , diskoEnabled ? false
 , ncroEnabled ? false
 , extraModules ? [ ]
@@ -22,6 +24,11 @@ nixpkgs.lib.nixosSystem {
   inherit system;
 
   modules = extraModules
+    ++ nixpkgs.lib.optional selfOverlayEnabled {
+    nixpkgs.overlays = [
+      selfOverlay
+    ];
+  }
     ++ [
     {
       nixpkgs.config.allowUnfreePredicate = allowUnfreePredicate;
