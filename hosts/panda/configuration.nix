@@ -1,5 +1,27 @@
 { modulesPath, lib, pkgs, ... }:
 
+let
+  toExtraFiles = dir:
+    let
+      go = currentDir:
+        lib.concatMapAttrs
+          (name: type:
+            let
+              path = "${currentDir}/${name}";
+            in
+            if type == "directory" then
+              lib.mapAttrs'
+                (relativePath: value: {
+                  name = "${name}/${relativePath}";
+                  inherit value;
+                })
+                (go path)
+            else
+              { ${name} = path; })
+          (builtins.readDir currentDir);
+    in
+    go (toString dir);
+in
 {
   imports = [
     ../common/nix-experiments.nix
@@ -22,25 +44,13 @@
   ];
 
   boot.loader = {
-    systemd-boot =
-      let
-        filesetToExtraFiles = dir:
-          builtins.listToAttrs (
-            map
-              (path: {
-                name = lib.removePrefix "${toString dir}/" (toString path);
-                value = path;
-              })
-              (lib.fileset.toList dir)
-          );
-      in
-      {
-        enable = true;
-        configurationLimit = 10;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 10;
 
-        # Need to copy all the firmware blobs
-        extraFiles = filesetToExtraFiles ./rpi3_uefi_firmware_v1.52;
-      };
+      # Need to copy all the firmware blobs
+      extraFiles = toExtraFiles pkgs.rpi3-uefi-firmware;
+    };
 
     efi.canTouchEfiVariables = false;
     timeout = 3;
