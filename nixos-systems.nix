@@ -1,6 +1,9 @@
-{ self, nixpkgs, nixpkgs-unstable, sops-nix, home-manager, disko, ncro, secrets, forAllSystems, stateVersion }:
+{ self, forAllSystems }:
 
 let
+  inherit (self.inputs) nixpkgs nixpkgs-unstable sops-nix home-manager disko
+    ncro secrets;
+
   allowUnfreePredicate =
     import ./lib/unfree.nix { inherit (nixpkgs) lib; };
 
@@ -18,6 +21,8 @@ let
       config.allowUnfreePredicate = allowUnfreePredicate;
     }
   );
+
+  stateVersion = "26.05";
 in
 {
   loxez = makeNixosSystem {

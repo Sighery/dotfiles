@@ -67,8 +67,7 @@
       overlays.default = overlay;
 
       nixosConfigurations = import ./nixos-systems.nix {
-        inherit self nixpkgs nixpkgs-unstable sops-nix home-manager disko
-          ncro secrets forAllSystems stateVersion;
+        inherit self forAllSystems;
       };
     };
 }
