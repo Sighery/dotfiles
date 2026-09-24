@@ -56,18 +56,98 @@ nix run github:nix-community/nixos-anywhere -- \
 
 ### Remote deploy
 
-After that, I can deploy changes with this command (this builds in the
-remote):
+This requires [accepting the relevant public keys](#binary-cache-pubkeysnix).
+
+Without SSH config:
 
 ```sh
-export TARGET_HOST="panda@panda"
-export TARGET_CONFIG="new_host"
+export NIX_SSHOPTS="-i ~/.ssh/private_ssh_key"
+export TARGET_CONFIG="sonar"
+export TARGET_USER="sighery"
+export TARGET_HOST="192.168.0.111"
 nixos-rebuild \
 	--flake ".#$TARGET_CONFIG" \
-	--build-host "$TARGET_HOST" --target-host "$TARGET_HOST" \
-	--no-reexec --sudo --ask-sudo-password \
+	--sudo --ask-sudo-password \
+	--target-host "$TARGET_USER@$TARGET_HOST" \
 	switch
 ```
+
+When SSH host is already configured:
+
+```sh
+export TARGET_CONFIG="panda"
+export TARGET_HOST="panda"
+nixos-rebuild \
+	--flake ".#$TARGET_CONFIG" \
+	--sudo --ask-sudo-password \
+	--target-host "$TARGET_HOST" \
+	switch
+```
+
+> [!CAUTION]
+> If the remote hasn't accepted the public keys yet, it can be bypassed by
+> building on the remote, passing `--build-host "$TARGET_HOST"`.
+
+
+## Binary cache
+
+[This wiki page is good reference][Signing store paths]. To generate a new key
+set:
+
+```sh
+export KEY_INDEX="1"
+export KEY_NAME="$(hostname)-$KEY_INDEX"
+nix key generate-secret --key-name "$KEY_NAME" > "$KEY_NAME.privkey"
+nix key convert-secret-to-public < "$KEY_NAME.privkey" > "$KEY_NAME.pubkey"
+```
+
+Afterwards, put the `privkey` under `binary_cache` in
+`secrets/$hostname/main.yaml`.
+
+### Binary cache files
+
+All the binary cache related stuff is under `hosts/common/binary-cache-*.nix`.
+
+#### [binary-cache-sign.nix]
+
+Uses the `binary_cache` secret of the given host. Will sign packages built on
+that host. Required on platforms I will remotely deploy from.
+
+#### [binary-cache-pubkeys.nix]
+
+Allows all the public keys of all my hosts that have package signing enabled.
+This should be imported on all devices, regardless of whether they sign their
+own packages or not. This is what enables remote deploys without adding the
+user to `trusted-users`.
+
+#### [binary-cache-serve.nix]
+
+Serving the local `/nix/store/` over HTTP. It will sign packages on the fly,
+even if the packages weren't signed when built. Still only relevant for hosts
+that sign packages.
+
+#### [binary-cache-ncro.nix]
+
+Enabling [ncro] as an HTTP proxy router over all the relevant caches
+(substituters). The included `substituters` implementation from Nixpkgs is
+really dumb, it will try all the substituters sequentially, with exponential
+backoffs for every offline cache.
+
+For my usecase with local caches from devices that might be offline, it is
+completely unusable.
+
+This one adds the NixOS cache and the ncro cache (which will be removed once
+ncro gets merged into nixpkgs).
+
+Usable for all hosts since building `ncro` takes forever, so I need to use the
+ncro cache.
+
+#### [binary-cache-ncro-lan.nix]
+
+Adding the local caches to ncro. Right now only `loxez` and `tiber` serve
+their stores as a cache, and they only serve in my home LAN, so importing this
+is only relevant for home LAN devices (like `panda`), but not for external
+devices (like `wilem`).
 
 
 ## Private secrets flake
@@ -93,3 +173,10 @@ export NIX_CONFIG='access-tokens = github.com=pat_here'
 [nix-update]: https://github.com/Mic92/nix-update
 [nixos-anywhere]: https://github.com/nix-community/nixos-anywhere
 [disko]: https://github.com/nix-community/disko
+[Signing store paths]: https://wiki.nixos.org/wiki/Signing_store_paths
+[binary-cache-sign.nix]: hosts/common/binary-cache-sign.nix
+[binary-cache-pubkeys.nix]: hosts/common/binary-cache-pubkeys.nix
+[binary-cache-serve.nix]: hosts/common/binary-cache-serve.nix
+[binary-cache-ncro.nix]: hosts/common/binary-cache-ncro.nix
+[binary-cache-ncro-lan.nix]: hosts/common/binary-cache-ncro-lan.nix
+[ncro]: https://github.com/manic-systems/ncro
