@@ -103,7 +103,7 @@
           "9" = [
             {
               class = "KeePassXC";
-              title = "^(?!Auto-Type.*$)";
+              window_type = "normal";
             }
             {
               class = "Spotify";
