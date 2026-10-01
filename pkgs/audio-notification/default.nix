@@ -33,6 +33,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     homepage = "https://github.com/Sighery/dotfiles";
     description = "Small helper script to display current volume and mute status on the default audio sink.";
+    mainProgram = "audio-notification";
     license = licenses.mit;
     platforms = platforms.all;
   };

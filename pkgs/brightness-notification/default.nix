@@ -30,6 +30,7 @@ stdenv.mkDerivation (finalAttrs: {
   meta = with lib; {
     homepage = "https://github.com/Sighery/dotfiles";
     description = "Small helper script to display current brightness.";
+    mainProgram = "brightness-notification";
     license = licenses.mit;
     platforms = platforms.all;
   };

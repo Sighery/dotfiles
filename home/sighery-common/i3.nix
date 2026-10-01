@@ -13,17 +13,16 @@
       let
         mod = "Mod4";
         modeSystem = "(l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown";
-        #volumebin = "${i3-volume}/bin/i3-volume";
-        volumebin = "${pkgs.wireplumber}/bin/wpctl";
-        audionotif = "${pkgs.audio-notification}/bin/audio-notification";
-        brightbin = "${pkgs.brightnessctl}/bin/brightnessctl";
-        brightnotif = "${pkgs.brightness-notification}/bin/brightness-notification";
-        statuscmd = "i3status";
+        volumebin = lib.getExe' pkgs.wireplumber "wpctl";
+        audionotif = lib.getExe pkgs.audio-notification;
+        brightbin = lib.getExe pkgs.brightnessctl;
+        brightnotif = lib.getExe pkgs.brightness-notification;
+        statuscmd = lib.getExe pkgs.i3status;
         # i3blocks uses SIGRTMIN+10 by default, i3status uses SIGUSR1 by default
         statussig = "SIGUSR1";
         volumestep = "1";
         picturesDir = "${config.home.homeDirectory}/Pictures/";
-        storeScreenshotCmd = "${pkgs.xclip}/bin/xclip -selection clipboard -t image/png -i $f && mv $f ${picturesDir}";
+        storeScreenshotCmd = "${lib.getExe pkgs.xclip} -selection clipboard -t image/png -i $f && mv $f ${picturesDir}";
       in
       {
         modifier = mod;
@@ -31,8 +30,7 @@
         workspaceAutoBackAndForth = true;
 
         fonts = {
-          names = [ "Fantasque Sans Mono" ];
-          #style = "monospace";
+          names = [ "Fantasque Sans Mono" "monospace" ];
           size = 11.0;
         };
 
@@ -125,32 +123,26 @@
           "${mod}+m" = "bar mode toggle";
           "${mod}+Shift+c" = "reload";
           "${mod}+Shift+r" = "restart";
-          "${mod}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'i3-msg exit'";
+          "${mod}+Shift+e" = ''exec ${lib.getExe' pkgs.i3 "i3-nagbar"} -t warning -m "Do you want to exit i3?" -b "Yes" "i3-msg exit"'';
 
-          "${mod}+Return" = "exec ${pkgs.i3}/bin/i3-sensible-terminal";
-          "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show combi";
-          "${mod}+F1" = "exec ${pkgs.vscodium}/bin/codium";
+          "${mod}+Return" = ''exec ${lib.getExe' pkgs.i3 "i3-sensible-terminal"}'';
+          "${mod}+d" = "exec --no-startup-id ${lib.getExe pkgs.rofi} -show combi";
+          "${mod}+F1" = "exec ${lib.getExe pkgs.vscodium}";
           # TODO: Remove --no-startup-id
           # Chrome bug, soonest fix in 155.0.8056.0
           # https://doc-2gh0-0gig-issuetracker.googleusercontent.com/issues/554798395
           # https://chromium.googlesource.com/chromium/src/+/8aa382f5decd40b8dc470956065c88e4bd78237e
           # https://github.com/chromium/chromium/commit/8aa382f5decd40b8dc470956065c88e4bd78237e
           "${mod}+F2" = "exec --no-startup-id ${lib.getExe pkgs.brave}";
-          "${mod}+Shift+F2" = "exec ${pkgs.firefox}/bin/firefox";
-          "${mod}+F3" = "exec ${pkgs.i3}/bin/i3-sensible-terminal ${pkgs.ranger}/bin/ranger";
-          "${mod}+Shift+F3" = "exec ${pkgs.kdePackages.dolphin}/bin/dolphin";
-          "Print" = "exec --no-startup-id ${pkgs.scrot}/bin/scrot -e '${storeScreenshotCmd}'";
+          "${mod}+Shift+F2" = "exec ${lib.getExe pkgs.firefox}";
+          "${mod}+F3" = ''exec ${lib.getExe' pkgs.i3 "i3-sensible-terminal"} ${lib.getExe pkgs.ranger}'';
+          "${mod}+Shift+F3" = "exec ${lib.getExe pkgs.kdePackages.dolphin}";
+          "Print" = "exec --no-startup-id ${lib.getExe pkgs.scrot} -e '${storeScreenshotCmd}'";
           "--release ${mod}+Print" =
-            "exec --no-startup-id ${pkgs.scrot}/bin/scrot -u -e '${storeScreenshotCmd}'";
+            "exec --no-startup-id ${lib.getExe pkgs.scrot} -u -e '${storeScreenshotCmd}'";
           "--release ${mod}+Shift+Print" =
-            "exec --no-startup-id ${pkgs.scrot}/bin/scrot -s -f -e '${storeScreenshotCmd}'";
+            "exec --no-startup-id ${lib.getExe pkgs.scrot} -s -f -e '${storeScreenshotCmd}'";
 
-          #"XF86AudioRaiseVolume" = "exec --no-startup-id ${volumebin} -ny -t ${statuscmd} -u ${statussig} up ${volumestep}";
-          #"XF86AudioLowerVolume" = "exec --no-startup-id ${volumebin} -ny -t ${statuscmd} -u ${statussig} down ${volumestep}";
-          #"XF86AudioMute" = "exec --no-startup-id ${volumebin} -ny -t ${statuscmd} -u ${statussig} mute";
-          #"XF86AudioRaiseVolume" = "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ ${volumestep}%+ && ${audionotif}";
-          #"XF86AudioLowerVolume" = "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ ${volumestep}%- && ${audionotif}";
-          #"XF86AudioMute" = "exec --no-startup-id ${volumebin} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${audionotif}";
           "XF86AudioMute" =
             "exec --no-startup-id ${volumebin} set-mute @DEFAULT_AUDIO_SINK@ toggle && ${audionotif}";
           "XF86AudioRaiseVolume" =
@@ -161,17 +153,14 @@
             "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ 5%+ && ${audionotif}";
           "Shift+XF86AudioLowerVolume" =
             "exec --no-startup-id ${volumebin} set-volume @DEFAULT_AUDIO_SINK@ 5%- && ${audionotif}";
-          #"XF86AudioRaiseVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%";
-          #"XF86AudioLowerVolume" = "exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%";
-          #"XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
           "XF86AudioPlay" =
-            ''exec --no-startup-id "${pkgs.playerctl}/bin/playerctl --player=spotify,%any play-pause"'';
+            ''exec --no-startup-id "${lib.getExe pkgs.playerctl} --player=spotify,%any play-pause"'';
           "XF86AudioPause" =
-            ''exec --no-startup-id "${pkgs.playerctl}/bin/playerctl --player=spotify,%any play-pause"'';
+            ''exec --no-startup-id "${lib.getExe pkgs.playerctl} --player=spotify,%any play-pause"'';
           "XF86AudioNext" =
-            ''exec --no-startup-id "${pkgs.playerctl}/bin/playerctl --player=spotify,%any next"'';
+            ''exec --no-startup-id "${lib.getExe pkgs.playerctl} --player=spotify,%any next"'';
           "XF86AudioPrev" =
-            ''exec --no-startup-id "${pkgs.playerctl}/bin/playerctl --player=spotify,%any previous"'';
+            ''exec --no-startup-id "${lib.getExe pkgs.playerctl} --player=spotify,%any previous"'';
 
           "XF86MonBrightnessUp" = "exec --no-startup-id ${brightbin} set +5% && ${brightnotif}";
           "XF86MonBrightnessDown" = "exec --no-startup-id ${brightbin} set 5%- && ${brightnotif}";
@@ -282,14 +271,14 @@
             "Shift+Up" = "resize shrink height 5 px or 5 ppt";
             "Shift+Right" = "resize grow width 5 px or 5 ppt";
 
-            r = "exec --no-startup-id ${pkgs.i3-balance-workspace}/bin/i3_balance_workspace";
+            r = "exec --no-startup-id ${lib.getExe pkgs.i3-balance-workspace}";
 
             Return = "mode default";
             Escape = "mode default";
           };
 
           "${modeSystem}" = {
-            l = "exec --no-startup-id ${pkgs.xsecurelock}/bin/xsecurelock, mode default";
+            l = "exec --no-startup-id ${lib.getExe pkgs.xsecurelock}, mode default";
             s = "exec --no-startup-id systemctl suspend, mode default";
             u = "exec --no-startup-id dm-tool switch-to-greeter, mode default";
             e = "exec --no-startup-id exit, mode default";
@@ -305,8 +294,8 @@
         bars = [
           {
             position = "bottom";
-            command = "${pkgs.i3}/bin/i3bar";
-            statusCommand = "${pkgs.i3status}/bin/i3status";
+            command = lib.getExe' pkgs.i3 "i3bar";
+            statusCommand = lib.getExe pkgs.i3status;
             trayOutput = "primary";
             mode = "hide";
             hiddenState = "hide";
