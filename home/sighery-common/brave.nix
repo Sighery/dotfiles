@@ -23,6 +23,7 @@ in
 
     commandLineArgs = [
       "--disable-features=AutofillSavePaymentMethods"
+      "--password-store=basic"
     ];
   };
 

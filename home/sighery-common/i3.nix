@@ -130,7 +130,12 @@
           "${mod}+Return" = "exec ${pkgs.i3}/bin/i3-sensible-terminal";
           "${mod}+d" = "exec --no-startup-id ${pkgs.rofi}/bin/rofi -show combi";
           "${mod}+F1" = "exec ${pkgs.vscodium}/bin/codium";
-          "${mod}+F2" = "exec ${pkgs.brave}/bin/brave --password-store=basic";
+          # TODO: Remove --no-startup-id
+          # Chrome bug, soonest fix in 155.0.8056.0
+          # https://doc-2gh0-0gig-issuetracker.googleusercontent.com/issues/554798395
+          # https://chromium.googlesource.com/chromium/src/+/8aa382f5decd40b8dc470956065c88e4bd78237e
+          # https://github.com/chromium/chromium/commit/8aa382f5decd40b8dc470956065c88e4bd78237e
+          "${mod}+F2" = "exec --no-startup-id ${lib.getExe pkgs.brave}";
           "${mod}+Shift+F2" = "exec ${pkgs.firefox}/bin/firefox";
           "${mod}+F3" = "exec ${pkgs.i3}/bin/i3-sensible-terminal ${pkgs.ranger}/bin/ranger";
           "${mod}+Shift+F3" = "exec ${pkgs.kdePackages.dolphin}/bin/dolphin";
