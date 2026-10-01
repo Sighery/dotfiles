@@ -139,4 +139,9 @@
         password = "$OPENVPN_PASSWORD";
       };
     };
+
+  # TODO: Remove after I fully switch to OpenVPN?
+  nixpkgs.config.permittedInsecurePackages = [
+    "NetworkManager-fortisslvpn-gnome-1.4.0"
+  ];
 }
