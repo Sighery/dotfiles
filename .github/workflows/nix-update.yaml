@@ -1,0 +1,49 @@
+name: Update flake packages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 10:13 every Wednesday
+    - cron: "13 10 * * 3"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@9f63be77f412a248c9d9a65a4c82cf066cdf8f0c #v35
+
+      - name: Update
+        uses: gepbird/nix-update-action@8e91c9bd11e4269d1df1c49cc2ff35471334e346 # v3.1.2
+        with:
+          pr-reviewers: Sighery
+          # Exclude packages that are local
+          # Also ignore hermes since I don't really use it
+          # Also don't use kitty_grab so ignore for now
+          # Also all the IRL SRT/LA stuff for now
+          # For now vscode-antislop-settings too
+          blacklist: >-
+            audio-notification,
+            brightness-notification,
+            ffmpeg-helpers,
+            xclipboard,
+            scrcpy-rofi,
+            hermes,
+            kitty-grab,
+            irlserver-irl-srt-server,
+            irlserver-srt,
+            irlserver-srtla,
+            openirl-srt,
+            openirl-srt-live-server,
+            openirl-srtla,
+            vscode-antislop-settings
