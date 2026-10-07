@@ -34,7 +34,7 @@ in
       type = types.nullOr types.str;
       default = null;
       description = ''
-        Path to the `cert.pem` file, which will be copied into `dataDirectory`
+        Path to the `cert.pem` file, which will be copied into `dataDirectory`.
       '';
     };
 
@@ -42,7 +42,7 @@ in
       type = types.nullOr types.str;
       default = null;
       description = ''
-        Path to the `key.pem` file, which will be copied into `dataDirectory`
+        Path to the `key.pem` file, which will be copied into `dataDirectory`.
       '';
     };
 
@@ -52,6 +52,12 @@ in
       description = ''
         Path to the file containing the token. This can be used to run private
         relays.
+
+        ::: {.warning}
+        Since syncthing-relay doesn't support passing the token through a
+        file, the token value will be exposed in clear text in the process
+        list.
+        :::
       '';
     };
 
@@ -156,18 +162,17 @@ in
           ++ optional (cfg.cert != null) "cert:${cfg.cert}";
 
         Restart = "on-failure";
-        ExecStartPre =
-          mkIf (cfg.cert != null || cfg.key != null)
-            "${pkgs.writers.writeBash "syncthing-relay-copy-keys" ''
-              install -dm700 ${dataDirectory}
-              ${optionalString (cfg.cert != null) ''
-                install -Dm644 "$CREDENTIALS_DIRECTORY/cert" ${dataDirectory}/cert.pem
-              ''}
-              ${optionalString (cfg.key != null) ''
-                install -Dm600 "$CREDENTIALS_DIRECTORY/key" ${dataDirectory}/key.pem
-              ''}
-            ''}";
       };
+
+      preStart = mkIf (cfg.cert != null || cfg.key != null) ''
+        install -dm700 ${dataDirectory}
+        ${optionalString (cfg.cert != null) ''
+          install -Dm644 "$CREDENTIALS_DIRECTORY/cert" ${dataDirectory}/cert.pem
+        ''}
+        ${optionalString (cfg.key != null) ''
+          install -Dm644 "$CREDENTIALS_DIRECTORY/key" ${dataDirectory}/key.pem
+        ''}
+      '';
 
       script = ''
         ${pkgs.syncthing-relay}/bin/strelaysrv \
