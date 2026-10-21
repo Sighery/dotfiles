@@ -128,12 +128,7 @@
           "${mod}+Return" = ''exec ${lib.getExe' pkgs.i3 "i3-sensible-terminal"}'';
           "${mod}+d" = "exec --no-startup-id ${lib.getExe pkgs.rofi} -show combi";
           "${mod}+F1" = "exec ${lib.getExe pkgs.vscodium}";
-          # TODO: Remove --no-startup-id
-          # Chrome bug, soonest fix in 155.0.8056.0
-          # https://doc-2gh0-0gig-issuetracker.googleusercontent.com/issues/554798395
-          # https://chromium.googlesource.com/chromium/src/+/8aa382f5decd40b8dc470956065c88e4bd78237e
-          # https://github.com/chromium/chromium/commit/8aa382f5decd40b8dc470956065c88e4bd78237e
-          "${mod}+F2" = "exec --no-startup-id ${lib.getExe pkgs.brave}";
+          "${mod}+F2" = "exec ${lib.getExe pkgs.brave}";
           "${mod}+Shift+F2" = "exec ${lib.getExe pkgs.firefox}";
           "${mod}+F3" = ''exec ${lib.getExe' pkgs.i3 "i3-sensible-terminal"} ${lib.getExe pkgs.ranger}'';
           "${mod}+Shift+F3" = "exec ${lib.getExe pkgs.kdePackages.dolphin}";
