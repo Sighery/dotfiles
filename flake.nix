@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ncro = {
-      url = "github:manic-systems/ncro";
+      url = "github:manic-systems/ncro/v2.4.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets.url = "github:Sighery/dotfiles-secrets";
