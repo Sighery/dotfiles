@@ -68,7 +68,7 @@
   environment.systemPackages = with pkgs; [
     picard
     audacity
-    davinci-resolve
+    davinci-resolve-studio
     qbittorrent
     android-tools
   ];

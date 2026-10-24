@@ -7,6 +7,7 @@ pkg: builtins.elem (lib.getName pkg) [
   "discord"
   "plexmediaserver"
   "davinci-resolve"
+  "davinci-resolve-studio"
   "rar"
   "unrar"
 

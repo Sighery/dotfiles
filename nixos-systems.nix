@@ -37,6 +37,7 @@ in
         nixpkgs.overlays = [
           (_: _: {
             davinci-resolve = unstablePkgs.x86_64-linux.davinci-resolve;
+            davinci-resolve-studio = unstablePkgs.x86_64-linux.davinci-resolve-studio;
           })
         ];
       }
