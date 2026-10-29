@@ -128,7 +128,7 @@
           "${mod}+Return" = ''exec ${lib.getExe' pkgs.i3 "i3-sensible-terminal"}'';
           "${mod}+d" = "exec --no-startup-id ${lib.getExe pkgs.rofi} -show combi";
           "${mod}+F1" = "exec ${lib.getExe pkgs.vscodium}";
-          "${mod}+F2" = "exec ${lib.getExe pkgs.brave}";
+          "${mod}+F2" = "exec ${lib.getExe config.programs.chromium.finalPackage}";
           "${mod}+Shift+F2" = "exec ${lib.getExe pkgs.firefox}";
           "${mod}+F3" = ''exec ${lib.getExe' pkgs.i3 "i3-sensible-terminal"} ${lib.getExe pkgs.ranger}'';
           "${mod}+Shift+F3" = "exec ${lib.getExe pkgs.kdePackages.dolphin}";
