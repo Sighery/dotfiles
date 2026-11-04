@@ -108,37 +108,64 @@ in
       # TODO: https://gist.github.com/rpavlik/95d6c40d8407805e2c20bdf6d9efa44e?permalink_comment_id=6379775#gistcomment-6379775
       "chat.agent.sandbox.enabled" = "on";
 
-      "update.mode" = "manual";
-      "liveshare.diagnosticMode" = true;
-      "liveshare.diagnosticLogging" = true;
-      "atomKeymap.promptV3Features" = true;
-      "editor.multiCursorModifier" = "ctrlCmd";
-      "editor.guides.bracketPairs" = "active";
-      "editor.formatOnPaste" = true;
-      "editor.minimap.enabled" = false;
-      "telemetry.telemetryLevel" = "off";
-      "files.autoSave" = "afterDelay";
+      # Editor
+      "editor.acceptSuggestionOnCommitCharacter" = false;
       "editor.fontFamily" = "'monospace', monospace, 'Droid Sans Mono', 'Droid Sans Fallback'";
+      "editor.formatOnPaste" = true;
+      "editor.formatOnSave" = true;
+      "editor.guides.bracketPairs" = "active";
       "editor.insertSpaces" = false;
-      "window.menuBarVisibility" = "hidden";
+      "editor.minimap.enabled" = false;
+      "editor.multiCursorModifier" = "ctrlCmd";
+      "editor.renderWhitespace" = "boundary";
+      "explorer.confirmDelete" = false;
+      "explorer.confirmDragAndDrop" = false;
+      "extensions.ignoreRecommendations" = true;
+      "files.associations" = {
+        "docker-compose.yml" = "yaml";
+        "docker-compose.yaml" = "yaml";
+        "*.auto.tfvars" = "terraform";
+        "*.tfvars" = "terraform";
+        "*.h" = "c";
+      };
+      "files.autoSave" = "afterDelay";
+      "files.exclude" = {
+        "**/.git" = false;
+      };
+      "files.insertFinalNewline" = true;
+      "files.trimFinalNewlines" = true;
+      "files.trimTrailingWhitespace" = true;
+      "security.workspace.trust.banner" = "never";
+      "security.workspace.trust.startupPrompt" = "never";
+      "telemetry.telemetryLevel" = "off";
+      "update.mode" = "manual";
       "window.enableMenuBarMnemonics" = false;
+      "window.menuBarVisibility" = "hidden";
+      "workbench.activityBar.location" = "hidden";
+      "workbench.colorTheme" = "Dark Modern";
+      "workbench.editor.enablePreviewFromQuickOpen" = false;
+      "workbench.editor.useModal" = "off";
+      "workbench.secondarySideBar.defaultVisibility" = "hidden";
+      "workbench.sideBar.location" = "right";
+      "workbench.startupEditor" = "none";
 
-      # Gitlens annoying rebase editor
-      "gitlens.rebaseEditor.openOnPausedRebase" = "false";
+      # Gitlens annoyances
+      "gitlens.advanced.skipOnboarding" = true;
+      "gitlens.advanced.telemetry.enabled" = false;
+      "gitlens.ai.enabled" = false;
+      "gitlens.cloudPatches.enabled" = false;
+      "gitlens.codeLens.authors.enabled" = false;
+      "gitlens.codeLens.enabled" = false;
+      "gitlens.plusFeatures.enabled" = false;
+      "gitlens.showWelcomeOnInstall" = false;
+      "gitlens.showWhatsNewAfterUpgrades" = false;
+      "gitlens.telemetry.enabled" = false;
+      # Rebase editor
       "workbench.editorAssociations" = {
         "git-rebase-todo" = "default";
       };
+      "gitlens.rebaseEditor.openOnPausedRebase" = "false";
 
-      "workbench.sideBar.location" = "right";
-      "workbench.activityBar.location" = "hidden";
-      "workbench.secondarySideBar.defaultVisibility" = "hidden";
-      "workbench.editor.enablePreviewFromQuickOpen" = false;
-      "workbench.startupEditor" = "none";
-      "editor.renderWhitespace" = "boundary";
-      "files.insertFinalNewline" = true;
-      "workbench.colorTheme" = "Dark Modern";
-      "workbench.editor.useModal" = "off";
-      "latex-workshop.latex.autoBuild.run" = "never";
       "editor.tokenColorCustomizations" = {
         "[Material Theme Palenight High Contrast]" = {
           "textMateRules" = [
@@ -154,59 +181,30 @@ in
           ];
         };
       };
-      "files.trimFinalNewlines" = true;
-      "files.trimTrailingWhitespace" = true;
-      "python.formatting.provider" = "black";
-      "python.languageServer" = "Pylance";
-      "python.sortImports.args" = [
-        "--profile"
-        "black"
-      ];
-      "source.organizeImports" = true;
-      "python.linting.enabled" = true;
-      "python.linting.pylintEnabled" = true;
-      "python.linting.mypyEnabled" = true;
-      "python.dataScience.askForKernelRestart" = true;
-      "editor.formatOnSave" = true;
-      "rewrap.autoWrap.enable" = true;
-      "rust.clippy_preferences" = "on";
-      "gitlens.codeLens.enabled" = false;
-      "gitlens.advanced.telemetry.enabled" = false;
-      "gitlens.codeLens.authors.enabled" = false;
-      "gitlens.showWelcomeOnInstall" = false;
-      "gitlens.showWhatsNewAfterUpgrades" = false;
-      "gitlens.ai.enabled" = false;
-      "gitlens.plusFeatures.enabled" = false;
-      "gitlens.cloudPatches.enabled" = false;
-      "gitlens.advanced.skipOnboarding" = true;
-      "gitlens.telemetry.enabled" = false;
-      "explorer.confirmDelete" = false;
-      "go.useLanguageServer" = true;
-      "explorer.confirmDragAndDrop" = false;
-      "redhat.telemetry.enabled" = false;
-      "yaml.schemaStore.enable" = true;
-      "crates.upToDateDecorator" = "";
-      "rust-analyzer.inlayHints.typeHints" = false;
-      "rust-analyzer.inlayHints.parameterHints" = false;
-      "go.survey.prompt" = false;
+
       "go.showWelcome" = false;
+      "go.survey.prompt" = false;
       "go.toolsManagement.autoUpdate" = false;
       "go.toolsManagement.checkForUpdates" = "off";
-      "security.workspace.trust.banner" = "never";
-      "security.workspace.trust.startupPrompt" = "never";
-      "editor.acceptSuggestionOnCommitCharacter" = false;
-      "extensions.ignoreRecommendations" = true;
+      "go.useLanguageServer" = true;
+
+      "atomKeymap.promptV3Features" = true;
+
+      "latex-workshop.latex.autoBuild.run" = "never";
+
+      "liveshare.diagnosticMode" = true;
+      "liveshare.diagnosticLogging" = true;
+
+      "python.languageServer" = "Pylance";
+
+      "rewrap.autoWrap.enable" = true;
+
+      "redhat.telemetry.enabled" = false;
+      "yaml.schemaStore.enable" = true;
+
       "vim.smartRelativeLine" = true;
-      "files.exclude" = {
-        "**/.git" = false;
-      };
-      "files.associations" = {
-        "docker-compose.yml" = "yaml";
-        "docker-compose.yaml" = "yaml";
-        "*.auto.tfvars" = "terraform";
-        "*.tfvars" = "terraform";
-        "*.h" = "c";
-      };
+
+      # Generic rulers
       "workbench.colorCustomizations" = {
         "editorRuler.foreground" = "#FF4081";
       };
@@ -220,13 +218,8 @@ in
           "color" = "#FFA700";
         }
       ];
-      "terraform.languageServer" = {
-        "external" = true;
-        "args" = [ "serve" ];
-      };
-      "terraform-ls.experimentalFeatures" = {
-        "validateOnSave" = true;
-      };
+
+      # Language settings
       "[markdown]" = {
         "editor.quickSuggestions" = {
           "comments" = "off";
