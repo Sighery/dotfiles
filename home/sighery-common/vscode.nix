@@ -166,6 +166,14 @@ in
       };
       "gitlens.rebaseEditor.openOnPausedRebase" = "false";
 
+      # Status bar annoyances
+      "git.enableStatusBarSync" = false;
+      "gitlens.graph.statusBar.enabled" = false;
+      "gitlens.launchpad.indicator.enabled" = false;
+      "gitlens.statusBar.pullRequests.enabled" = false;
+      "liveshare.showInStatusBar" = "whileCollaborating";
+      "terminal.integrated.suggest.showStatusBar" = false;
+
       "editor.tokenColorCustomizations" = {
         "[Material Theme Palenight High Contrast]" = {
           "textMateRules" = [
