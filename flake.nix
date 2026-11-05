@@ -21,22 +21,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets.url = "github:Sighery/dotfiles-secrets";
+
+    # TODO: Maybe switch to something else?
+    # https://github.com/NixOS/nixpkgs/pull/582838
+    brave = {
+      url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    { self
-    , nixpkgs
-    , nixpkgs-unstable
-    , home-manager
-    , sops-nix
-    , disko
-    , ncro
-    , secrets
-    , ...
-    }@inputs:
+  outputs = { self, nixpkgs, ... }:
     let
-      stateVersion = "26.05";
-
       forAllSystems =
         import ./lib/for-all-systems.nix { inherit (nixpkgs) lib; };
 

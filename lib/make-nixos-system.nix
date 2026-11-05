@@ -3,6 +3,7 @@
 , home-manager
 , disko
 , ncro
+, brave
 , secrets
 , selfOverlay
 , allowUnfreePredicate
@@ -51,6 +52,8 @@ nixpkgs.lib.nixosSystem {
 
       home-manager.users.sighery = ../home/sighery-${hostname}/main.nix;
     }
+
+    brave.nixosModules.default
   ]
     ++ [
     sops-nix.nixosModules.sops
