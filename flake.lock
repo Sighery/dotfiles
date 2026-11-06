@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793853966,
-        "narHash": "sha256-tTMJdRy82o3xlul+Vjirdigu4cK9iJb0Mn8ww78V1ks=",
+        "lastModified": 1793917222,
+        "narHash": "sha256-4rygrUarE8d+QcATL6SuT/62n57TDbw0PkWDI8jIqkA=",
         "ref": "main",
-        "rev": "d17cdb6c926f778446de7668cc3b35a0f5566a31",
-        "revCount": 2,
+        "rev": "d03db5f694a668992e5d764b6c4a18baa2c572ee",
+        "revCount": 3,
         "type": "git",
         "url": "https://codeberg.org/buckley310/brave-browser-nix"
       },
