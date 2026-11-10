@@ -21,13 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     secrets.url = "github:Sighery/dotfiles-secrets";
-
-    # TODO: Maybe switch to something else?
-    # https://github.com/NixOS/nixpkgs/pull/582838
-    brave = {
-      url = "git+https://codeberg.org/buckley310/brave-browser-nix?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, ... }:

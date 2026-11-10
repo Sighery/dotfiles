@@ -2,14 +2,14 @@
 
 let
   inherit (self.inputs) nixpkgs nixpkgs-unstable sops-nix home-manager disko
-    ncro brave secrets;
+    ncro secrets;
 
   allowUnfreePredicate =
     import ./lib/unfree.nix { inherit (nixpkgs) lib; };
 
   makeNixosSystem =
     import ./lib/make-nixos-system.nix {
-      inherit nixpkgs sops-nix home-manager disko ncro brave secrets
+      inherit nixpkgs sops-nix home-manager disko ncro secrets
         allowUnfreePredicate;
 
       selfOverlay = self.outputs.overlays.default;
