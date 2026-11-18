@@ -2,7 +2,7 @@
 
 let
   inherit (self.inputs) nixpkgs nixpkgs-unstable sops-nix home-manager disko
-    ncro secrets;
+    ncro secrets nixpkgs-2605-small;
 
   allowUnfreePredicate =
     import ./lib/unfree.nix { inherit (nixpkgs) lib; };
@@ -69,6 +69,15 @@ in
     desktopSystem = false;
 
     extraModules = [
+      {
+        nixpkgs.overlays = [
+          (_: _: {
+            nginx = nixpkgs-2605-small.legacyPackages.x86_64-linux.nginxStable;
+            nginxStable = nixpkgs-2605-small.legacyPackages.x86_64-linux.nginxStable;
+            nginxMainline = nixpkgs-2605-small.legacyPackages.x86_64-linux.nginxMainline;
+          })
+        ];
+      }
       self.outputs.nixosModules.goaccess
       self.outputs.nixosModules.syncthing-relay
     ];
