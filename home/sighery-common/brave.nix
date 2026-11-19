@@ -11,9 +11,12 @@ let
   '';
 in
 {
-  programs.chromium = {
+  programs.brave = {
     enable = true;
     package = pkgs.brave;
+
+    # KeePassXC and other HM modules will try to add to this. I don't use this
+    nativeMessagingHosts = lib.mkForce [ ];
 
     extensions = [
       { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # SponsorBlock
