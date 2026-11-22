@@ -21,6 +21,10 @@
       url = "github:manic-systems/ncro/v2.4.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vsc-go-away-llms = {
+      url = "github:rpavlik/vsc-go-away-llms";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     secrets.url = "github:Sighery/dotfiles-secrets";
   };
 

@@ -3,6 +3,7 @@
 , home-manager
 , disko
 , ncro
+, vsc-go-away-llms
 , secrets
 , selfOverlay
 , allowUnfreePredicate
@@ -40,6 +41,12 @@ nixpkgs.lib.nixosSystem {
     ../hosts/${hostname}/configuration.nix
   ]
     ++ nixpkgs.lib.optionals (desktopSystem) [
+    {
+      nixpkgs.overlays = [
+        vsc-go-away-llms.overlays.default
+      ];
+    }
+
     home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;

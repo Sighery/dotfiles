@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  antislop-settings = lib.importJSON "${pkgs.vscode-antislop-settings}/settings.json";
+  antislop-settings = lib.importJSON "${pkgs.vsc-go-away-llms}/settings.json";
 in
 {
   programs.vscodium = {

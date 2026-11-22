@@ -14,6 +14,5 @@ pkgs: {
   scrcpy-rofi = pkgs.callPackage ./scrcpy-rofi { };
   spotify-adblock = pkgs.callPackage ./spotify-adblock { };
   vineflower = pkgs.callPackage ./vineflower { };
-  vscode-antislop-settings = pkgs.callPackage ./vscode-antislop-settings { };
   xclipboard = pkgs.callPackage ./xclipboard { };
 }

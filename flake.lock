@@ -119,7 +119,8 @@
         "nixpkgs-2605-small": "nixpkgs-2605-small",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "secrets": "secrets",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "vsc-go-away-llms": "vsc-go-away-llms"
       }
     },
     "secrets": {
@@ -154,6 +155,26 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "vsc-go-away-llms": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795115253,
+        "narHash": "sha256-QQxIFkkKw6C2fkwlBzxaKR2MwuNQqiGeQszJze7XW4Q=",
+        "owner": "rpavlik",
+        "repo": "vsc-go-away-llms",
+        "rev": "1a918b240eb6cf18b1d48f85238dc218699c4e95",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rpavlik",
+        "repo": "vsc-go-away-llms",
         "type": "github"
       }
     }
