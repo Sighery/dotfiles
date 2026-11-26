@@ -62,8 +62,8 @@ nixpkgs.lib.nixosSystem {
     ++ [
     sops-nix.nixosModules.sops
   ]
-    ++ nixpkgs.lib.optional diskoEnabled disko.nixosModules.disko
-    ++ nixpkgs.lib.optional ncroEnabled ncro.nixosModules.ncro;
+    ++ nixpkgs.lib.optional diskoEnabled disko.nixosModules.disko;
+    # ++ nixpkgs.lib.optional ncroEnabled ncro.nixosModules.ncro;
 
   specialArgs = { inherit secrets; };
 }

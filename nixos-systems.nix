@@ -33,6 +33,7 @@ in
     ncroEnabled = true;
 
     extraModules = [
+      self.outputs.nixosModules.ncro
       {
         nixpkgs.overlays = [
           (_: _: {
@@ -51,6 +52,17 @@ in
     timezone = "Europe/Vienna";
     hostname = "tiber";
     ncroEnabled = true;
+
+    extraModules = [
+      self.outputs.nixosModules.ncro
+      {
+        nixpkgs.overlays = [
+          (_: _: {
+            ncro = ncro.packages.x86_64-linux.ncro;
+          })
+        ];
+      }
+    ];
   };
 
   sonar = makeNixosSystem {
@@ -59,6 +71,10 @@ in
     timezone = "Europe/Vienna";
     hostname = "sonar";
     ncroEnabled = true;
+
+    extraModules = [
+      self.outputs.nixosModules.ncro
+    ];
   };
 
   wilem = makeNixosSystem {
@@ -82,5 +98,9 @@ in
     desktopSystem = false;
     diskoEnabled = true;
     ncroEnabled = true;
+
+    extraModules = [
+      self.outputs.nixosModules.ncro
+    ];
   };
 }
